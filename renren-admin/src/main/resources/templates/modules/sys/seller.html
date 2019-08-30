@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>商家</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:seller:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:seller:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:seller:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+            <#if shiro.hasPermission("sys:seller:exportExcel")>
+            <a class="btn btn-primary" @click="exportExcel()"><i class="fa fa-trash-o"></i>&nbsp;导出Excel</a>
+            </#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">店铺名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.nickName" placeholder="店铺名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">密码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.password" placeholder="密码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">EMAIL</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.email" placeholder="EMAIL"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司手机</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.mobile" placeholder="公司手机"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司电话</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.telephone" placeholder="公L司电话"/>
+                        </div>
+                    </div>
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.status" placeholder="状态"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">区域</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.region" placeholder="区域"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.addressDetail" placeholder="详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人姓名</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanName" placeholder="联系人姓名"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人QQ</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanQq" placeholder="联系人QQ"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人电话</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanMobile" placeholder="联系人电话"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人EMAIL</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanEmail" placeholder="联系人EMAIL"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">职位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanJod" placeholder="职位"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否连锁经营</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.storeSize" placeholder="是否连锁经营"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否支持地推</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.addressGround" placeholder="是否支持地推"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">店面大小</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.linkmanOperation" placeholder="店面大小"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">营业执照号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.licenseNumber" placeholder="营业执照号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">税务登记证号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.taxNumber" placeholder="税务登记证号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">组织机构代码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.orgNumber" placeholder="组织机构代码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.address" placeholder="公司地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">奶茶店周边</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.addressShop" placeholder="奶茶店周边"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">简介</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.brief" placeholder="简介"/>
+                        </div>
+                    </div>
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">创建日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.createTime" placeholder="创建日期"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">法定代表人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.legalPerson" placeholder="法定代表人"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">距离周边距离</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.addressDistance" placeholder="距离周边距离"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">分类</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.shopCategory" placeholder="分类"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">门店合作等级</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.shopLv" placeholder="门店合作等级"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">转化率</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="seller.conversionRate" placeholder="转化率"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/seller.js?_${.now?long}"></script>
+</body>
+</html>

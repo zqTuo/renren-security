@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.sys.dao.ActivityDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.sys.entity.ActivityEntity" id="activityMap">
+        <id property="activityId"  column="activity_id" />
+        <result property="activitName" column="activity_name"/>
+        <result property="isFocus" column="is_focus"/>
+        <result property="sellerId" column="seller_id"/>
+        <result property="isQr" column="is_qr"/>
+        <result property="sellerName" column="seller_name"/>
+    </resultMap>
+    <insert id="insertActivity" keyProperty="activityId" parameterType="io.renren.modules.sys.entity.ActivityEntity" useGeneratedKeys="true">
+        insert into tb_activity(activity_id,activity_name,is_focus,seller_id,isQr,seller_name)values ( #{activityId}, #{activitName}, #{isFocus}, #{sellerId}, #{isQr}, #{sellerName})
+
+    </insert>
+
+
+</mapper>

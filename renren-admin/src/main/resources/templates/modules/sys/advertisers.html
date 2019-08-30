@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>广告主</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:advertisers:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:advertisers:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:advertisers:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司名</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.name" placeholder="公司名"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">密码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.password" placeholder="密码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">EMAIL</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.email" placeholder="EMAIL"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司手机</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.mobile" placeholder="公司手机"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司电话</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.telephone" placeholder="公司电话"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.status" placeholder="状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">详细地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.addressDetail" placeholder="详细地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人姓名</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.linkmanName" placeholder="联系人姓名"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人QQ</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.linkmanQq" placeholder="联系人QQ"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人电话</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.linkmanMobile" placeholder="联系人电话"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">联系人EMAIL</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.linkmanEmail" placeholder="联系人EMAIL"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">营业执照号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.licenseNumber" placeholder="营业执照号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">税务登记证号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.taxNumber" placeholder="税务登记证号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">组织机构代码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.orgNumber" placeholder="组织机构代码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.address" placeholder="公司地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">公司LOGO图</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.logoPic" placeholder="公司LOGO图"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">简介</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.brief" placeholder="简介"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.createTime" placeholder="创建日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">法定代表人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.legalPerson" placeholder="法定代表人"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">法定代表人身份证</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.legalPersonCardId" placeholder="法定代表人身份证"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">开户行账号名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.bankUser" placeholder="开户行账号名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否渠道客户</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.customers" placeholder="是否渠道客户"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">充值金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.money" placeholder="充值金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单列表</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.orderlist" placeholder="订单列表"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">职位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.jod" placeholder="职位"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.type" placeholder="类型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">需求数量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertisers.number" placeholder="需求数量"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/advertisers.js?_${.now?long}"></script>
+</body>
+</html>

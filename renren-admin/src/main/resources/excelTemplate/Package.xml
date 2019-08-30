@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="GBK"?>
+<excel name="PackageDto" className="com.xkygame.demo.dto.PackageDto">
+  <!--  <property name="id" title="序号" position="0" type="long" />
+    <property name="recordNo" title="参考编号" position="1" type="String" />
+    <property name="expressNo" title="E特快单号" position="2" type="String" />
+    <property name="receiver" title="收件人" position="3" type="String"/>
+    <property name="receiverPhone" title="收件人电话" position="4" type="String"/>
+    <property name="receiverAddr" title="收件人地址" position="5" type="String"/>
+    <property name="receiverCity" title="收件人城市" position="6" type="String"/>
+    <property name="receiverProv" title="收件人省份" position="7" type="String"/>
+    <property name="zipCode" title="邮编" position="8" type="String"/>
+    <property name="perWeight" title="单个重量" position="9" type="String"/>
+    <property name="receiverCity" title="货物名称" position="10" type="String"/>
+    <property name="taxDetail" title="税则号" position="11" type="String"/>
+    <property name="productPrice" title="单价" position="12" type="String"/>
+    <property name="num" title="件数" position="13" type="String"/>
+    <property name="productType" title="品名及规格" position="14" type="String"/>
+    <property name="dutiablePrice" title="完税价" position="15" type="String"/>
+    <property name="tax" title="税率" position="16" type="String"/>
+    <property name="createTime" title="创建时间" position="17" type="String"/>
+    <property name="senderName" title="客户名" position="18" type="String"/> -->
+
+
+    <property name="nickName" title="店铺名称" position="2" type="String"/>
+    <property name="email" title="EMAIL" position="4" type="String"/>
+    <property name="mobile" title="公司手机" position="5" type="String"/>
+    <property name="telephone" title="公司电话" position="6" type="String"/>
+    <property name="status" title="状态" position="7" type="String"/>
+    <property name="region" title="区域" position="8" type="String"/>
+    <property name="addressDetail" title="详细地址" position="9" type="String"/>
+    <property name="linkmanName" title="联系人姓名" position="10" type="String"/>
+    <property name="linkmanQq" title="联系人QQ" position="11" type="String"/>
+    <property name="linkmanMobile" title="联系人电话" position="12" type="String"/>
+    <property name="linkmanEmail" title="联系人EMAIL" position="13" type="String"/>
+    <property name="linkmanJod" title="职位" position="14" type="String"/>
+    <property name="storeSize" title="是否连锁经营" position="15" type="String"/>
+    <property name="addressGround" title="是否支持地推" position="16" type="String"/>
+    <property name="linkmanOperation" title="店面大小" position="17" type="String"/>
+    <property name="licenseNumber" title="营业执照号" position="18" type="String"/>
+    <property name="taxNumber" title="税务登记证号" position="19" type="String"/>
+    <property name="orgNumber" title="组织机构代码" position="20" type="String"/>
+    <property name="address" title="公司地址" position="21" type="String"/>
+    <property name="addressShop" title="奶茶店周边" position="22" type="String"/>
+    <property name="brief" title="简介" position="23" type="String"/>
+    <property name="createTime" title="创建日期" position="24" type="String"/>
+    <property name="legalPerson" title="法定代表人" position="25" type="String"/>
+    <property name="addressDistance" title="距离周边距离" position="26" type="String"/>
+    <property name="shopCategory" title="分类" position="27" type="String"/>
+    <property name="shopLv" title="门店合作等级" position="28" type="String"/>
+</excel>
