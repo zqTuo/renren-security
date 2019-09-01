@@ -13,5 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CodeDao extends BaseMapper<CodeEntity> {
-	
+
+
+    void insertCodeEntity(CodeEntity codeEntity);
 }

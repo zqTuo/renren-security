@@ -95,6 +95,8 @@ public class AdvertisersController {
 
         return R.ok();
     }
+
+//    批量生成二维码
     @RequestMapping("/QrCode")
     @RequiresPermissions("sys:advertisers:QrCode")
     public R QrCode(@RequestBody OrderEntity orderEntity ) {

@@ -23,7 +23,7 @@ public class CodeEntity implements Serializable {
 	 * ID
 	 */
 	@TableId
-	private Integer codeId;
+	private Long codeId;
 	/**
 	 * 广告主id
 	 */
@@ -65,4 +65,129 @@ public class CodeEntity implements Serializable {
 	 */
 	private String addressDetail;
 
+	public CodeEntity() {
+	}
+
+	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, String status, String region, String addressDetail) {
+		this.codeId = codeId;
+		this.advertisersId = advertisersId;
+		this.sellerId = sellerId;
+		this.activityId = activityId;
+		this.activityType = activityType;
+		this.isFocus = isFocus;
+		this.isQr = isQr;
+		this.codeUser = codeUser;
+		this.status = status;
+		this.region = region;
+		this.addressDetail = addressDetail;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Long getCodeId() {
+		return codeId;
+	}
+
+	public void setCodeId(Long codeId) {
+		this.codeId = codeId;
+	}
+
+	public String getAdvertisersId() {
+		return advertisersId;
+	}
+
+	public void setAdvertisersId(String advertisersId) {
+		this.advertisersId = advertisersId;
+	}
+
+	public String getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(String activityId) {
+		this.activityId = activityId;
+	}
+
+	public String getActivityType() {
+		return activityType;
+	}
+
+	public void setActivityType(String activityType) {
+		this.activityType = activityType;
+	}
+
+	public String getIsFocus() {
+		return isFocus;
+	}
+
+	public void setIsFocus(String isFocus) {
+		this.isFocus = isFocus;
+	}
+
+	public String getIsQr() {
+		return isQr;
+	}
+
+	public void setIsQr(String isQr) {
+		this.isQr = isQr;
+	}
+
+	public String getCodeUser() {
+		return codeUser;
+	}
+
+	public void setCodeUser(String codeUser) {
+		this.codeUser = codeUser;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+	@Override
+	public String toString() {
+		return "CodeEntity{" +
+				"codeId=" + codeId +
+				", advertisersId='" + advertisersId + '\'' +
+				", sellerId='" + sellerId + '\'' +
+				", activityId='" + activityId + '\'' +
+				", activityType='" + activityType + '\'' +
+				", isFocus='" + isFocus + '\'' +
+				", isQr='" + isQr + '\'' +
+				", codeUser='" + codeUser + '\'' +
+				", status='" + status + '\'' +
+				", region='" + region + '\'' +
+				", addressDetail='" + addressDetail + '\'' +
+				'}';
+	}
 }

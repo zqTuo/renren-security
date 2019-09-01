@@ -17,6 +17,8 @@
         <result property="region" column="region"/>
         <result property="addressDetail" column="address_detail"/>
     </resultMap>
-
+    <insert id="insertCodeEntity" keyProperty="codeId" parameterType="io.renren.modules.sys.entity.CodeEntity" useGeneratedKeys="true">
+        insert into ( code_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, status, region, address_detail)values ( #{codeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{status}, #{region}, #{addressDetail})
+    </insert>
 
 </mapper>

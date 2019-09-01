@@ -12,7 +12,9 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Hashtable;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by Clarence on 2016/4/21.
@@ -138,7 +140,22 @@ public class QRCodeUtil {
 
 
     public static void main(String[] args) throws Exception {
-        String text = "http://www.baidu.com";
-        QRCodeUtil.encode(text, "C:\\Users\\XKY\\Pictures\\Screenshots\\qq.png", "D:\\", true, "123",0);
+        try {
+            String text = "http://www.baidu.com";
+            QRCodeUtil.encode(text, "C:\\Users\\HP\\Pictures\\Camera Roll\\AA.jpg", "D:\\aaa", true, "123",0);
+/*
+            ZipUtil.createFile("D:\\aaa", "aaa.zip");
+*/
+            File file = new File("D:\\aaa\\123.zip");
+            String s = "D:\\aaa\\123.jpg";
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ZipOutputStream toClient = new ZipOutputStream(outputStream);
+//        将file打包成zp文件
+            ZipUtil.zipFile(new File(s),toClient );
+            toClient.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
