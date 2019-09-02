@@ -33,7 +33,7 @@ public class Constant {
     /**
      * 排序方式
      */
-    public static final String ORDER = "order";
+    public static final String ORDER = "Order";
     /**
      *  升序
      */

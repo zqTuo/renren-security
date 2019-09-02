@@ -5,11 +5,9 @@ import java.util.Map;
 
 import io.renren.common.utils.IdWorker;
 import io.renren.common.validator.ValidatorUtils;
-import io.renren.modules.sys.entity.CodeEntity;
-import io.renren.modules.sys.entity.OrderEntity;
+import io.renren.modules.sys.entity.Order;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +30,7 @@ import io.renren.common.utils.R;
  */
 @RestController
 @RequestMapping("sys/advertisers")
+
 public class AdvertisersController {
     @Autowired
     private AdvertisersService advertisersService;
@@ -99,9 +98,9 @@ public class AdvertisersController {
 //    批量生成二维码
     @RequestMapping("/QrCode")
     @RequiresPermissions("sys:advertisers:QrCode")
-    public R QrCode(@RequestBody OrderEntity orderEntity ) {
+    public R QrCode(@RequestBody Order order ) {
 
-        advertisersService.createQrCode(orderEntity);
+        advertisersService.createQrCode(order);
         return R.ok();
     }
 

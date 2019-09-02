@@ -63,15 +63,28 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		showList: true,
+        showList02: true,
+        showList03: true,
 		title: null,
-		advertisers: {}
+		advertisers: {},
+        sellerList:{},
+        activityList:{},
+        order:{orderEntity:{},orderDescEntity:[]},
+        entity:{},
+
 	},
 	methods: {
+        addOrderDesc_Entity:function () {
+            //向数组中添加一个图片的对象
+            this.order.orderDescEntity.push(this.entity);
+        },
 		query: function () {
 			vm.reload();
 		},
 		add: function(){
 			vm.showList = false;
+			vm.showList03 = false;
+
 			vm.title = "新增";
 			vm.advertisers = {};
 		},
@@ -81,6 +94,8 @@ var vm = new Vue({
 				return ;
 			}
 			vm.showList = false;
+			vm.showList03 = false;
+
             vm.title = "修改";
             
             vm.getInfo(advertisersId)
@@ -143,11 +158,49 @@ var vm = new Vue({
             });
 		},
 		reload: function (event) {
-			vm.showList = true;
+			vm.showList03 = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
-		}
-	}
+		},
+        QrCode:function () {
+            vm.showList02 = false;
+            vm.showList03 = false;
+            vm.title = "生成二维码";
+            this.findAllSeller();
+            this.findAllActivity();
+        },
+        addQrCode:function () {
+			console.log(this.order.orderDescEntity)
+            axios.post('/renren-admin/sys/advertisers/QrCode',this.order).then(function (response) {
+                var msg = response.data;
+                alert(msg.get("msg"))
+            }).catch(function (error) {
+                console.log("1231312131321");
+            });
+        },
+        findAllSeller:function () {
+            axios.get('/renren-admin/sys/seller/list').then(function (response) {
+
+               var page = response.data.page;
+                vm.sellerList=page.list
+
+
+            }).catch(function (error) {
+                console.log("1231312131321");
+            });
+        },
+        findAllActivity:function () {
+            axios.get('/renren-admin/sys/activity/list').then(function (response) {
+
+                var page = response.data.page;
+                vm.activityList=page.list
+            }).catch(function (error) {
+                console.log("1231312131321");
+            });
+        },
+
+    },
+
 });

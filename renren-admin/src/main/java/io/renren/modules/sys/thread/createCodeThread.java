@@ -16,7 +16,7 @@ public class createCodeThread {
 
     @Autowired
     private CodeDao codeDao;
-    @Async(value = "threadPoolTaskExecutor")
+    @Async
     public void  handleCode(CodeEntity codeEntity){
         try {
             codeDao.insertCodeEntity(codeEntity);

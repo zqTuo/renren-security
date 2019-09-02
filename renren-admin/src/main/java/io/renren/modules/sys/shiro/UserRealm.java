@@ -35,21 +35,21 @@ import java.util.*;
  */
 @Component
 public class UserRealm extends AuthorizingRealm {
-    @Autowired
-    private SysUserDao sysUserDao;
-    @Autowired
-    private SysMenuDao sysMenuDao;
-    
-    /**
-     * 授权(验证权限时调用)
-     */
+	@Autowired
+	private SysUserDao sysUserDao;
+	@Autowired
+	private SysMenuDao sysMenuDao;
+
+	/**
+	 * 授权(验证权限时调用)
+	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		SysUserEntity user = (SysUserEntity)principals.getPrimaryPrincipal();
 		Long userId = user.getUserId();
-		
+
 		List<String> permsList;
-		
+
 		//系统管理员，拥有最高权限
 		if(userId == Constant.SUPER_ADMIN){
 			List<SysMenuEntity> menuList = sysMenuDao.selectList(null);
@@ -69,7 +69,7 @@ public class UserRealm extends AuthorizingRealm {
 			}
 			permsSet.addAll(Arrays.asList(perms.trim().split(",")));
 		}
-		
+
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.setStringPermissions(permsSet);
 		return info;

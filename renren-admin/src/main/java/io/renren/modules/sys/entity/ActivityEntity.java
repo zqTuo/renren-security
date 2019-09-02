@@ -27,7 +27,7 @@ public class ActivityEntity implements Serializable {
 	/**
 	 * 活动名称
 	 */
-	private String activitName;
+	private String activityName;
 	/**
 	 * 是否关注
 	 */
@@ -49,9 +49,9 @@ public class ActivityEntity implements Serializable {
 	public ActivityEntity() {
 	}
 
-	public ActivityEntity(String activityId, String activitName, String isFocus, String sellerId, String isQr, String status, String region, String addressDetail) {
+	public ActivityEntity(String activityId, String activityName, String isFocus, String sellerId, String isQr, String status, String region, String addressDetail) {
 		this.activityId = activityId;
-		this.activitName = activitName;
+		this.activityName = activityName;
 		this.isFocus = isFocus;
 		this.sellerId = sellerId;
 		this.isQr = isQr;
@@ -71,12 +71,12 @@ public class ActivityEntity implements Serializable {
 		this.activityId = activityId;
 	}
 
-	public String getActivitName() {
-		return activitName;
+	public String getActivityName() {
+		return activityName;
 	}
 
-	public void setActivitName(String activitName) {
-		this.activitName = activitName;
+	public void setActivityName(String activityName) {
+		this.activityName = activityName;
 	}
 
 	public String getIsFocus() {
@@ -116,7 +116,7 @@ public class ActivityEntity implements Serializable {
 	public String toString() {
 		return "ActivityEntity{" +
 				"activityId='" + activityId + '\'' +
-				", activitName='" + activitName + '\'' +
+				", activityName='" + activityName + '\'' +
 				", isFocus='" + isFocus + '\'' +
 				", sellerId='" + sellerId + '\'' +
 				", isQr='" + isQr + '\'' +

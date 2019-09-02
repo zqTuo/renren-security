@@ -36,7 +36,7 @@ public class OrderController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("sys:order:list")
+    @RequiresPermissions("sys:Order:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = orderService.queryPage(params);
 
@@ -48,18 +48,18 @@ public class OrderController {
      * 信息
      */
     @RequestMapping("/info/{orderId}")
-    @RequiresPermissions("sys:order:info")
+    @RequiresPermissions("sys:Order:info")
     public R info(@PathVariable("orderId") Long orderId){
         OrderEntity order = orderService.getById(orderId);
 
-        return R.ok().put("order", order);
+        return R.ok().put("Order", order);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("sys:order:save")
+    @RequiresPermissions("sys:Order:save")
     public R save(@RequestBody OrderEntity order){
         orderService.save(order);
 
@@ -70,7 +70,7 @@ public class OrderController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("sys:order:update")
+    @RequiresPermissions("sys:Order:update")
     public R update(@RequestBody OrderEntity order){
         ValidatorUtils.validateEntity(order);
         orderService.updateById(order);
@@ -82,7 +82,7 @@ public class OrderController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("sys:order:delete")
+    @RequiresPermissions("sys:Order:delete")
     public R delete(@RequestBody Long[] orderIds){
         orderService.removeByIds(Arrays.asList(orderIds));
 

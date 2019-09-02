@@ -6,19 +6,13 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.renren.modules.sys.entity.OrderEntity" id="orderMap">
         <result property="orderId" column="order_id"/>
-        <result property="payment" column="payment"/>
-        <result property="status" column="status"/>
         <result property="createTime" column="create_time"/>
-        <result property="updateTime" column="update_time"/>
-        <result property="paymentTime" column="payment_time"/>
-        <result property="userId" column="user_id"/>
-        <result property="buyerNick" column="buyer_nick"/>
         <result property="sellerId" column="seller_id"/>
+        <result property="advertisersId" column="advertisers_id"/>
     </resultMap>
     <insert id="insertOrderEntity" keyProperty="orderId" parameterType="io.renren.modules.sys.entity.OrderEntity" useGeneratedKeys="true">
-        insert into tb_order(order_id, payment, status, create_time, update_time, payment_time, user_id, buyer_nick, seller_id)values (#{orderId}, #{payment}, #{status}, #{createTime}, #{updateTime}, #{paymentTime}, #{userId}, #{buyerNick}, #{sellerId})
+        insert into tb_order(order_id, create_time, seller_id, advertisers_id)values (#{orderId}, #{createTime}, #{sellerId}, #{advertisersId})
     </insert>
-
 
 
 </mapper>

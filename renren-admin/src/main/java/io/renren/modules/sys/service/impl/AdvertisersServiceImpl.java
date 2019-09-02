@@ -25,8 +25,6 @@ import io.renren.common.utils.Query;
 
 import io.renren.modules.sys.service.AdvertisersService;
 
-import javax.servlet.ServletException;
-
 
 @Service("advertisersService")
 public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, AdvertisersEntity> implements AdvertisersService {
@@ -59,23 +57,23 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     }
 
     @Override
-    public void createQrCode(OrderEntity orderEntity) {
+    public void createQrCode(Order order) {
 
 
-
+        OrderEntity orderEntity = order.getOrderEntity();
         long id = idWorker.nextId();
 //        向订单表里面插入一条数据
+        orderEntity.setOrderId(id);
         orderEntity.setCreateTime(new Date());
         orderEntity.setAdvertisersId("0");
         orderDao.insertOrderEntity(orderEntity);
 
 //       向订单详情表里面插入一条数据
-
-        List<OrderDescEntity> orderDescEntity = orderEntity.getOrderDescEntity();
+        List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
         for (OrderDescEntity descEntity : orderDescEntity) {
             long id2 = idWorker.nextId();
             descEntity.setId(id2);
-            descEntity.setOrderId(id);
+            descEntity.setOrderId(orderEntity.getOrderId());
             orderDescDao.insertOrderDescEntity(descEntity);
 
 //            获取活动表里面的数据
@@ -89,8 +87,8 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setActivityId(orderEntity.getAdvertisersId());
                 codeEntity.setSellerId(orderEntity.getSellerId());
                 codeEntity.setActivityId(descEntity.getActivityId()+"");
-                codeEntity.setIsFocus(activityEntity.getIsFocus());
-                codeEntity.setIsQr(activityEntity.getIsQr());
+                codeEntity.setIsFocus("0");
+                codeEntity.setIsQr("0");
 
                 codeThread.handleCode(codeEntity);
             }

@@ -3,9 +3,7 @@ package io.renren.modules.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
 import io.renren.modules.sys.entity.AdvertisersEntity;
-import io.renren.modules.sys.entity.CodeEntity;
-import io.renren.modules.sys.entity.OrderEntity;
-import org.springframework.data.redis.core.query.QueryUtils;
+import io.renren.modules.sys.entity.Order;
 
 import java.util.Map;
 
@@ -24,6 +22,6 @@ public interface AdvertisersService extends IService<AdvertisersEntity> {
     void insert(AdvertisersEntity entity);
 
 
-    void createQrCode(OrderEntity orderEntity);
+    void createQrCode(Order orderEntity);
 }
 

@@ -1,5 +1,6 @@
 package io.renren.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -43,18 +44,14 @@ public class OrderEntity implements Serializable {
 	private String advertisersId;
 
 
-
-	List<OrderDescEntity> orderDescEntity;
-
 	public OrderEntity() {
 	}
 
-	public OrderEntity(Long orderId, Date createTime, String sellerId, String advertisersId, List<OrderDescEntity> orderDescEntity) {
+	public OrderEntity(Long orderId, Date createTime, String sellerId, String advertisersId) {
 		this.orderId = orderId;
 		this.createTime = createTime;
 		this.sellerId = sellerId;
 		this.advertisersId = advertisersId;
-		this.orderDescEntity = orderDescEntity;
 	}
 
 	public static long getSerialVersionUID() {
@@ -93,14 +90,6 @@ public class OrderEntity implements Serializable {
 		this.advertisersId = advertisersId;
 	}
 
-	public List<OrderDescEntity> getOrderDescEntity() {
-		return orderDescEntity;
-	}
-
-	public void setOrderDescEntity(List<OrderDescEntity> orderDescEntity) {
-		this.orderDescEntity = orderDescEntity;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderEntity{" +
@@ -108,7 +97,6 @@ public class OrderEntity implements Serializable {
 				", createTime=" + createTime +
 				", sellerId='" + sellerId + '\'' +
 				", advertisersId='" + advertisersId + '\'' +
-				", orderDescEntity=" + orderDescEntity +
 				'}';
 	}
 }
