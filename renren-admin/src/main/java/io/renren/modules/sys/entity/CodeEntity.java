@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 二维码管理
@@ -53,13 +52,13 @@ public class CodeEntity implements Serializable {
 	 */
 	private String codeUser;
 	/**
-	 * null
+	 * 订单id
 	 */
-	private String status;
+	private String orderId;
 	/**
-	 * null
+	 * 订单详情id
 	 */
-	private String region;
+	private String orderdescId;
 	/**
 	 * null
 	 */
@@ -68,7 +67,7 @@ public class CodeEntity implements Serializable {
 	public CodeEntity() {
 	}
 
-	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, String status, String region, String addressDetail) {
+	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, String orderId, String orderdescId, String addressDetail) {
 		this.codeId = codeId;
 		this.advertisersId = advertisersId;
 		this.sellerId = sellerId;
@@ -77,8 +76,8 @@ public class CodeEntity implements Serializable {
 		this.isFocus = isFocus;
 		this.isQr = isQr;
 		this.codeUser = codeUser;
-		this.status = status;
-		this.region = region;
+		this.orderId = orderId;
+		this.orderdescId = orderdescId;
 		this.addressDetail = addressDetail;
 	}
 
@@ -150,20 +149,20 @@ public class CodeEntity implements Serializable {
 		this.codeUser = codeUser;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getOrderId() {
+		return orderId;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getRegion() {
-		return region;
+	public String getOrderdescId() {
+		return orderdescId;
 	}
 
-	public void setRegion(String region) {
-		this.region = region;
+	public void setOrderdescId(String orderdescId) {
+		this.orderdescId = orderdescId;
 	}
 
 	public String getAddressDetail() {
@@ -185,8 +184,8 @@ public class CodeEntity implements Serializable {
 				", isFocus='" + isFocus + '\'' +
 				", isQr='" + isQr + '\'' +
 				", codeUser='" + codeUser + '\'' +
-				", status='" + status + '\'' +
-				", region='" + region + '\'' +
+				", orderId='" + orderId + '\'' +
+				", orderdescId='" + orderdescId + '\'' +
 				", addressDetail='" + addressDetail + '\'' +
 				'}';
 	}

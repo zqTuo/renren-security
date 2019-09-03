@@ -12,7 +12,7 @@
         <result property="mobile" column="mobile"/>
         <result property="telephone" column="telephone"/>
         <result property="status" column="status"/>
-        <result property="region" column="region"/>
+        <result property="orderdescId" column="orderdescId"/>
         <result property="addressDetail" column="address_detail"/>
         <result property="linkmanName" column="linkman_name"/>
         <result property="linkmanQq" column="linkman_qq"/>
@@ -43,9 +43,9 @@
     <insert id="insertSellerEntity" keyProperty="sellerId" parameterType="SellerEntity">
         insert into
         tb_seller
-        (sellerId, nickName, password, email, mobile, telephone, status, region, addressDetail, linkmanName, linkmanQq, linkmanMobile, linkmanEmail, linkmanJod, storeSize, addressGround, linkmanOperation, licenseNumber, taxNumber, orgNumber, address, addressShop, brief, createTime, legalPerson, addressDistance, shopCategory, shopLv, shopLcv, conversionRate)
+        (sellerId, nickName, password, email, mobile, telephone, status, orderdescId, addressDetail, linkmanName, linkmanQq, linkmanMobile, linkmanEmail, linkmanJod, storeSize, addressGround, linkmanOperation, licenseNumber, taxNumber, orgNumber, address, addressShop, brief, createTime, legalPerson, addressDistance, shopCategory, shopLv, shopLcv, conversionRate)
         values
-        (#{seller_id}, #{nick_name}, #{password}, #{email}, #{mobile}, #{telephone}, #{status}, #{region}, #{address_detail}, #{linkman_name}, #{linkman_qq}, #{linkman_mobile}, #{linkman_email}, #{linkman_jod}, #{Store_Size}, #{address_ground}, #{linkman_operation}, #{license_number}, #{tax_number}, #{org_number}, #{address}, #{address_shop}, #{brief}, #{create_time}, #{legal_person}, #{address_distance}, #{shop_category}, #{shop_lv}, #{shop_lcv}, #{Conversion_rate})
+        (#{seller_id}, #{nick_name}, #{password}, #{email}, #{mobile}, #{telephone}, #{status}, #{orderdescId}, #{address_detail}, #{linkman_name}, #{linkman_qq}, #{linkman_mobile}, #{linkman_email}, #{linkman_jod}, #{Store_Size}, #{address_ground}, #{linkman_operation}, #{license_number}, #{tax_number}, #{org_number}, #{address}, #{address_shop}, #{brief}, #{create_time}, #{legal_person}, #{address_distance}, #{shop_category}, #{shop_lv}, #{shop_lcv}, #{Conversion_rate})
 
 
     </insert>

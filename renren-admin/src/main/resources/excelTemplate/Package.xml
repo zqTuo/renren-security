@@ -26,7 +26,7 @@
     <property name="mobile" title="公司手机" position="5" type="String"/>
     <property name="telephone" title="公司电话" position="6" type="String"/>
     <property name="status" title="状态" position="7" type="String"/>
-    <property name="region" title="区域" position="8" type="String"/>
+    <property name="orderdescId" title="区域" position="8" type="String"/>
     <property name="addressDetail" title="详细地址" position="9" type="String"/>
     <property name="linkmanName" title="联系人姓名" position="10" type="String"/>
     <property name="linkmanQq" title="联系人QQ" position="11" type="String"/>

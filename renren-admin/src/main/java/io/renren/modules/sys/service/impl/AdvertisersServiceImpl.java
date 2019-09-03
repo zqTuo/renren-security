@@ -57,7 +57,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     }
 
     @Override
-    public void createQrCode(Order order) {
+    public synchronized void createQrCode(Order order) {
 
 
         OrderEntity orderEntity = order.getOrderEntity();
@@ -87,48 +87,16 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setActivityId(orderEntity.getAdvertisersId());
                 codeEntity.setSellerId(orderEntity.getSellerId());
                 codeEntity.setActivityId(descEntity.getActivityId()+"");
+                codeEntity.setOrderId(orderEntity.getOrderId()+"");
+                codeEntity.setOrderdescId(descEntity.getId()+"");
                 codeEntity.setIsFocus("0");
                 codeEntity.setIsQr("0");
 
                 codeThread.handleCode(codeEntity);
             }
 
-            try {
-                CodeEntity codeEntity = new CodeEntity();
-                codeEntity.setSellerId(orderEntity.getSellerId());
-                List<CodeEntity> list = codeDao.selectList(new QueryWrapper<>());
-                List<String> urlListAll = new ArrayList<String>();
-                //将文件从https上下载进服务器的目录，用files装好
-                for (CodeEntity entity : list) {
-                    Long codeId = entity.getCodeId();
-                    urlListAll.add("D:\\aaa\\123.zip"+codeId);
-                }
-
-                ArrayList<File> files = new ArrayList<>();
-                for (String s : urlListAll) {
-                    File f = new File(s);
-                    if(!f.exists()){
-                        try {
-                            f.createNewFile();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    files.add(f);
-                }
-
-
-                String s = "D:\\aaa\\"+orderEntity.getSellerId()+".zip";
-                File file = new File(s);
-                FileOutputStream outputStream = new FileOutputStream(file);
-                ZipOutputStream toClient = new ZipOutputStream(outputStream);
-//        将file打包成zp文件
-                ZipUtil.zipFile(files,toClient );
-                toClient.close();
-                outputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
+        codeThread.createZip(orderEntity);
     }
+
 }

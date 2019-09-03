@@ -75,7 +75,7 @@ var vm = new Vue({
 	},
 	methods: {
         addOrderDesc_Entity:function () {
-            //向数组中添加一个图片的对象
+            //向数组中添加一个对象
             this.order.orderDescEntity.push(this.entity);
         },
 		query: function () {

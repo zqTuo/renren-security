@@ -8,7 +8,7 @@ CREATE TABLE `tb_code` (
   `is_qr` varchar(1) DEFAULT NULL COMMENT '是否扫码',
   `code_user` varchar(50) DEFAULT '0' COMMENT '扫码用户id',
   `status` varchar(1) DEFAULT '0' COMMENT 'null',
-  `region` varchar(20) DEFAULT '0' COMMENT 'null',
+  `orderdescId` varchar(20) DEFAULT '0' COMMENT 'null',
   `address_detail` varchar(100) DEFAULT NULL COMMENT 'null',
   PRIMARY KEY (`code_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1168512803791835137 DEFAULT CHARSET=utf8 COMMENT='二维码管理'
