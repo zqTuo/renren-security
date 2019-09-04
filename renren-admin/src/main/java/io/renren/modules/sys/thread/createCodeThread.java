@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.ZipOutputStream;
 
@@ -28,8 +29,8 @@ public class createCodeThread {
     @Async
     public void  handleCode(CodeEntity codeEntity){
         try {
+            System.out.println("模拟处理订单开始========"+Thread.currentThread().getName());
             Long codeId = codeEntity.getCodeId();
-            codeEntity.setOrderId(codeId+"");
             codeDao.insertCodeEntity(codeEntity);
             System.out.println("codeId::"+codeId);
             String text ="www.baidu.com?"+codeId;
@@ -41,9 +42,14 @@ public class createCodeThread {
     }
     public void createZip(OrderEntity orderEntity) {
         try {
-            CodeEntity codeEntity = new CodeEntity();
-            codeEntity.setOrderId(orderEntity.getOrderId() + "");
-            List<CodeEntity> list = codeDao.selectList(new QueryWrapper<>());
+
+
+            Long orderId = orderEntity.getOrderId();
+            QueryWrapper<CodeEntity> wrapper = new QueryWrapper<>();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("order_id",orderId);
+            wrapper.allEq(map);
+            List<CodeEntity> list = codeDao.selectList(wrapper);
 
             List<String> urlListAll = new ArrayList<String>();
             //将文件从https上下载进服务器的目录，用files装好
@@ -67,7 +73,7 @@ public class createCodeThread {
                 files.add(f);
             }
 
-            String s = "D:\\aaa\\" + orderEntity.getSellerId() + ".zip";
+            String s = "D:\\aaa\\11.zip";
             File file = new File(s);
             FileOutputStream outputStream = new FileOutputStream(file);
             ZipOutputStream toClient = new ZipOutputStream(outputStream);
