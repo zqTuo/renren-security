@@ -10,10 +10,7 @@ $(function () {
 			{ label: '参与类型', name: 'activityType', index: 'activity_type', width: 80 }, 			
 			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 }, 			
 			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 }, 			
-			{ label: '扫码用户id', name: 'codeUser', index: 'code_user', width: 80 }, 			
-			{ label: 'null', name: 'status', index: 'status', width: 80 }, 			
-			{ label: 'null', name: 'region', index: 'region', width: 80 }, 			
-			{ label: 'null', name: 'addressDetail', index: 'address_detail', width: 80 }			
+			{ label: '扫码用户id', name: 'codeUser', index: 'code_user', width: 80 }
         ],
 		viewrecords: true,
         height: 385,
@@ -75,7 +72,7 @@ var vm = new Vue({
                     type: "POST",
                     url: baseURL + url,
                     contentType: "application/json",
-                    data: JSON.stringify(vm.code),
+                    data: vm.code,
                     success: function(r){
                         if(r.code === 0){
                              layer.msg("操作成功", {icon: 1});
@@ -106,7 +103,7 @@ var vm = new Vue({
                         type: "POST",
                         url: baseURL + "sys/code/delete",
                         contentType: "application/json",
-                        data: JSON.stringify(codeIds),
+                        data: codeIds,
                         success: function(r){
                             if(r.code == 0){
                                 layer.msg("操作成功", {icon: 1});

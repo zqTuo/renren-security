@@ -54,11 +54,11 @@ public class CodeEntity implements Serializable {
 	/**
 	 * 订单id
 	 */
-	private String orderId;
+	private Long orderId;
 	/**
 	 * 订单详情id
 	 */
-	private String orderdescId;
+	private Long orderdescId;
 	/**
 	 * null
 	 */
@@ -67,7 +67,7 @@ public class CodeEntity implements Serializable {
 	public CodeEntity() {
 	}
 
-	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, String orderId, String orderdescId, String addressDetail) {
+	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, Long orderId, Long orderdescId, String addressDetail) {
 		this.codeId = codeId;
 		this.advertisersId = advertisersId;
 		this.sellerId = sellerId;
@@ -149,19 +149,19 @@ public class CodeEntity implements Serializable {
 		this.codeUser = codeUser;
 	}
 
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 
-	public String getOrderdescId() {
+	public Long getOrderdescId() {
 		return orderdescId;
 	}
 
-	public void setOrderdescId(String orderdescId) {
+	public void setOrderdescId(Long orderdescId) {
 		this.orderdescId = orderdescId;
 	}
 

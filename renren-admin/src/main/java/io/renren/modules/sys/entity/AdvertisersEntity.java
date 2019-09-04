@@ -22,7 +22,7 @@ public class AdvertisersEntity implements Serializable {
 	/**
 	 * ID
 	 */
-
+	@TableId
 	private String advertisersId;
 	/**
 	 * 公司名

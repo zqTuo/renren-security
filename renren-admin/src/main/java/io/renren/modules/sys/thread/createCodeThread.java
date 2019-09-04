@@ -7,6 +7,7 @@ import io.renren.common.utils.ZipUtil;
 import io.renren.modules.sys.dao.CodeDao;
 import io.renren.modules.sys.entity.CodeEntity;
 import io.renren.modules.sys.entity.OrderEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -43,7 +44,7 @@ public class createCodeThread {
     public void createZip(OrderEntity orderEntity) {
         try {
 
-
+            java.lang.Thread.sleep(3000);
             Long orderId = orderEntity.getOrderId();
             QueryWrapper<CodeEntity> wrapper = new QueryWrapper<>();
             HashMap<String, Object> map = new HashMap<>();

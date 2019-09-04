@@ -3,13 +3,12 @@ $(function () {
         url: baseURL + 'sys/advertisers/list',
         datatype: "json",
         colModel: [			
-			{ label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
-			{ label: '公司名', name: 'name', index: 'name', width: 80 }, 			
-			{ label: '密码', name: 'password', index: 'password', width: 80 }, 			
+			/*{ label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+			{ label: '公司名', name: 'name', index: 'name', width: 80 },
 			{ label: 'EMAIL', name: 'email', index: 'email', width: 80 }, 			
 			{ label: '公司手机', name: 'mobile', index: 'mobile', width: 80 }, 			
 			{ label: '公司电话', name: 'telephone', index: 'telephone', width: 80 }, 			
-			{ label: '状态', name: 'status', index: 'status', width: 80 }, 			
+			{ label: '状态', name: 'status', index: 'status', width: 80 },
 			{ label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 }, 			
 			{ label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 }, 			
 			{ label: '联系人QQ', name: 'linkmanQq', index: 'linkman_qq', width: 80 }, 			
@@ -19,7 +18,7 @@ $(function () {
 			{ label: '税务登记证号', name: 'taxNumber', index: 'tax_number', width: 80 }, 			
 			{ label: '组织机构代码', name: 'orgNumber', index: 'org_number', width: 80 }, 			
 			{ label: '公司地址', name: 'address', index: 'address', width: 80 }, 			
-			{ label: '公司LOGO图', name: 'logoPic', index: 'logo_pic', width: 80 }, 			
+			{ label: '公司LOGO图', name: 'logoPic', index: 'logo_pic', width: 80 },
 			{ label: '简介', name: 'brief', index: 'brief', width: 80 }, 			
 			{ label: '创建日期', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 }, 			
@@ -29,8 +28,20 @@ $(function () {
 			{ label: '充值金额', name: 'money', index: 'money', width: 80 }, 			
 			{ label: '订单列表', name: 'orderlist', index: 'orderList', width: 80 }, 			
 			{ label: '职位', name: 'jod', index: 'jod', width: 80 }, 			
-			{ label: '类型', name: 'type', index: 'type', width: 80 }, 			
-			{ label: '需求数量', name: 'number', index: 'number', width: 80 }			
+			{ label: '类型', name: 'type', index: 'type', width: 80 }*/
+            { label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+            { label: '公司名', name: 'name', index: 'name', width: 80 },
+            { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
+            { label: '公司手机', name: 'mobile', index: 'mobile', width: 80 },
+            { label: '公司电话', name: 'telephone', index: 'telephone', width: 80 },
+            { label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 },
+            { label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 },
+            { label: '联系人电话', name: 'linkmanMobile', index: 'linkman_mobile', width: 80 },
+            { label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 },
+            { label: '公司地址', name: 'address', index: 'address', width: 80 },
+            { label: '简介', name: 'brief', index: 'brief', width: 80 },
+            { label: '创建日期', name: 'createTime', index: 'create_time', width: 80 },
+            { label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 },
         ],
 		viewrecords: true,
         height: 385,
@@ -77,6 +88,11 @@ var vm = new Vue({
         addOrderDesc_Entity:function () {
             //向数组中添加一个对象
             this.order.orderDescEntity.push(this.entity);
+        },
+
+        removeOrderDesc_Entity:function (index) {
+            //向数组中添加一个对象
+            this.order.orderDescEntity.splice(index, 1);
         },
 		query: function () {
 			vm.reload();
@@ -159,6 +175,7 @@ var vm = new Vue({
 		},
 		reload: function (event) {
 			vm.showList03 = true;
+			vm.showList=true
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
@@ -173,12 +190,14 @@ var vm = new Vue({
         },
         addQrCode:function () {
 			console.log(this.order.orderDescEntity)
-            axios.post('/renren-admin/sys/advertisers/QrCode',this.order).then(function (response) {
-                var msg = response.data;
-                alert(msg.get("msg"))
-            }).catch(function (error) {
-                console.log("1231312131321");
-            });
+            axios.post('/renren-admin/sys/advertisers/QrCode',this.order).then(function (r) {
+                if(r.code == 0){
+                    layer.msg("操作成功", {icon: 1});
+                    $("#jqGrid").trigger("reloadGrid");
+                }else{
+                    layer.alert(r.msg);
+                }
+            })
         },
         findAllSeller:function () {
             axios.get('/renren-admin/sys/seller/list').then(function (response) {

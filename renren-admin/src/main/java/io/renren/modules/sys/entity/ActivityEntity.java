@@ -22,7 +22,7 @@ public class ActivityEntity implements Serializable {
 	/**
 	 * 活动ID
 	 */
-
+	@TableId
 	private String activityId;
 	/**
 	 * 活动名称

@@ -50,7 +50,16 @@ public class AsyncTaskConfig implements AsyncConfigurer {
      */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return new SpringAsyncExceptionHandler();
+
+        return new AsyncUncaughtExceptionHandler() {
+            @Override
+            public void handleUncaughtException(Throwable throwable, Method method, Object... Object) {
+                System.err.println("error=================="+throwable.getMessage());
+                System.err.println("Method=================="+method.getName());
+                System.err.println("Object=================="+Object);
+            }
+        };
+
     }
 
     class SpringAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {

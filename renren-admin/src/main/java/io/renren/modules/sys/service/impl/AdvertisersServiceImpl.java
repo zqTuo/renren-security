@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.ZipOutputStream;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -39,7 +36,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     @Autowired
     private ActivityDao activityDao;
     @Autowired
-    private CodeDao codeDao;
+    private SellerDao sellerDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -57,7 +54,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     }
 
     @Override
-    public synchronized void createQrCode(Order order) {
+    public  void createQrCode(Order order) {
 
 
         OrderEntity orderEntity = order.getOrderEntity();
@@ -74,21 +71,33 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             long id2 = idWorker.nextId();
             descEntity.setId(id2);
             descEntity.setOrderId(orderEntity.getOrderId());
+
+//            通过商家名字查询对应的商家id
+            String sellerName = descEntity.getSellerName();
+
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("nick_name",sellerName);
+            QueryWrapper<SellerEntity> wrapper = new QueryWrapper<>();
+
+            wrapper.allEq(map);
+            SellerEntity sellerEntity = sellerDao.selectOne(wrapper);
+
+//            设置商家id
+            String sellerId = sellerEntity.getSellerId();
+            descEntity.setSellerId(Long.valueOf(sellerId));
             orderDescDao.insertOrderDescEntity(descEntity);
 
-//            获取活动表里面的数据
-            ActivityEntity activityEntity = activityDao.selectById(descEntity.getId());
 //            利用多线程生成二维码表
 
             Long num = descEntity.getNum();
             for (int i = 0; i < num; i++) {
                 CodeEntity codeEntity = new CodeEntity();
                 codeEntity.setCodeId(idWorker.nextId());
-                codeEntity.setActivityId(orderEntity.getAdvertisersId());
-                codeEntity.setSellerId(orderEntity.getSellerId());
+                codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
+                codeEntity.setSellerId(descEntity.getSellerId()+"");
                 codeEntity.setActivityId(descEntity.getActivityId()+"");
-                codeEntity.setOrderId(orderEntity.getOrderId()+"");
-                codeEntity.setOrderdescId(descEntity.getId()+"");
+                codeEntity.setOrderId(descEntity.getOrderId());
+                codeEntity.setOrderdescId(descEntity.getId());
                 codeEntity.setIsFocus("0");
                 codeEntity.setIsQr("0");
 
@@ -96,6 +105,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             }
 
         }
+
         codeThread.createZip(orderEntity);
     }
 
