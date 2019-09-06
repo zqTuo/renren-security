@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 活动
+ * 活动·
  * 
  * @author Mark
  * @email sunlightcs@gmail.com
@@ -49,14 +49,13 @@ public class ActivityEntity implements Serializable {
 	public ActivityEntity() {
 	}
 
-	public ActivityEntity(String activityId, String activityName, String isFocus, String sellerId, String isQr, String status, String region, String addressDetail) {
+	public ActivityEntity(String activityId, String activityName, String isFocus, String sellerId, String isQr, String sellerName) {
 		this.activityId = activityId;
 		this.activityName = activityName;
 		this.isFocus = isFocus;
 		this.sellerId = sellerId;
 		this.isQr = isQr;
 		this.sellerName = sellerName;
-
 	}
 
 	public static long getSerialVersionUID() {
@@ -107,10 +106,9 @@ public class ActivityEntity implements Serializable {
 		return sellerName;
 	}
 
-	public void setSellerName(String status) {
+	public void setSellerName(String sellerName) {
 		this.sellerName = sellerName;
 	}
-
 
 	@Override
 	public String toString() {

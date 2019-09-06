@@ -31,4 +31,27 @@ public class RegisterForm {
     @NotBlank(message="密码不能为空")
     private String password;
 
+    public RegisterForm() {
+    }
+
+    public RegisterForm(@NotBlank(message = "手机号不能为空") String mobile, @NotBlank(message = "密码不能为空") String password) {
+        this.mobile = mobile;
+        this.password = password;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

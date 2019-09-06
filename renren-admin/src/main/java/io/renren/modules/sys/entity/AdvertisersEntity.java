@@ -83,7 +83,7 @@ public class AdvertisersEntity implements Serializable {
 	/**
 	 * 公司地址
 	 */
-	private Long address;
+	private String address;
 	/**
 	 * 公司LOGO图
 	 */
@@ -136,7 +136,7 @@ public class AdvertisersEntity implements Serializable {
 	public AdvertisersEntity() {
 	}
 
-	public AdvertisersEntity(String advertisersId, String name, String password, String email, String mobile, String telephone, String status, String addressDetail, String linkmanName, String linkmanQq, String linkmanMobile, String linkmanEmail, String licenseNumber, String taxNumber, String orgNumber, Long address, String logoPic, String brief, Date createTime, String legalPerson, String legalPersonCardId, String bankUser, String customers, String money, String orderlist, String jod, String type, Long number) {
+	public AdvertisersEntity(String advertisersId, String name, String password, String email, String mobile, String telephone, String status, String addressDetail, String linkmanName, String linkmanQq, String linkmanMobile, String linkmanEmail, String licenseNumber, String taxNumber, String orgNumber, String address, String logoPic, String brief, Date createTime, String legalPerson, String legalPersonCardId, String bankUser, String customers, String money, String orderlist, String jod, String type, Long number) {
 		this.advertisersId = advertisersId;
 		this.name = name;
 		this.password = password;
@@ -291,11 +291,11 @@ public class AdvertisersEntity implements Serializable {
 		this.orgNumber = orgNumber;
 	}
 
-	public Long getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Long address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 

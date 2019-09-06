@@ -74,8 +74,9 @@ public class SellerController {
     @RequiresPermissions("sys:seller:save")
     public R save(@RequestBody SellerEntity seller) {
         IdWorker idworker=new IdWorker(0,1);
-        String s = idworker.nextId() + "";
+        Long s = idworker.nextId();
         seller.setSellerId(s);
+        seller.setCreateTime(new Date());
         String conversionRate = seller.getConversionRate();
         String s1 = conversionRate + "%";
         seller.setConversionRate(s1);

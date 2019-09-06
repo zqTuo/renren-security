@@ -4,10 +4,10 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'activityId', name: 'activityId', index: 'activity_id', width: 50, key: true },
-			{ label: '活动名称', name: 'activitName', index: 'activity_name', width: 80 },
+			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 },
 			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 },
 			{ label: '商家id', name: 'sellerId', index: 'seller_id', width: 80 },
-			{ label: '参与类型', name: 'activityType', index: 'activity_type', width: 80 }, 			
+			{ label: '是否扫码', name: 'activityType', index: 'activity_type', width: 80 },
 			{ label: '商家名字', name: 'sellerName', index: 'seller_name', width: 80 },
 
         ],

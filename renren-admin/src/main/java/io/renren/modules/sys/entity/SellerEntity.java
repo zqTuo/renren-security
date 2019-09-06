@@ -23,8 +23,8 @@ public class SellerEntity implements Serializable {
 	/**
 	 * ID
 	 */
-
-	private String sellerId;
+	@TableId
+	private Long sellerId;
 	/**
 	 * 店铺名称
 	 */
@@ -104,7 +104,7 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 公司地址
 	 */
-	private Long address;
+	private String address;
 	/**
 	 * 奶茶店周边
 	 */
@@ -145,7 +145,7 @@ public class SellerEntity implements Serializable {
 	public SellerEntity() {
 	}
 
-	public SellerEntity(String sellerId, String nickName, String password, String email, String mobile, String telephone, String status, String region, String addressDetail, String linkmanName, String linkmanQq, String linkmanMobile, String linkmanEmail, String linkmanJod, String storeSize, String addressGround, String linkmanOperation, String licenseNumber, String taxNumber, String orgNumber, Long address, String addressShop, String brief, Date createTime, String legalPerson, String addressDistance, String shopCategory, String shopLv , String conversionRate) {
+	public SellerEntity(Long sellerId, String nickName, String password, String email, String mobile, String telephone, String status, String region, String addressDetail, String linkmanName, String linkmanQq, String linkmanMobile, String linkmanEmail, String linkmanJod, String storeSize, String addressGround, String linkmanOperation, String licenseNumber, String taxNumber, String orgNumber, String address, String addressShop, String brief, Date createTime, String legalPerson, String addressDistance, String shopCategory, String shopLv , String conversionRate) {
 
 		this.sellerId = sellerId;
 		this.nickName = nickName;
@@ -182,11 +182,11 @@ public class SellerEntity implements Serializable {
 		return serialVersionUID;
 	}
 
-	public String getSellerId() {
+	public Long getSellerId() {
 		return sellerId;
 	}
 
-	public void setSellerId(String sellerId) {
+	public void setSellerId(Long sellerId) {
 		this.sellerId = sellerId;
 	}
 
@@ -342,11 +342,11 @@ public class SellerEntity implements Serializable {
 		this.orgNumber = orgNumber;
 	}
 
-	public Long getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Long address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 

@@ -83,7 +83,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             SellerEntity sellerEntity = sellerDao.selectOne(wrapper);
 
 //            设置商家id
-            String sellerId = sellerEntity.getSellerId();
+            Long sellerId = sellerEntity.getSellerId();
             descEntity.setSellerId(Long.valueOf(sellerId));
             orderDescDao.insertOrderDescEntity(descEntity);
 

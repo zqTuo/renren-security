@@ -53,4 +53,69 @@ public class UserEntity implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date createTime;
 
+	public UserEntity() {
+	}
+
+	public UserEntity(Long userId, String username, String mobile, String password, Date createTime) {
+		this.userId = userId;
+		this.username = username;
+		this.mobile = mobile;
+		this.password = password;
+		this.createTime = createTime;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity{" +
+				"userId=" + userId +
+				", username='" + username + '\'' +
+				", mobile='" + mobile + '\'' +
+				", password='" + password + '\'' +
+				", createTime=" + createTime +
+				'}';
+	}
 }
