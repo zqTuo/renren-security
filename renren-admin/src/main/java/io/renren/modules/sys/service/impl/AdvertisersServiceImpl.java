@@ -1,18 +1,13 @@
 package io.renren.modules.sys.service.impl;
 
 import io.renren.common.utils.IdWorker;
-import io.renren.common.utils.ZipUtil;
 import io.renren.modules.sys.dao.*;
 import io.renren.modules.sys.entity.*;
 import io.renren.modules.sys.thread.createCodeThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.*;
-import java.util.zip.ZipOutputStream;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -92,10 +87,10 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             Long num = descEntity.getNum();
             for (int i = 0; i < num; i++) {
                 CodeEntity codeEntity = new CodeEntity();
-                codeEntity.setCodeId(idWorker.nextId());
+                codeEntity.setQrcodeId(String.valueOf(idWorker.nextId()));
                 codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
-                codeEntity.setSellerId(descEntity.getSellerId()+"");
-                codeEntity.setActivityId(descEntity.getActivityId()+"");
+                codeEntity.setSellerId(String.valueOf(descEntity.getSellerId()));
+                codeEntity.setActivityId(String.valueOf(descEntity.getActivityId()));
                 codeEntity.setOrderId(descEntity.getOrderId());
                 codeEntity.setOrderdescId(descEntity.getId());
                 codeEntity.setIsFocus("0");

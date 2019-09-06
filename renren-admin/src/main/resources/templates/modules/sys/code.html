@@ -11,12 +11,12 @@
 		<!--	<#if shiro.hasPermission("sys:code:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>-->
-			<#if shiro.hasPermission("sys:code:update")>
-            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-			</#if>
-			<#if shiro.hasPermission("sys:code:delete")>
-            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
+            <#if shiro.hasPermission("sys:code:update")>
+                <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+             </#if>
+        <#if shiro.hasPermission("sys:code:delete")>
+        <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+    </#if>
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -25,24 +25,24 @@
     <div v-show="!showList" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
-														                    <div class="form-group">
+					 <div class="form-group">
                         <div class="col-sm-2 control-label">广告主id</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="code.advertisersId" placeholder="广告主id"/>
                         </div>
-                    </div>
-											                    <div class="form-group">
+                     </div>
+					 <div class="form-group">
                         <div class="col-sm-2 control-label">商家id</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="code.sellerId" placeholder="商家id"/>
                         </div>
-                    </div>
-											                    <div class="form-group">
+                     </div>
+					 <div class="form-group">
                         <div class="col-sm-2 control-label">活动id</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="code.activityId" placeholder="活动id"/>
                         </div>
-                    </div>
+                     </div>
 											                    <div class="form-group">
                         <div class="col-sm-2 control-label">参与类型</div>
                         <div class="col-sm-10">

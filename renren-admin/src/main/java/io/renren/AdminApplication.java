@@ -18,7 +18,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 
 @SpringBootApplication
-@EnableAsync
 public class AdminApplication {
 
 	public static void main(String[] args) {
@@ -29,6 +28,7 @@ public class AdminApplication {
 	public IdWorker idWorker() {
 		return new IdWorker(1, 1);
 	}
+
 	@Bean
 	public createCodeThread codeThread(){
 		return new createCodeThread();

@@ -22,7 +22,7 @@ public class CodeEntity implements Serializable {
 	 * ID
 	 */
 	@TableId
-	private Long codeId;
+	private String qrcodeId;
 	/**
 	 * 广告主id
 	 */
@@ -64,129 +64,5 @@ public class CodeEntity implements Serializable {
 	 */
 	private String addressDetail;
 
-	public CodeEntity() {
-	}
 
-	public CodeEntity(Long codeId, String advertisersId, String sellerId, String activityId, String activityType, String isFocus, String isQr, String codeUser, Long orderId, Long orderdescId, String addressDetail) {
-		this.codeId = codeId;
-		this.advertisersId = advertisersId;
-		this.sellerId = sellerId;
-		this.activityId = activityId;
-		this.activityType = activityType;
-		this.isFocus = isFocus;
-		this.isQr = isQr;
-		this.codeUser = codeUser;
-		this.orderId = orderId;
-		this.orderdescId = orderdescId;
-		this.addressDetail = addressDetail;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-	public Long getCodeId() {
-		return codeId;
-	}
-
-	public void setCodeId(Long codeId) {
-		this.codeId = codeId;
-	}
-
-	public String getAdvertisersId() {
-		return advertisersId;
-	}
-
-	public void setAdvertisersId(String advertisersId) {
-		this.advertisersId = advertisersId;
-	}
-
-	public String getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(String sellerId) {
-		this.sellerId = sellerId;
-	}
-
-	public String getActivityId() {
-		return activityId;
-	}
-
-	public void setActivityId(String activityId) {
-		this.activityId = activityId;
-	}
-
-	public String getActivityType() {
-		return activityType;
-	}
-
-	public void setActivityType(String activityType) {
-		this.activityType = activityType;
-	}
-
-	public String getIsFocus() {
-		return isFocus;
-	}
-
-	public void setIsFocus(String isFocus) {
-		this.isFocus = isFocus;
-	}
-
-	public String getIsQr() {
-		return isQr;
-	}
-
-	public void setIsQr(String isQr) {
-		this.isQr = isQr;
-	}
-
-	public String getCodeUser() {
-		return codeUser;
-	}
-
-	public void setCodeUser(String codeUser) {
-		this.codeUser = codeUser;
-	}
-
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
-
-	public Long getOrderdescId() {
-		return orderdescId;
-	}
-
-	public void setOrderdescId(Long orderdescId) {
-		this.orderdescId = orderdescId;
-	}
-
-	public String getAddressDetail() {
-		return addressDetail;
-	}
-
-	public void setAddressDetail(String addressDetail) {
-		this.addressDetail = addressDetail;
-	}
-
-	@Override
-	public String toString() {
-		return "CodeEntity{" +
-				"codeId=" + codeId +
-				", advertisersId='" + advertisersId + '\'' +
-				", sellerId='" + sellerId + '\'' +
-				", activityId='" + activityId + '\'' +
-				", activityType='" + activityType + '\'' +
-				", isFocus='" + isFocus + '\'' +
-				", isQr='" + isQr + '\'' +
-				", codeUser='" + codeUser + '\'' +
-				", orderId='" + orderId + '\'' +
-				", orderdescId='" + orderdescId + '\'' +
-				", addressDetail='" + addressDetail + '\'' +
-				'}';
-	}
 }

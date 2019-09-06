@@ -31,9 +31,9 @@ public class createCodeThread {
     public void  handleCode(CodeEntity codeEntity){
         try {
             System.out.println("模拟处理订单开始========"+Thread.currentThread().getName());
-            Long codeId = codeEntity.getCodeId();
+            String codeId = codeEntity.getQrcodeId();
             codeDao.insertCodeEntity(codeEntity);
-            System.out.println("codeId::"+codeId);
+            System.out.println("qrcodeId::"+codeId);
             String text ="www.baidu.com?"+codeId;
 
             QRCodeUtil.encode(text, "C:\\Users\\XKY\\Pictures\\Screenshots\\qq.png", "D:\\aaa", true, codeId+"",0);
@@ -55,7 +55,7 @@ public class createCodeThread {
             List<String> urlListAll = new ArrayList<String>();
             //将文件从https上下载进服务器的目录，用files装好
             for (CodeEntity entity : list) {
-                Long codeId = entity.getCodeId();
+                String codeId = entity.getQrcodeId();
                 urlListAll.add("D:\\aaa\\" + codeId + ".jpg");
             }
 

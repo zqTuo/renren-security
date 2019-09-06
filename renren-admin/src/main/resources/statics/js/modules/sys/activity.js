@@ -3,7 +3,7 @@ $(function () {
         url: baseURL + 'sys/activity/list',
         datatype: "json",
         colModel: [			
-			{ label: 'activityId', name: 'activityId', index: 'activity_id', width: 50, key: true },
+			{ label: '活动编号', name: 'activityId', index: 'activity_id', width: 50, key: true },
 			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 },
 			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 },
 			{ label: '商家id', name: 'sellerId', index: 'seller_id', width: 80 },

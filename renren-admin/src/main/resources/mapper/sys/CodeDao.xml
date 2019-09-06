@@ -5,7 +5,7 @@
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.renren.modules.sys.entity.CodeEntity" id="codeMap">
-        <result property="codeId" column="code_id"/>
+        <result property="qrcodeId" column="qrCode_id"/>
         <result property="advertisersId" column="advertisers_id"/>
         <result property="sellerId" column="seller_id"/>
         <result property="activityId" column="activity_id"/>
@@ -18,7 +18,7 @@
         <result property="addressDetail" column="address_detail"/>
     </resultMap>
     <insert id="insertCodeEntity" keyProperty="codeId" parameterType="io.renren.modules.sys.entity.CodeEntity" useGeneratedKeys="true">
-        insert into tb_code ( code_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id, address_detail)values ( #{codeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId}, #{addressDetail})
+        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id, address_detail)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId}, #{addressDetail})
     </insert>
 
 </mapper>

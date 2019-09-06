@@ -2,15 +2,15 @@ $(function () {
     $("#jqGrid").jqGrid({
         url: baseURL + 'sys/code/list',
         datatype: "json",
-        colModel: [			
-			{ label: 'codeId', name: 'codeId', index: 'code_id', width: 50, key: true },
-			{ label: '广告主id', name: 'advertisersId', index: 'advertisers_id', width: 80 }, 			
-			{ label: '商家id', name: 'sellerId', index: 'seller_id', width: 80 }, 			
-			{ label: '活动id', name: 'activityId', index: 'activity_id', width: 80 }, 			
+        colModel: [
+            { label: '二维码编号', name: 'qrcodeId', index: 'qrCode_id', width: 50, key: true },
+			{ label: '广告主唯一编号', name: 'advertisersId', index: 'advertisersId', width: 80 },
+			{ label: '商家编号', name: 'sellerId', index: 'seller_id', width: 80 },
+			{ label: '活动编号', name: 'activityId', index: 'activity_id', width: 80 },
 			{ label: '参与类型', name: 'activityType', index: 'activity_type', width: 80 }, 			
 			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 }, 			
 			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 }, 			
-			{ label: '扫码用户id', name: 'codeUser', index: 'code_user', width: 80 }
+			{ label: '扫码用户编号', name: 'codeUser', index: 'code_user', width: 80 }
         ],
 		viewrecords: true,
         height: 385,
@@ -103,7 +103,7 @@ var vm = new Vue({
                         type: "POST",
                         url: baseURL + "sys/code/delete",
                         contentType: "application/json",
-                        data: codeIds,
+                        data: JSON.stringify(codeIds),
                         success: function(r){
                             if(r.code == 0){
                                 layer.msg("操作成功", {icon: 1});

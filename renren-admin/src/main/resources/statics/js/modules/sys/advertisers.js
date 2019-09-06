@@ -3,7 +3,8 @@ $(function () {
         url: baseURL + 'sys/advertisers/list',
         datatype: "json",
         colModel: [			
-			/*{ label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+			{ label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+            /*
 			{ label: '公司名', name: 'name', index: 'name', width: 80 },
 			{ label: 'EMAIL', name: 'email', index: 'email', width: 80 }, 			
 			{ label: '公司手机', name: 'mobile', index: 'mobile', width: 80 }, 			
@@ -189,7 +190,7 @@ var vm = new Vue({
         },
         addQrCode:function () {
 			console.log(this.order.orderDescEntity)
-            axios.post('/renren-admin/sys/advertisers/QrCode',this.order).then(function (r) {
+            axios.post('/icode-admin/sys/advertisers/QrCode',this.order).then(function (r) {
                 if(r.code == 0){
                     layer.msg("操作成功", {icon: 1});
                     $("#jqGrid").trigger("reloadGrid");
@@ -199,7 +200,7 @@ var vm = new Vue({
             })
         },
         findAllSeller:function () {
-            axios.get('/renren-admin/sys/seller/list').then(function (response) {
+            axios.get('/icode-admin/sys/seller/list').then(function (response) {
 
                var page = response.data.page;
                 vm.sellerList=page.list
@@ -210,7 +211,7 @@ var vm = new Vue({
             });
         },
         findAllActivity:function () {
-            axios.get('/renren-admin/sys/activity/list').then(function (response) {
+            axios.get('/icode-admin/sys/activity/list').then(function (response) {
 
                 var page = response.data.page;
                 vm.activityList=page.list
