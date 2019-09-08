@@ -5,10 +5,21 @@ $(function () {
         colModel: [			
 			{ label: '活动编号', name: 'activityId', index: 'activity_id', width: 50, key: true },
 			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 },
-			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 },
-			{ label: '商家id', name: 'sellerId', index: 'seller_id', width: 80 },
-			{ label: '是否扫码', name: 'activityType', index: 'activity_type', width: 80 },
-			{ label: '商家名字', name: 'sellerName', index: 'seller_name', width: 80 },
+			{ label: '活动链接', name: 'activityAddress', index: 'seller_address', width: 80 },
+			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 , formatter:function (cellValue) {
+                    if(cellValue === 1){
+                        return "<span class='label label-success radius'>需要关注</span>";
+                    }else{
+                        return "<span class='label label-danger radius'>不需要关注</span>";
+                    }
+                } },
+			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 , formatter:function (cellValue) {
+                    if(cellValue === 1){
+                        return "<span class='label label-success radius'>需要扫码</span>";
+                    }else{
+                        return "<span class='label label-danger radius'>不需要扫码</span>";
+                    }
+                } },
 
         ],
 		viewrecords: true,
@@ -31,10 +42,12 @@ $(function () {
             rows:"limit", 
             order: "order"
         },
-        gridComplete:function(){
-        	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+
+        gridComplete:function() {
+            //隐藏grid底部滚动条
+            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
         }
+
     });
 });
 

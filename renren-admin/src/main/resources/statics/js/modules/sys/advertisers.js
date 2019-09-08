@@ -163,7 +163,7 @@ var vm = new Vue({
                                 layer.alert(r.msg);
                             }
                         }
-				    });
+                    });
 			    }
              }, function(){
              });
@@ -192,10 +192,10 @@ var vm = new Vue({
 			console.log(this.order.orderDescEntity)
             axios.post('/icode-admin/sys/advertisers/QrCode',this.order).then(function (r) {
                 if(r.code == 0){
-                    layer.msg("操作成功", {icon: 1});
-                    $("#jqGrid").trigger("reloadGrid");
+                    vm.order.orderDescEntity={};
+                   alert("生成二维码成功")
                 }else{
-                    layer.alert(r.msg);
+                    alert("生成二维码失败")
                 }
             })
         },

@@ -60,9 +60,17 @@ public class CodeEntity implements Serializable {
 	 */
 	private Long orderdescId;
 	/**
-	 * null
+	 * 商家名字
 	 */
-	private String addressDetail;
+	private String sellerName;
+	/*
+	* 广告主名字
+	* */
+	private String advertisersName;
+	/*
+	* 活动名字
+	* */
+	private String activityName;
 
 
 }

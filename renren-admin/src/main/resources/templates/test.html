@@ -1,0 +1,87 @@
+<!DOCTYPE html >
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<head>
+
+
+
+    <script type="text/javascript">
+        $(function(){
+
+            $("#ListTable").jqGrid({
+                caption:'LOA Request Shortcut',
+                url:'后台请求的url',
+                datatype:'json',
+                mtype:'post',
+                colNames:['Id','First Name','Last Name'],//id 为从数据库中取得数据，
+//firstName 和lastName 自定义赋值（本例采用,从服务上获取到存到本地，然后填充到表中）
+
+                colModel:[
+                    {name:'Id',align:'center'},
+                    {name:'firstName',align:'center'},
+                    {name:'lastName',align:'center'},
+                ],
+                width:$("#ListDiv").width(),
+//在gridComplete属性中循环每一行，设置相应的列的值
+                gridComplete: function(){
+                    var ids = jQuery("#ListTable").jqGrid('getDataIDs');
+                    for(var i=0;i < ids.length;i++){
+                        var cl = ids[i];
+                        jQuery("#ListTable").jqGrid('setRowData',cl,{firstName:$("#firstName").val(),lastName:$("#lastName").val()});
+                    }
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="ListDiv">
+    <!--el表达式 从后台获取的数据 -->
+    <input id="firstName" type="hidden" value="${firstName }">
+    <input id="lastName" type="hidden" value="${lastName }">
+    <table id="ListTable">
+    </table>
+</div>
+</body>
+</html>
+<!--
+实例2、在单元格中添加按钮
+
+<html>
+<head>
+    <script type="text/javascript">
+        $(function({
+                       $("#yourTable").jqGrid({
+            url:'你的url',
+            colNames:["Id", "Name"],
+            colModel:[
+                {name:"id" ,editable:true},
+                {name:"name" ,editable:true},
+                {name:"action", index:'action',width:'30%',align:'center',sortable:false}
+            ],
+            gridComplete: function(){
+                var ids = jQuery("#yourTable").jqGrid('getDataIDs');
+                for(var i=0;i < ids.length;i++){
+                    var cl = ids[i];
+                    be = "<input style='height:22px;width:60px;' type='button' id='accBtn"+ cl +"'  value='Edit' onclick=\"btnClick("+cl+",this)\"  />";
+                    jQuery("#yourTable").jqGrid('setRowData',cl,{action:be});
+
+                }
+            },
+        });
+
+        }));
+        //添加的 按钮的单击事件
+        function btnClick(cl,obj){
+            var btnStr=$(obj).val();//传过来的button对象，调用的时候通过this关键词设置此参数
+        }
+    </script>
+</head>
+<body>
+<div id="ListDiv2">
+    <table id="yourTable">
+    </table>
+</div>
+</body>
+</html>-->

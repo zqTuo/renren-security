@@ -33,92 +33,12 @@ public class ActivityEntity implements Serializable {
 	 */
 	private String isFocus;
 	/**
-	 * 商家id
-	 */
-	private String sellerId;
-	/**
 	 * 是否扫码
 	 */
 	private String isQr;
 	/**
-	 * 商家名字
+	 * 活动链接
 	 */
-	private String sellerName;
+	private String activityAddress;
 
-
-	public ActivityEntity() {
-	}
-
-	public ActivityEntity(String activityId, String activityName, String isFocus, String sellerId, String isQr, String sellerName) {
-		this.activityId = activityId;
-		this.activityName = activityName;
-		this.isFocus = isFocus;
-		this.sellerId = sellerId;
-		this.isQr = isQr;
-		this.sellerName = sellerName;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-	public String getActivityId() {
-		return activityId;
-	}
-
-	public void setActivityId(String activityId) {
-		this.activityId = activityId;
-	}
-
-	public String getActivityName() {
-		return activityName;
-	}
-
-	public void setActivityName(String activityName) {
-		this.activityName = activityName;
-	}
-
-	public String getIsFocus() {
-		return isFocus;
-	}
-
-	public void setIsFocus(String isFocus) {
-		this.isFocus = isFocus;
-	}
-
-	public String getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(String sellerId) {
-		this.sellerId = sellerId;
-	}
-
-	public String getIsQr() {
-		return isQr;
-	}
-
-	public void setIsQr(String isQr) {
-		this.isQr = isQr;
-	}
-
-	public String getSellerName() {
-		return sellerName;
-	}
-
-	public void setSellerName(String sellerName) {
-		this.sellerName = sellerName;
-	}
-
-	@Override
-	public String toString() {
-		return "ActivityEntity{" +
-				"activityId='" + activityId + '\'' +
-				", activityName='" + activityName + '\'' +
-				", isFocus='" + isFocus + '\'' +
-				", sellerId='" + sellerId + '\'' +
-				", isQr='" + isQr + '\'' +
-				", sellerName='" + sellerName + '\'' +
-				'}';
-	}
 }

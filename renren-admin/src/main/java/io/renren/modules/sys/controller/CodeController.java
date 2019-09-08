@@ -81,7 +81,7 @@ public class CodeController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("sys:code:delete")
-    public R delete(@RequestBody Integer[] codeIds){
+    public R delete(@RequestBody String[] codeIds){
         codeService.removeByIds(Arrays.asList(codeIds));
 
         return R.ok();

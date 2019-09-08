@@ -8,10 +8,12 @@
         <result property="orderId" column="order_id"/>
         <result property="createTime" column="create_time"/>
         <result property="sellerId" column="seller_id"/>
+        <result property="sellerName" column="seller_name"/>
         <result property="advertisersId" column="advertisers_id"/>
+        <result property="advertisersName" column="advertisers_name"/>
     </resultMap>
     <insert id="insertOrderEntity" keyProperty="orderId" parameterType="io.renren.modules.sys.entity.OrderEntity" useGeneratedKeys="true">
-        insert into tb_order(order_id, create_time, seller_id, advertisers_id)values (#{orderId}, #{createTime}, #{sellerId}, #{advertisersId})
+        insert into tb_order(order_id, create_time, seller_id, advertisers_id,seller_name,advertisers_name)values (#{orderId}, #{createTime},#{sellerId},#{advertisersId},#{sellerName},#{advertisersName})
     </insert>
 
 

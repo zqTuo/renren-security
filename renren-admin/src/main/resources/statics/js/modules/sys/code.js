@@ -5,11 +5,25 @@ $(function () {
         colModel: [
             { label: '二维码编号', name: 'qrcodeId', index: 'qrCode_id', width: 50, key: true },
 			{ label: '广告主唯一编号', name: 'advertisersId', index: 'advertisersId', width: 80 },
+			{ label: '广告主名称', name: 'advertisersName', index: 'advertisers_name', width: 80 },
 			{ label: '商家编号', name: 'sellerId', index: 'seller_id', width: 80 },
+			{ label: '商家名称', name: 'sellerName', index: 'seller_name', width: 80 },
 			{ label: '活动编号', name: 'activityId', index: 'activity_id', width: 80 },
-			{ label: '参与类型', name: 'activityType', index: 'activity_type', width: 80 }, 			
-			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 }, 			
-			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 }, 			
+			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 },
+			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80, formatter:function (cellValue) {
+                    if(cellValue === 1){
+                        return "<span class='label label-success radius'>需要关注</span>";
+                    }else{
+                        return "<span class='label label-danger radius'>不需要关注</span>";
+                    }
+                } },
+			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 ,formatter:function (cellValue) {
+        if(cellValue === 1){
+            return "<span class='label label-success radius'>需要扫码</span>";
+        }else{
+            return "<span class='label label-danger radius'>不需要扫码</span>";
+        }
+    } },
 			{ label: '扫码用户编号', name: 'codeUser', index: 'code_user', width: 80 }
         ],
 		viewrecords: true,

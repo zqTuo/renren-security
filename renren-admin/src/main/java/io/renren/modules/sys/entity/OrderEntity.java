@@ -38,65 +38,18 @@ public class OrderEntity implements Serializable {
 	 */
 	private String sellerId;
 
+	/**
+	 * 商家名字
+	 */
+	private String sellerName;
+
 	/*
 	* 广告主id
 	* */
 	private String advertisersId;
+	/**
+	 * 广告主名字名字
+	 */
+	private String advertisersName;
 
-
-	public OrderEntity() {
-	}
-
-	public OrderEntity(Long orderId, Date createTime, String sellerId, String advertisersId) {
-		this.orderId = orderId;
-		this.createTime = createTime;
-		this.sellerId = sellerId;
-		this.advertisersId = advertisersId;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public String getSellerId() {
-		return sellerId;
-	}
-
-	public void setSellerId(String sellerId) {
-		this.sellerId = sellerId;
-	}
-
-	public String getAdvertisersId() {
-		return advertisersId;
-	}
-
-	public void setAdvertisersId(String advertisersId) {
-		this.advertisersId = advertisersId;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderEntity{" +
-				"orderId=" + orderId +
-				", createTime=" + createTime +
-				", sellerId='" + sellerId + '\'' +
-				", advertisersId='" + advertisersId + '\'' +
-				'}';
-	}
 }

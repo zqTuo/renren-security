@@ -4,6 +4,7 @@ import io.renren.common.utils.IdWorker;
 import io.renren.modules.sys.dao.*;
 import io.renren.modules.sys.entity.*;
 import io.renren.modules.sys.thread.createCodeThread;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,13 +80,14 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
 
 //            设置商家id
             Long sellerId = sellerEntity.getSellerId();
-            descEntity.setSellerId(Long.valueOf(sellerId));
+            descEntity.setSellerId(sellerId);
             orderDescDao.insertOrderDescEntity(descEntity);
-
+            ActivityEntity activityEntity = activityDao.selectById(descEntity.getActivityId());
 //            利用多线程生成二维码表
 
             Long num = descEntity.getNum();
             for (int i = 0; i < num; i++) {
+//                设置二维码表
                 CodeEntity codeEntity = new CodeEntity();
                 codeEntity.setQrcodeId(String.valueOf(idWorker.nextId()));
                 codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
@@ -93,8 +95,13 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setActivityId(String.valueOf(descEntity.getActivityId()));
                 codeEntity.setOrderId(descEntity.getOrderId());
                 codeEntity.setOrderdescId(descEntity.getId());
-                codeEntity.setIsFocus("0");
-                codeEntity.setIsQr("0");
+                codeEntity.setIsFocus(activityEntity.getIsFocus());
+                codeEntity.setIsQr(activityEntity.getIsQr());
+                codeEntity.setSellerName(descEntity.getSellerName());
+                codeEntity.setAdvertisersName("人人开源有限公司");
+                codeEntity.setActivityName(activityEntity.getActivityName());
+
+
 
                 codeThread.handleCode(codeEntity);
             }

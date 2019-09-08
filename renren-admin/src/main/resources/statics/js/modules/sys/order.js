@@ -3,15 +3,10 @@ $(function () {
         url: baseURL + 'sys/order/list',
         datatype: "json",
         colModel: [			
-			{ label: 'orderId', name: 'orderId', index: 'order_id', width: 50, key: true },
-			{ label: '实付金额。精确到2位小数;单位:元。如:200.07，表示:200元7分', name: 'payment', index: 'payment', width: 80 }, 			
-			{ label: '状态：1、未付款，2、已付款', name: 'status', index: 'status', width: 80 }, 			
-			{ label: '订单创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
-			{ label: '订单更新时间', name: 'updateTime', index: 'update_time', width: 80 }, 			
-			{ label: '付款时间', name: 'paymentTime', index: 'payment_time', width: 80 }, 			
-			{ label: '用户id', name: 'userId', index: 'user_id', width: 80 }, 			
-			{ label: '用户昵称', name: 'buyerNick', index: 'buyer_nick', width: 80 }, 			
-			{ label: '商家ID', name: 'sellerId', index: 'seller_id', width: 80 }			
+			{ label: '订单编号', name: 'orderId', index: 'order_id', width: 50, key: true },
+			{ label: '订单创建时间', name: 'createTime', index: 'create_time', width: 80 },
+			{ label: '广告主名称', name: 'advertisersId', index: 'advertisers_id', width: 80 },
+			{ label: '商家名称', name: 'sellerId', index: 'seller_id', width: 80 }
         ],
 		viewrecords: true,
         height: 385,
@@ -35,7 +30,13 @@ $(function () {
         },
         gridComplete:function(){
         	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
+            var ids = jQuery("#jqGrid").jqGrid('getDataIDs');
+            for(var i=0;i < ids.length;i++){
+                var cl = ids[i];
+                axios.get('/icode-admin/sys/advertisers/QrCode')
+                jQuery("#jqGrid").jqGrid('setRowData',cl,{firstName:'你好'});
+            }
         }
     });
 });

@@ -3,11 +3,11 @@ $(function () {
         url: baseURL + 'sys/orderdesc/list',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: '订单详情编号', name: 'id', index: 'id', width: 50, key: true },
 			{ label: '商家名字', name: 'sellerName', index: 'seller_name', width: 80 }, 			
 			{ label: '二维码数量', name: 'num', index: 'num', width: 80 }, 			
-			{ label: '订单ID', name: 'orderId', index: 'order_id', width: 80 }, 			
-			{ label: '商家ID', name: 'sellerId', index: 'seller_id', width: 80 }			
+			{ label: '订单编号', name: 'orderId', index: 'order_id', width: 80 },
+			{ label: '商家编号', name: 'sellerId', index: 'seller_id', width: 80 }
         ],
 		viewrecords: true,
         height: 385,

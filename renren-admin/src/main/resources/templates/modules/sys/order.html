@@ -2,84 +2,57 @@
 <html>
 <head>
     <title></title>
-		<#include "/header.html">
+    <#include "/header.html">
 </head>
 <body>
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
-			<#if shiro.hasPermission("sys:order:save")>
+            <#if shiro.hasPermission("sys:order:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
-			</#if>
-			<#if shiro.hasPermission("sys:order:update")>
-            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-			</#if>
-			<#if shiro.hasPermission("sys:order:delete")>
-            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
-        </div>
-        <table id="jqGrid"></table>
-        <div id="jqGridPager"></div>
-    </div>
+        </#if>
+        <#if shiro.hasPermission("sys:order:update")>
+        <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+    </#if>
+    <#if shiro.hasPermission("sys:order:delete")>
+    <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+</#if>
+</div>
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+</div>
 
-    <div v-show="!showList" class="panel panel-default">
-        <div class="panel-heading">{{title}}</div>
-        <form class="form-horizontal">
-														                    <div class="form-group">
-                        <div class="col-sm-2 control-label">实付金额。精确到2位小数;单位:元。如:200.07，表示:200元7分</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.payment" placeholder="实付金额。精确到2位小数;单位:元。如:200.07，表示:200元7分"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">状态：1、未付款，2、已付款</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.status" placeholder="状态：1、未付款，2、已付款"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">订单创建时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.createTime" placeholder="订单创建时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">订单更新时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.updateTime" placeholder="订单更新时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">付款时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.paymentTime" placeholder="付款时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">用户id</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.userId" placeholder="用户id"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">用户昵称</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.buyerNick" placeholder="用户昵称"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商家ID</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="order.sellerId" placeholder="商家ID"/>
-                        </div>
-                    </div>
-							            <div class="form-group">
-                <div class="col-sm-2 control-label"></div>
-                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
-                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+<div v-show="!showList" class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <form class="form-horizontal">
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">订单创建时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.createTime" placeholder="订单创建时间"/>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">商家ID</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.sellerId" placeholder="商家ID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">广告主ID</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.advertisersId" placeholder="广告主ID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..."
+                   @click="saveOrUpdate" value="确定"/>
+            &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+        </div>
+    </form>
+</div>
 </div>
 
 <script src="${request.contextPath}/statics/js/modules/sys/order.js?_${.now?long}"></script>
