@@ -12,7 +12,7 @@
         <result property="activityAddress" column="activity_address"/>
     </resultMap>
     <insert id="insertActivity" keyProperty="activityId" parameterType="io.renren.modules.sys.entity.ActivityEntity" useGeneratedKeys="true">
-        insert into tb_activity(activity_id,activity_name,is_focus,is_qr)values ( #{activityId}, #{activityName}, #{isFocus}, #{isQr})
+        insert into tb_activity(activity_id,activity_name,is_focus,is_qr,activity_address)values ( #{activityId}, #{activityName}, #{isFocus}, #{isQr}，#{activityAddress})
 
     </insert>
 

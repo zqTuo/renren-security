@@ -8,4 +8,4 @@ CREATE TABLE `tb_order_desc` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `tb_order_desc_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `tb_order` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1168512803741503489 DEFAULT CHARSET=utf8 COMMENT='订单详情'
+) ENGINE=InnoDB AUTO_INCREMENT=1170878537033453569 DEFAULT CHARSET=utf8 COMMENT='订单详情'

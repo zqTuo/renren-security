@@ -189,9 +189,8 @@ var vm = new Vue({
             this.findAllActivity();
         },
         addQrCode:function () {
-			console.log(this.order.orderDescEntity)
             axios.post('/icode-admin/sys/advertisers/QrCode',this.order).then(function (r) {
-                if(r.code == 0){
+                if(r.data.code == 0){
                     vm.order.orderDescEntity={};
                    alert("生成二维码成功")
                 }else{

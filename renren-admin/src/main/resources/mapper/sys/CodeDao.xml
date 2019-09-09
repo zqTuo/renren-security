@@ -20,7 +20,7 @@
         <result property="activityName" column="activity_name"/>
     </resultMap>
     <insert id="insertCodeEntity" keyProperty="codeId" parameterType="io.renren.modules.sys.entity.CodeEntity" useGeneratedKeys="true">
-        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id,seller_name,advertisers_name,activity_name)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId},#{sellerName},#{advertisersName} ,#{activityName})
+        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id,seller_name,advertisers_name,activity_name)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId},#{sellerName},#{advertisersName},#{activityName})
     </insert>
 
 </mapper>
