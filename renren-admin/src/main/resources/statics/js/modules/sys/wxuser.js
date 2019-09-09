@@ -1,30 +1,27 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: baseURL + 'sys/code/list',
+        url: baseURL + 'sys/wxuser/list',
         datatype: "json",
-        colModel: [
-          /*  { label: '二维码编号', name: 'qrcodeId', index: 'qrCode_id', width: 50, key: true },
-			{ label: '广告主唯一编号', name: 'advertisersId', index: 'advertisersId', width: 80 },
-			{ label: '广告主名称', name: 'advertisersName', index: 'advertisers_name', width: 80 },
-			{ label: '商家编号', name: 'sellerId', index: 'seller_id', width: 80 },*/
-			{ label: '商家名称', name: 'sellerName', index: 'seller_name', width: 80 },
-			/*{ label: '活动编号', name: 'activityId', index: 'activity_id', width: 80 },*/
-			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 },
-			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80, formatter:function (cellValue) {
+        colModel: [			
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: '用户昵称', name: 'userName', index: 'user_name', width: 80 }, 			
+			{ label: '用户头像', name: 'userHead', index: 'user_head', width: 80 ,formatter:function (cellValue, options, rowObject) {
+                    return '<img class="img-thumbnail" width="80px" src="/images/'+cellValue+'" alt="图片">'
+                }},
+		/*	{ label: 'openid', name: 'userOpenid', index: 'user_openid', width: 80 },
+			{ label: 'unionid', name: 'userUnionid', index: 'user_unionid', width: 80 }, */
+			{ label: '上次登录IP地址', name: 'userLastip', index: 'user_lastIp', width: 80 }, 			
+			{ label: '上次登录时间', name: 'userLastlogintime', index: 'user_lastLoginTime', width: 80 }, 			
+			{ label: '是否关注公众号 ', name: 'subscribe', index: 'subscribe', width: 80 ,formatter:function (cellValue) {
                     if(cellValue === 1){
-                        return "<span class='label label-success radius'>是</span>";
+                        return "<span class='label label-success radius'>已关注</span>";
                     }else{
-                        return "<span class='label label-danger radius'>否</span>";
+                        return "<span class='label label-danger radius'>未关注</span>";
                     }
                 } },
-			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 ,formatter:function (cellValue) {
-                    if(cellValue === 1){
-                        return "<span class='label label-success radius'>是</span>";
-                    }else{
-                        return "<span class='label label-danger radius'>否</span>";
-                    }
-    } },
-			/*{ label: '扫码用户编号', name: 'codeUser', index: 'code_user', width: 80 }*/
+			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
+			{ label: '修改时间', name: 'updateTime', index: 'update_time', width: 80 }, 			
+			{ label: '修改管理员', name: 'updateBy', index: 'update_by', width: 80 }			
         ],
 		viewrecords: true,
         height: 385,
@@ -58,7 +55,7 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		code: {}
+		wxuser: {}
 	},
 	methods: {
 		query: function () {
@@ -67,26 +64,26 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.code = {};
+			vm.wxuser = {};
 		},
 		update: function (event) {
-			var codeId = getSelectedRow();
-			if(codeId == null){
+			var id = getSelectedRow();
+			if(id == null){
 				return ;
 			}
 			vm.showList = false;
             vm.title = "修改";
             
-            vm.getInfo(codeId)
+            vm.getInfo(id)
 		},
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
-                var url = vm.code.codeId == null ? "sys/code/save" : "sys/code/update";
+                var url = vm.wxuser.id == null ? "sys/wxuser/save" : "sys/wxuser/update";
                 $.ajax({
                     type: "POST",
                     url: baseURL + url,
                     contentType: "application/json",
-                    data: vm.code,
+                    data: JSON.stringify(vm.wxuser),
                     success: function(r){
                         if(r.code === 0){
                              layer.msg("操作成功", {icon: 1});
@@ -103,8 +100,8 @@ var vm = new Vue({
 			});
 		},
 		del: function (event) {
-			var codeIds = getSelectedRows();
-			if(codeIds == null){
+			var ids = getSelectedRows();
+			if(ids == null){
 				return ;
 			}
 			var lock = false;
@@ -115,9 +112,9 @@ var vm = new Vue({
                     lock = true;
 		            $.ajax({
                         type: "POST",
-                        url: baseURL + "sys/code/delete",
+                        url: baseURL + "sys/wxuser/delete",
                         contentType: "application/json",
-                        data: JSON.stringify(codeIds),
+                        data: JSON.stringify(ids),
                         success: function(r){
                             if(r.code == 0){
                                 layer.msg("操作成功", {icon: 1});
@@ -131,9 +128,9 @@ var vm = new Vue({
              }, function(){
              });
 		},
-		getInfo: function(codeId){
-			$.get(baseURL + "sys/code/info/"+codeId, function(r){
-                vm.code = r.code;
+		getInfo: function(id){
+			$.get(baseURL + "sys/wxuser/info/"+id, function(r){
+                vm.wxuser = r.wxuser;
             });
 		},
 		reload: function (event) {

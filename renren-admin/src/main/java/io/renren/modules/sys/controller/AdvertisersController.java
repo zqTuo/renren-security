@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 import io.renren.common.utils.IdWorker;
+import io.renren.common.utils.MD5Util;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.Order;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,6 +69,8 @@ public class AdvertisersController {
         IdWorker idworker=new IdWorker(0,1);
         String s = idworker.nextId() + "";
         advertisers.setAdvertisersId(s);
+        String password = DigestUtils.md5Hex(advertisers.getPassword());
+        advertisers.setPassword(s);
         advertisersService.insert(advertisers);
 
         return R.ok();
@@ -80,7 +84,7 @@ public class AdvertisersController {
     public R update(@RequestBody AdvertisersEntity advertisers){
         ValidatorUtils.validateEntity(advertisers);
         advertisersService.updateById(advertisers);
-        
+
         return R.ok();
     }
 

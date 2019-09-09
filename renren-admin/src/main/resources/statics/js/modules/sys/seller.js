@@ -4,11 +4,11 @@ $(function () {
         datatype: "json",
         colModel: [
             { label: '店铺名称', name: 'nickName', index: 'nick_name', width: 80 },
-            { label: '密码', name: 'password', index: 'password', width: 80 },
+           /* { label: '密码', name: 'password', index: 'password', width: 80 },*/
             { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
             { label: '公司手机', name: 'mobile', index: 'mobile', width: 80 },
             { label: '公司电话', name: 'telephone', index: 'telephone', width: 80 },
-            { label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 },
+           /* { label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 },*/
             { label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 },
             { label: '职位', name: 'linkmanJod', index: 'linkman_jod', width: 80 },
             { label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 },

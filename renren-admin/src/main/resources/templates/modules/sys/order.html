@@ -2,15 +2,16 @@
 <html>
 <head>
     <title></title>
+
     <#include "/header.html">
 </head>
 <body>
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
-            <#if shiro.hasPermission("sys:order:save")>
+          <!--  <#if shiro.hasPermission("sys:order:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
-        </#if>
+        </#if>-->
         <#if shiro.hasPermission("sys:order:update")>
         <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
     </#if>
@@ -55,6 +56,7 @@
 </div>
 </div>
 
+<script src="../../../statics/js/js/axios-0.18.0.js"></script>
 <script src="${request.contextPath}/statics/js/modules/sys/order.js?_${.now?long}"></script>
 </body>
 </html>

@@ -32,11 +32,11 @@ $(function () {
         	//隐藏grid底部滚动条
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
             var ids = jQuery("#jqGrid").jqGrid('getDataIDs');
-            for(var i=0;i < ids.length;i++){
+           /* for(var i=0;i < ids.length;i++){
                 var cl = ids[i];
                 axios.get('/icode-admin/sys/advertisers/QrCode')
                 jQuery("#jqGrid").jqGrid('setRowData',cl,{firstName:'你好'});
-            }
+            }*/
         }
     });
 });

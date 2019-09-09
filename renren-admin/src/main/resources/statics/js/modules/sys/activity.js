@@ -8,16 +8,16 @@ $(function () {
 			{ label: '活动链接', name: 'activityAddress', index: 'seller_address', width: 80 },
 			{ label: '是否关注', name: 'isFocus', index: 'is_focus', width: 80 , formatter:function (cellValue) {
                     if(cellValue === 1){
-                        return "<span class='label label-success radius'>需要关注</span>";
+                        return "<span class='label label-success radius'>是</span>";
                     }else{
-                        return "<span class='label label-danger radius'>不需要关注</span>";
+                        return "<span class='label label-danger radius'>否</span>";
                     }
                 } },
 			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 , formatter:function (cellValue) {
                     if(cellValue === 1){
-                        return "<span class='label label-success radius'>需要扫码</span>";
+                        return "<span class='label label-success radius'>是</span>";
                     }else{
-                        return "<span class='label label-danger radius'>不需要扫码</span>";
+                        return "<span class='label label-danger radius'>否</span>";
                     }
                 } },
 

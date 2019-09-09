@@ -2,34 +2,35 @@ $(function () {
     $("#jqGrid").jqGrid({
         url: baseURL + 'sys/advertisers/list',
         datatype: "json",
-        colModel: [			
-			{ label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+        colModel: [
             /*
-			{ label: '公司名', name: 'name', index: 'name', width: 80 },
-			{ label: 'EMAIL', name: 'email', index: 'email', width: 80 }, 			
-			{ label: '公司手机', name: 'mobile', index: 'mobile', width: 80 }, 			
-			{ label: '公司电话', name: 'telephone', index: 'telephone', width: 80 }, 			
-			{ label: '状态', name: 'status', index: 'status', width: 80 },
-			{ label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 }, 			
-			{ label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 }, 			
-			{ label: '联系人QQ', name: 'linkmanQq', index: 'linkman_qq', width: 80 }, 			
-			{ label: '联系人电话', name: 'linkmanMobile', index: 'linkman_mobile', width: 80 }, 			
-			{ label: '联系人EMAIL', name: 'linkmanEmail', index: 'linkman_email', width: 80 }, 			
-			{ label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 }, 			
-			{ label: '税务登记证号', name: 'taxNumber', index: 'tax_number', width: 80 }, 			
-			{ label: '组织机构代码', name: 'orgNumber', index: 'org_number', width: 80 }, 			
-			{ label: '公司地址', name: 'address', index: 'address', width: 80 }, 			
-			{ label: '公司LOGO图', name: 'logoPic', index: 'logo_pic', width: 80 },
-			{ label: '简介', name: 'brief', index: 'brief', width: 80 }, 			
-			{ label: '创建日期', name: 'createTime', index: 'create_time', width: 80 }, 			
-			{ label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 }, 			
-			{ label: '法定代表人身份证', name: 'legalPersonCardId', index: 'legal_person_card_id', width: 80 }, 			
-			{ label: '开户行账号名称', name: 'bankUser', index: 'bank_user', width: 80 }, 			
-			{ label: '是否渠道客户', name: 'customers', index: 'customers', width: 80 }, 			
-			{ label: '充值金额', name: 'money', index: 'money', width: 80 }, 			
-			{ label: '订单列表', name: 'orderlist', index: 'orderList', width: 80 }, 			
-			{ label: '职位', name: 'jod', index: 'jod', width: 80 }, 			
-			{ label: '类型', name: 'type', index: 'type', width: 80 }*/
+           { label: 'advertisersId', name: 'advertisersId', index: 'advertisers_id', width: 50, key: true },
+
+           { label: '公司名', name: 'name', index: 'name', width: 80 },
+           { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
+           { label: '公司手机', name: 'mobile', index: 'mobile', width: 80 },
+           { label: '公司电话', name: 'telephone', index: 'telephone', width: 80 },
+           { label: '状态', name: 'status', index: 'status', width: 80 },
+           { label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 },
+           { label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 },
+           { label: '联系人QQ', name: 'linkmanQq', index: 'linkman_qq', width: 80 },
+           { label: '联系人电话', name: 'linkmanMobile', index: 'linkman_mobile', width: 80 },
+           { label: '联系人EMAIL', name: 'linkmanEmail', index: 'linkman_email', width: 80 },
+           { label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 },
+           { label: '税务登记证号', name: 'taxNumber', index: 'tax_number', width: 80 },
+           { label: '组织机构代码', name: 'orgNumber', index: 'org_number', width: 80 },
+           { label: '公司地址', name: 'address', index: 'address', width: 80 },
+           { label: '公司LOGO图', name: 'logoPic', index: 'logo_pic', width: 80 },
+           { label: '简介', name: 'brief', index: 'brief', width: 80 },
+           { label: '创建日期', name: 'createTime', index: 'create_time', width: 80 },
+           { label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 },
+           { label: '法定代表人身份证', name: 'legalPersonCardId', index: 'legal_person_card_id', width: 80 },
+           { label: '开户行账号名称', name: 'bankUser', index: 'bank_user', width: 80 },
+           { label: '是否渠道客户', name: 'customers', index: 'customers', width: 80 },
+           { label: '充值金额', name: 'money', index: 'money', width: 80 },
+           { label: '订单列表', name: 'orderlist', index: 'orderList', width: 80 },
+           { label: '职位', name: 'jod', index: 'jod', width: 80 },
+           { label: '类型', name: 'type', index: 'type', width: 80 }*/
             { label: '公司名', name: 'name', index: 'name', width: 80 },
             { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
             { label: '公司手机', name: 'mobile', index: 'mobile', width: 80 },
@@ -37,9 +38,9 @@ $(function () {
             { label: '详细地址', name: 'addressDetail', index: 'address_detail', width: 80 },
             { label: '联系人姓名', name: 'linkmanName', index: 'linkman_name', width: 80 },
             { label: '联系人电话', name: 'linkmanMobile', index: 'linkman_mobile', width: 80 },
-            { label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 },
+           /* { label: '营业执照号', name: 'licenseNumber', index: 'license_number', width: 80 },
             { label: '公司地址', name: 'address', index: 'address', width: 80 },
-            { label: '简介', name: 'brief', index: 'brief', width: 80 },
+            { label: '简介', name: 'brief', index: 'brief', width: 80 },*/
             { label: '创建日期', name: 'createTime', index: 'create_time', width: 80 },
             { label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 },
         ],
@@ -82,6 +83,7 @@ var vm = new Vue({
         activityList:{},
         order:{orderEntity:{},orderDescEntity:[]},
         entity:{},
+        advertisersList:{},
 
 	},
 	methods: {
@@ -187,6 +189,7 @@ var vm = new Vue({
             vm.title = "生成二维码";
             this.findAllSeller();
             this.findAllActivity();
+            this.findAllAdvertisers();
         },
         addQrCode:function () {
             axios.post('/icode-admin/sys/advertisers/QrCode',this.order).then(function (r) {
@@ -218,6 +221,15 @@ var vm = new Vue({
                 console.log("1231312131321");
             });
         },
+        findAllAdvertisers:function () {
+            axios.get('/icode-admin/sys/advertisers/list').then(function (response) {
+
+                var page = response.data.page;
+                vm.advertisersList=page.list
+            }).catch(function (error) {
+                console.log("1231312131321");
+            });
+        }
 
     },
 
