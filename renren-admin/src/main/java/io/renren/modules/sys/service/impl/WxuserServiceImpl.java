@@ -1,5 +1,6 @@
 package io.renren.modules.sys.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -18,9 +19,11 @@ public class WxuserServiceImpl extends ServiceImpl<WxuserDao, WxuserEntity> impl
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String userName = (String)params.get("name");
         IPage<WxuserEntity> page = this.page(
                 new Query<WxuserEntity>().getPage(params),
                 new QueryWrapper<WxuserEntity>()
+                        .like(StringUtils.isNotBlank(userName),"user_name", userName)
         );
 
         return new PageUtils(page);

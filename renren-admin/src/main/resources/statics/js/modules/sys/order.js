@@ -6,8 +6,17 @@ $(function () {
 			{ label: '订单编号', name: 'orderId', index: 'order_id', width: 50, key: true },
 			{ label: '订单创建时间', name: 'createTime', index: 'create_time', width: 80 },
 			{ label: '广告主名称', name: 'advertisersId', index: 'advertisers_id', width: 80 },
-			{ label: '商家名称', name: 'sellerId', index: 'seller_id', width: 80 }
+			{ label: '商家名称', name: 'sellerId', index: 'seller_id', width: 80 },
+            {
+                label:'查询',  name: 'orderId', index: 'order_id', width: 80, fixed: true, sortable: false, resize: false,
+
+                formatter: function (value, grid, rows, state) { return "<a href=\"#\" style=\"color:dodgerblue\" onclick=\"Modify(" + value + ")\">订单详情</a>" }
+
+            },
+
+
         ],
+
 		viewrecords: true,
         height: 385,
         rowNum: 10,
@@ -32,12 +41,7 @@ $(function () {
         	//隐藏grid底部滚动条
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
             var ids = jQuery("#jqGrid").jqGrid('getDataIDs');
-           /* for(var i=0;i < ids.length;i++){
-                var cl = ids[i];
-                axios.get('/icode-admin/sys/advertisers/QrCode')
-                jQuery("#jqGrid").jqGrid('setRowData',cl,{firstName:'你好'});
-            }*/
-        }
+        },
     });
 });
 

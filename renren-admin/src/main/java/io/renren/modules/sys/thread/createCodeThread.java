@@ -45,7 +45,7 @@ public class createCodeThread {
         try {
 
             java.lang.Thread.sleep(3000);
-            Long orderId = orderEntity.getOrderId();
+            String orderId = orderEntity.getOrderId();
             QueryWrapper<CodeEntity> wrapper = new QueryWrapper<>();
             HashMap<String, Object> map = new HashMap<>();
             map.put("order_id",orderId);

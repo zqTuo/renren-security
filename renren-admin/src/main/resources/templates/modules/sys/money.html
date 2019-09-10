@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>订单详情</title>
-
-    <#include "/header.html">
+    <title>押金</title>
+		<#include "/header.html">
 </head>
 <body>
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
-			<!--<#if shiro.hasPermission("sys:orderdesc:save")>
+			<!--<#if shiro.hasPermission("sys:money:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
-			</#if>-->
-			<#if shiro.hasPermission("sys:orderdesc:update")>
+			</#if>
+			<#if shiro.hasPermission("sys:money:update")>
             <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
 			</#if>
-			<#if shiro.hasPermission("sys:orderdesc:delete")>
+			<#if shiro.hasPermission("sys:money:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
+			</#if>-->
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -27,27 +26,39 @@
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
 														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">商家id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="money.sellerId" placeholder="商家id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
                         <div class="col-sm-2 control-label">商家名字</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="orderDesc.sellerName" placeholder="商家名字"/>
+                            <input type="text" class="form-control" v-model="money.sellerName" placeholder="商家名字"/>
                         </div>
                     </div>
 											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">二维码数量</div>
+                        <div class="col-sm-2 control-label">押金</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="orderDesc.num" placeholder="二维码数量"/>
+                            <input type="text" class="form-control" v-model="money.moneyYajin" placeholder="押金"/>
                         </div>
                     </div>
 											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">订单ID</div>
+                        <div class="col-sm-2 control-label">支付方式</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="orderDesc.orderId" placeholder="订单ID"/>
+                            <input type="text" class="form-control" v-model="money.moneyPay" placeholder="支付方式"/>
                         </div>
                     </div>
 											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商家ID</div>
+                        <div class="col-sm-2 control-label">支付状态</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="orderDesc.sellerId" placeholder="商家ID"/>
+                            <input type="text" class="form-control" v-model="money.payStatus" placeholder="支付状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="money.createTime" placeholder="创建时间"/>
                         </div>
                     </div>
 							            <div class="form-group">
@@ -59,8 +70,6 @@
     </div>
 </div>
 
-
-<script src="${request.contextPath}/statics/js/modules/sys/base.js?_${.now?long}"></script>
-<script src="${request.contextPath}/statics/js/modules/sys/orderdesc.js?_${.now?long}"></script>
+<script src="${request.contextPath}/statics/js/modules/sys/money.js?_${.now?long}"></script>
 </body>
 </html>

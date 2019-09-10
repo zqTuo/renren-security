@@ -56,7 +56,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         OrderEntity orderEntity = order.getOrderEntity();
         long id = idWorker.nextId();
 //        向订单表里面插入一条数据
-        orderEntity.setOrderId(id);
+        orderEntity.setOrderId(String.valueOf(id));
         orderEntity.setCreateTime(new Date());
         orderEntity.setAdvertisersId("0");
         orderDao.insertOrderEntity(orderEntity);
@@ -66,7 +66,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         for (OrderDescEntity descEntity : orderDescEntity) {
             long id2 = idWorker.nextId();
             descEntity.setId(id2);
-            descEntity.setOrderId(orderEntity.getOrderId());
+            descEntity.setOrderId(Long.valueOf(orderEntity.getOrderId()));
 
 //            通过商家名字查询对应的商家id
             String sellerName = descEntity.getSellerName();

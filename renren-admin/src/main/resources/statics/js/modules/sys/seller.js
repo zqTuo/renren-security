@@ -3,6 +3,7 @@ $(function () {
         url: baseURL + 'sys/seller/list',
         datatype: "json",
         colModel: [
+            { label: '店铺编号', name: 'sellerId', index: 'seller_id', width: 50, key: true },
             { label: '店铺名称', name: 'nickName', index: 'nick_name', width: 80 },
            /* { label: '密码', name: 'password', index: 'password', width: 80 },*/
             { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
@@ -110,7 +111,7 @@ var vm = new Vue({
                         type: "POST",
                         url: baseURL + "sys/seller/delete",
                         contentType: "application/json",
-                        data: sellerIds,
+                        data: JSON.stringify(sellerIds),
                         success: function (r) {
                             if (r.code == 0) {
                                 layer.msg("操作成功", {icon: 1});

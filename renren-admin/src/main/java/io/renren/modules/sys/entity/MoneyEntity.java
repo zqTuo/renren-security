@@ -1,55 +1,52 @@
 package io.renren.modules.sys.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
- * 
+ * 押金
  * 
  * @author Mark
  * @email sunlightcs@gmail.com
- * @date 2019-08-28 09:14:53
+ * @date 2019-09-10 16:23:30
  */
 @Data
-@TableName("tb_order")
-public class OrderEntity implements Serializable {
+@TableName("tb_money")
+public class MoneyEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 订单id
+	 * 
 	 */
 	@TableId
-	private String orderId;
-
+	private Long moneyId;
 	/**
-	 * 订单创建时间
-	 */
-	private Date createTime;
-
-	/**
-	 * 商家ID
+	 * 商家id
 	 */
 	private String sellerId;
-
 	/**
 	 * 商家名字
 	 */
 	private String sellerName;
-
-	/*
-	* 广告主id
-	* */
-	private String advertisersId;
 	/**
-	 * 广告主名字名字
+	 * 押金
 	 */
-	private String advertisersName;
+	private String moneyYajin;
+	/**
+	 * 支付方式0 微信支付 1 支付宝支付
+	 */
+	private String moneyPay;
+	/**
+	 * 支付状态 0 已退款 1 未交押金 2 已交押金
+	 */
+	private String payStatus;
+	/**
+	 * 创建时间
+	 */
+	private Date createTime;
 
 }

@@ -67,7 +67,18 @@
 											                    <div class="form-group">
                         <div class="col-sm-2 control-label">区域</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="seller.orderdescId" placeholder="区域"/>
+                            <select class="form-control"  v-model="seller.region">
+                                <option :value="0" >福田区</option>
+                                <option :value="1" >罗湖区</option>
+                                <option :value="2" >南山区</option>
+                                <option :value="3" >盐田区</option>
+                                <option :value="4" >宝安区</option>
+                                <option :value="5" >龙岗区</option>
+                                <option :value="6" >坪山区</option>
+                                <option :value="7" >龙华区</option>
+                                <option :value="8" >光明区</option>
+                                <option :value="9" >大鹏新区</option>
+                            </select>
                         </div>
                     </div>
 											                    <div class="form-group">

@@ -1,27 +1,15 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: baseURL + 'sys/wxuser/list',
+        url: baseURL + 'sys/money/list',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
-			{ label: '用户昵称', name: 'userName', index: 'user_name', width: 80 }, 			
-			{ label: '用户头像', name: 'userHead', index: 'user_head', width: 80 ,formatter:function (cellValue, options, rowObject) {
-                    return '<img class="img-thumbnail" width="80px" src="/images/'+cellValue+'" alt="图片">'
-                }},
-		/*	{ label: 'openid', name: 'userOpenid', index: 'user_openid', width: 80 },
-			{ label: 'unionid', name: 'userUnionid', index: 'user_unionid', width: 80 }, */
-			{ label: '上次登录IP地址', name: 'userLastip', index: 'user_lastIp', width: 80 }, 			
-			{ label: '上次登录时间', name: 'userLastlogintime', index: 'user_lastLoginTime', width: 80 }, 			
-			{ label: '是否关注公众号 ', name: 'subscribe', index: 'subscribe', width: 80 ,formatter:function (cellValue) {
-                    if(cellValue === 1){
-                        return "<span class='label label-success radius'>已关注</span>";
-                    }else{
-                        return "<span class='label label-danger radius'>未关注</span>";
-                    }
-                } },
-			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
-			{ label: '修改时间', name: 'updateTime', index: 'update_time', width: 80 }, 			
-			{ label: '修改管理员', name: 'updateBy', index: 'update_by', width: 80 }			
+			{ label: 'moneyId', name: 'moneyId', index: 'money_id', width: 50, key: true },
+			{ label: '商家id', name: 'sellerId', index: 'seller_id', width: 80 }, 			
+			{ label: '商家名字', name: 'sellerName', index: 'seller_name', width: 80 }, 			
+			{ label: '押金', name: 'moneyYajin', index: 'money_yajin', width: 80 }, 			
+			{ label: '支付方式', name: 'moneyPay', index: 'money_pay', width: 80 },
+			{ label: '支付状态', name: 'payStatus', index: 'pay_status', width: 80 },
+			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }			
         ],
 		viewrecords: true,
         height: 385,
@@ -55,10 +43,7 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-        q:{
-            userName: null
-        },
-		wxuser: {}
+		money: {}
 	},
 	methods: {
 		query: function () {
@@ -67,26 +52,26 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.wxuser = {};
+			vm.money = {};
 		},
 		update: function (event) {
-			var id = getSelectedRow();
-			if(id == null){
+			var moneyId = getSelectedRow();
+			if(moneyId == null){
 				return ;
 			}
 			vm.showList = false;
             vm.title = "修改";
             
-            vm.getInfo(id)
+            vm.getInfo(moneyId)
 		},
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
-                var url = vm.wxuser.id == null ? "sys/wxuser/save" : "sys/wxuser/update";
+                var url = vm.money.moneyId == null ? "sys/money/save" : "sys/money/update";
                 $.ajax({
                     type: "POST",
                     url: baseURL + url,
                     contentType: "application/json",
-                    data: JSON.stringify(vm.wxuser),
+                    data: JSON.stringify(vm.money),
                     success: function(r){
                         if(r.code === 0){
                              layer.msg("操作成功", {icon: 1});
@@ -103,8 +88,8 @@ var vm = new Vue({
 			});
 		},
 		del: function (event) {
-			var ids = getSelectedRows();
-			if(ids == null){
+			var moneyIds = getSelectedRows();
+			if(moneyIds == null){
 				return ;
 			}
 			var lock = false;
@@ -115,9 +100,9 @@ var vm = new Vue({
                     lock = true;
 		            $.ajax({
                         type: "POST",
-                        url: baseURL + "sys/wxuser/delete",
+                        url: baseURL + "sys/money/delete",
                         contentType: "application/json",
-                        data: JSON.stringify(ids),
+                        data: JSON.stringify(moneyIds),
                         success: function(r){
                             if(r.code == 0){
                                 layer.msg("操作成功", {icon: 1});
@@ -131,16 +116,15 @@ var vm = new Vue({
              }, function(){
              });
 		},
-		getInfo: function(id){
-			$.get(baseURL + "sys/wxuser/info/"+id, function(r){
-                vm.wxuser = r.wxuser;
+		getInfo: function(moneyId){
+			$.get(baseURL + "sys/money/info/"+moneyId, function(r){
+                vm.money = r.money;
             });
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'name': vm.q.userName},
+			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
 		}
