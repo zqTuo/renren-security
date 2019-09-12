@@ -9,7 +9,7 @@
 package io.renren.modules.sys.shiro;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.renren.common.utils.Constant;
+import io.renren.common.Constant;
 import io.renren.modules.sys.dao.SysMenuDao;
 import io.renren.modules.sys.dao.SysUserDao;
 import io.renren.modules.sys.entity.SysMenuEntity;

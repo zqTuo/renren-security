@@ -11,7 +11,7 @@ package io.renren.modules.sys.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import io.renren.common.utils.R;
+import io.renren.common.R;
 import io.renren.modules.sys.shiro.ShiroUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;

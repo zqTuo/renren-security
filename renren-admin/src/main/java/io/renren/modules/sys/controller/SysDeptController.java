@@ -8,8 +8,8 @@
 
 package io.renren.modules.sys.controller;
 
-import io.renren.common.utils.Constant;
-import io.renren.common.utils.R;
+import io.renren.common.Constant;
+import io.renren.common.R;
 import io.renren.modules.sys.entity.SysDeptEntity;
 import io.renren.modules.sys.service.SysDeptService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

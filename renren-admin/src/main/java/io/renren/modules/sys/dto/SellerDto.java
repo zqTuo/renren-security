@@ -1,6 +1,6 @@
 package io.renren.modules.sys.dto;
 
-import io.renren.common.utils.poi.model.ExcelBean;
+import io.renren.common.poi.model.ExcelBean;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,10 +1,9 @@
 package io.renren.modules.sys.service.impl;
 
-import io.renren.common.utils.IdWorker;
+import io.renren.common.IdWorker;
 import io.renren.modules.sys.dao.*;
 import io.renren.modules.sys.entity.*;
 import io.renren.modules.sys.thread.createCodeThread;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +12,8 @@ import java.util.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import io.renren.common.PageUtils;
+import io.renren.common.Query;
 
 import io.renren.modules.sys.service.AdvertisersService;
 
@@ -79,7 +78,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             SellerEntity sellerEntity = sellerDao.selectOne(wrapper);
 
 //            设置商家id
-            Long sellerId = sellerEntity.getSellerId();
+            String sellerId = sellerEntity.getSellerId();
             descEntity.setSellerId(String.valueOf(sellerId));
             orderDescDao.insertOrderDescEntity(descEntity);
             ActivityEntity activityEntity = activityDao.selectById(descEntity.getActivityId());

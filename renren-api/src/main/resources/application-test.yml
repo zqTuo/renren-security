@@ -32,3 +32,39 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+# 项目配置 http://test.zuoyanglife.com
+project:
+  url_pre: http://cake.maojimall.com
+  pic_pre: http://cake.maojimall.com/images/
+  video_pre: http://cake.maojimall.com/mv/
+
+# 微信公众号
+weCat:
+  appId: wx06bec68a22884722
+  appSecret: 5a9bc72b8e6d126757f4be79874bf54b
+  mchId: 1550620091
+  key: AABBCCDDEEFFGGHHJJKKLLMMNNOOQQPP
+  certP12: /opt/cert/apiclient_cert.p12
+  accessTokenByCodeUrl: https://api.weixin.qq.com/sns/oauth2/access_token
+  userInfoUrl: https://api.weixin.qq.com/sns/userinfo
+  accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token
+  ticketUrl: https://api.weixin.qq.com/cgi-bin/ticket/getticket
+  payApi: https://api.mch.weixin.qq.com/pay/unifiedorder
+  enterprisesPay_API: https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers
+  dnbx_token: weixinMsg
+  download_media_url: http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID
+  online_kf_list: https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist
+
+  # 百度地图
+baiduMap:
+  ak: SoQCCsGE9S8ILEvx1HCtV8S6oS4PYYXA
+  locationUrl: http://api.map.baidu.com/place/v2/search
+  distanceUrl: http://api.map.baidu.com/routematrix/v2/driving
+
+# 美团
+meituan:
+  appKey: a47e6d93e90e87b0
+  appSecret: 9bd1648712f0456a8ede514077e80a8ac00b4ffe
+  redirect_url: /cake-api/api/meituan/authRedirect
+  sessionUrl: https://openapi.dianping.com/router/oauth/token
+  checkCodeUrl: https://openapi.dianping.com/router/tuangou/receipt/prepare

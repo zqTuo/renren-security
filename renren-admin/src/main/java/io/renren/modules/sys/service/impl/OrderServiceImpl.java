@@ -5,8 +5,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import io.renren.common.PageUtils;
+import io.renren.common.Query;
 
 import io.renren.modules.sys.dao.OrderDao;
 import io.renren.modules.sys.entity.OrderEntity;

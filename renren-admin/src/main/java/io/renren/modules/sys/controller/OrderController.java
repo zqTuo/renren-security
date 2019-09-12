@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.renren.modules.sys.entity.OrderEntity;
 import io.renren.modules.sys.service.OrderService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import io.renren.common.PageUtils;
+import io.renren.common.R;
 
 
 

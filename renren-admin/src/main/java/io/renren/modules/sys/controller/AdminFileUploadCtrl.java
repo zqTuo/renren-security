@@ -1,12 +1,8 @@
 package io.renren.modules.sys.controller;
 
-import com.alibaba.fastjson.JSONObject;
-
-import io.renren.common.utils.Constant;
-import io.renren.common.utils.DateUtil;
-import io.renren.modules.sys.dto.PackageDto;
+import io.renren.common.Constant;
+import io.renren.common.DateUtil;
 import io.renren.modules.sys.dto.SellerDto;
-import io.renren.modules.sys.entity.SellerEntity;
 import io.renren.modules.sys.service.ExcelService;
 import io.renren.modules.sys.service.SellerService;
 import org.apache.commons.lang.StringUtils;
@@ -15,19 +11,13 @@ import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

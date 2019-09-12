@@ -1,6 +1,6 @@
 package io.renren.modules.sys.service;
 
-import io.renren.common.utils.poi.model.ExcelBean;
+import io.renren.common.poi.model.ExcelBean;
 import org.apache.poi.ss.formula.functions.T;
 
 import javax.servlet.http.HttpServletRequest;

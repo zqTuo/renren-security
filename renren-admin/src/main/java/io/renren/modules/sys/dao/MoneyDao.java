@@ -13,5 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MoneyDao extends BaseMapper<MoneyEntity> {
-	
+
+
+     boolean insertMoney(MoneyEntity entity);
+
+
 }

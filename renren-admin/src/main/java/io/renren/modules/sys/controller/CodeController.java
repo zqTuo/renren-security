@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import io.renren.modules.sys.entity.CodeEntity;
 import io.renren.modules.sys.service.CodeService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import io.renren.common.PageUtils;
+import io.renren.common.R;
 
 
 /**

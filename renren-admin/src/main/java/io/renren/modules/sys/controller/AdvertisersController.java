@@ -3,8 +3,7 @@ package io.renren.modules.sys.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.renren.common.utils.IdWorker;
-import io.renren.common.utils.MD5Util;
+import io.renren.common.IdWorker;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.Order;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.renren.modules.sys.entity.AdvertisersEntity;
 import io.renren.modules.sys.service.AdvertisersService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import io.renren.common.PageUtils;
+import io.renren.common.R;
 
 
 

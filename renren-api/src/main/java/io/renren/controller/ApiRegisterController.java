@@ -8,7 +8,7 @@
 
 package io.renren.controller;
 
-import io.renren.common.utils.R;
+import io.renren.common.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.entity.UserEntity;
 import io.renren.form.RegisterForm;

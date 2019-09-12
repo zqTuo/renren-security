@@ -23,7 +23,7 @@ public class MoneyEntity implements Serializable {
 	 * 
 	 */
 	@TableId
-	private Long moneyId;
+	private String moneyId;
 	/**
 	 * 商家id
 	 */

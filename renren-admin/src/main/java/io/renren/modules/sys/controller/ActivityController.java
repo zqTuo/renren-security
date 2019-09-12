@@ -3,7 +3,7 @@ package io.renren.modules.sys.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.renren.common.utils.IdWorker;
+import io.renren.common.IdWorker;
 import io.renren.common.validator.ValidatorUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.renren.modules.sys.entity.ActivityEntity;
 import io.renren.modules.sys.service.ActivityService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
-
-import javax.xml.crypto.Data;
+import io.renren.common.PageUtils;
+import io.renren.common.R;
 
 
 /**

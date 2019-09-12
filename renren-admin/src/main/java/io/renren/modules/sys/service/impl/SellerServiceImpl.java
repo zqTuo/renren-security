@@ -1,6 +1,5 @@
 package io.renren.modules.sys.service.impl;
 
-import io.renren.modules.sys.dto.PackageDto;
 import io.renren.modules.sys.dto.SellerDto;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +9,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import io.renren.common.PageUtils;
+import io.renren.common.Query;
 
 import io.renren.modules.sys.dao.SellerDao;
 import io.renren.modules.sys.entity.SellerEntity;
@@ -28,10 +27,7 @@ public class SellerServiceImpl extends ServiceImpl<SellerDao, SellerEntity> impl
                 new Query<SellerEntity>().getPage(params),
                 new QueryWrapper<SellerEntity>()
         );
-        System.out.println(page);
         PageUtils pageUtils = new PageUtils(page);
-        System.out.println(pageUtils);
-
         return new PageUtils(page);
     }
 

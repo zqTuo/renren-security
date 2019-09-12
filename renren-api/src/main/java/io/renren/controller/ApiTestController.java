@@ -10,7 +10,7 @@ package io.renren.controller;
 
 import io.renren.annotation.Login;
 import io.renren.annotation.LoginUser;
-import io.renren.common.utils.R;
+import io.renren.common.R;
 import io.renren.entity.UserEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

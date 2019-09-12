@@ -1,8 +1,8 @@
 package io.renren.modules.sys.service.impl;
 
-import io.renren.common.utils.FileUtil;
-import io.renren.common.utils.poi.ExcelFactory;
-import io.renren.common.utils.poi.model.ExcelBean;
+import io.renren.common.FileUtil;
+import io.renren.common.poi.ExcelFactory;
+import io.renren.common.poi.model.ExcelBean;
 import io.renren.modules.sys.service.ExcelService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.formula.functions.T;

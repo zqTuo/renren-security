@@ -10,7 +10,7 @@ package io.renren.controller;
 
 
 import io.renren.annotation.Login;
-import io.renren.common.utils.R;
+import io.renren.common.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.form.LoginForm;
 import io.renren.service.TokenService;

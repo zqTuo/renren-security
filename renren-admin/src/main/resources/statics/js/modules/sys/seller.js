@@ -74,7 +74,38 @@ var vm = new Vue({
             vm.getInfo(sellerId)
         },
         saveOrUpdate: function (event) {
-            $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function () {
+            //新增
+            if (vm.seller.sellerId == null){
+            axios.post(baseURL+"sys/seller/save",vm.seller).then(function (response) {
+                //增加成功则跳到到支付页面
+                if(response.data.code==0){
+                    layer.msg("操作成功", {icon: 1});
+                    vm.reload();
+                    $('#btnSaveOrUpdate').button('reset');
+                    $('#btnSaveOrUpdate').dequeue();
+                    window.location.href="www.baidu.com";
+                }else {
+                    layer.alert(response.data.msg);
+                    $('#btnSaveOrUpdate').button('reset');
+                    $('#btnSaveOrUpdate').dequeue();
+                }
+            })
+            } else {
+                axios.post(baseURL+"sys/seller/update",vm.seller).then(function (response) {
+
+                    if(response.data.code==0){
+                        layer.msg("操作成功", {icon: 1});
+                        vm.reload();
+                        $('#btnSaveOrUpdate').button('reset');
+                        $('#btnSaveOrUpdate').dequeue();
+                    }else {
+                        layer.alert(response.data.msg);
+                        $('#btnSaveOrUpdate').button('reset');
+                        $('#btnSaveOrUpdate').dequeue();
+                    }
+                })
+            }
+           /* $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function () {
                 var url = vm.seller.sellerId == null ? "sys/seller/save" : "sys/seller/update";
                 $.ajax({
                     type: "POST",
@@ -83,6 +114,7 @@ var vm = new Vue({
                     data: JSON.stringify(vm.seller),
                     success: function (r) {
                         if (r.code === 0) {
+
                             layer.msg("操作成功", {icon: 1});
                             vm.reload();
                             $('#btnSaveOrUpdate').button('reset');
@@ -94,7 +126,7 @@ var vm = new Vue({
                         }
                     }
                 });
-            });
+            });*/
         },
         del: function (event) {
             var sellerIds = getSelectedRows();

@@ -11,7 +11,7 @@ package io.renren.common.aspect;
 
 import io.renren.common.annotation.DataFilter;
 import io.renren.common.exception.RRException;
-import io.renren.common.utils.Constant;
+import io.renren.common.Constant;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.service.SysDeptService;
 import io.renren.modules.sys.service.SysRoleDeptService;
