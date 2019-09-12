@@ -120,15 +120,15 @@ renren-security
 <br>
 
 **如何交流、反馈、参与贡献？** 
-- 开发文档：https://www.renren.io/guide/security
-- 官方社区：https://www.renren.io/community
+- 开发文档：http://www.xkygame.com/guide/security
+- 官方社区：http://www.xkygame.com/community
 - gitee仓库：https://gitee.com/renrenio/renren-security
 - github仓库：https://github.com/renrenio/renren-security
-- [人人开源](https://www.renren.io)：https://www.renren.io   
+- [炫酷游互娱](http://www.xkygame.com)：http://www.xkygame.com   
 - 官方QQ群：324780204、145799952
 - 如需关注项目最新动态，请Watch、Star项目，同时也是对项目最好的支持
 - 技术讨论、二次开发等咨询、问题和建议，请移步到官方社区，我会在第一时间进行解答和回复！
-- 微信扫码并关注【人人开源】，获得项目最新动态及更新提醒<br>
+- 微信扫码并关注【炫酷游互娱】，获得项目最新动态及更新提醒<br>
 ![输入图片说明](http://cdn.renren.io/47c26201804031918312618.jpg "在这里输入图片标题")
 <br>
 <br>

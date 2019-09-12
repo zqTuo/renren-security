@@ -18,7 +18,7 @@
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
             <#if shiro.hasPermission("sys:seller:exportExcel")>
-            <a class="btn btn-primary" @click="exportExcel()"><i class="fa fa-trash-o"></i>&nbsp;导出Excel</a>
+            <a class="btn btn-primary" @click="exportExcel()"><i class="glyphicon glyphicon-log-in"></i>&nbsp;导出Excel</a>
             </#if>
         </div>
         <table id="jqGrid"></table>

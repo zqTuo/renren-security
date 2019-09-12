@@ -247,7 +247,6 @@
         <div class="form-group">
             <div class="col-sm-2 control-label">广告主编号</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="entity.advertisersId" placeholder="广告主id"/>
                 <select class="form-control" v-model="entity.advertisersId" >
 
                     <option :value="entity.advertisersId" v-for="advertisers in advertisersList">{{advertisers.name}}</option>

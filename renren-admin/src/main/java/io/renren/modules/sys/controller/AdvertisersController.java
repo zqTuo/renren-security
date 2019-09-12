@@ -66,6 +66,8 @@ public class AdvertisersController {
     @RequestMapping("/save")
     @RequiresPermissions("sys:advertisers:save")
     public R save(@RequestBody AdvertisersEntity advertisers){
+        //校验类型
+        ValidatorUtils.validateEntity(advertisers);
         IdWorker idworker=new IdWorker(0,1);
         String s = idworker.nextId() + "";
         advertisers.setAdvertisersId(s);

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,22 +28,27 @@ public class AdvertisersEntity implements Serializable {
 	/**
 	 * 公司名
 	 */
+	@NotBlank(message="字典名称不能为空")
 	private String name;
 	/**
 	 * 密码
 	 */
+	@NotBlank(message="密码不能为空")
 	private String password;
 	/**
 	 * EMAIL
 	 */
+	@NotBlank(message="EMAIL不能为空")
 	private String email;
 	/**
 	 * 公司手机
 	 */
+	@NotBlank(message="公司手机不能为空")
 	private String mobile;
 	/**
 	 * 公司电话
 	 */
+	@NotBlank(message="公司电话不能为空")
 	private String telephone;
 	/**
 	 * 状态
@@ -51,10 +57,12 @@ public class AdvertisersEntity implements Serializable {
 	/**
 	 * 详细地址
 	 */
+	@NotBlank(message="详细地址不能为空")
 	private String addressDetail;
 	/**
 	 * 联系人姓名
 	 */
+	@NotBlank(message="联系人姓名不能为空")
 	private String linkmanName;
 	/**
 	 * 联系人QQ
@@ -99,6 +107,7 @@ public class AdvertisersEntity implements Serializable {
 	/**
 	 * 法定代表人
 	 */
+	@NotBlank(message="法定代表人不能为空")
 	private String legalPerson;
 	/**
 	 * 法定代表人身份证

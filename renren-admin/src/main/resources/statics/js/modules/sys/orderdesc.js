@@ -41,7 +41,8 @@ var vm = new Vue({
     data: {
         showList: true,
         title: null,
-        orderDesc: {}
+        orderDesc: {},
+        orderDesclist:[]
     },
     methods: {
         query: function () {
@@ -119,20 +120,29 @@ var vm = new Vue({
                 vm.orderDesc = r.orderDesc;
             });
         },
+        findAllByOrderId: function (OrderId) {
+            $.get(baseURL + "sys/orderdesc/findAllByOrderId/" + OrderId, function (r) {
+                vm.orderDesclist = r.OrderDescList;
+
+            });
+           this.reload(OrderId)
+        },
         reload: function (event) {
             vm.showList = true;
             var page = $("#jqGrid").jqGrid('getGridParam', 'page');
             $("#jqGrid").jqGrid('setGridParam', {
+                postData:{'name': event},
                 page: page
             }).trigger("reloadGrid");
         }
-    }
-   /* created: function () {
+    },
+ /*   created: function () {
         var urlParam = this.getUrlParam("id");
-        console.log(urlParam)
+
         var id = urlParam.id
-        if (id != null) {
-            this.getInfo(id)
+        console.log(id)
+        if (id != null || id != undefined) {
+            this.findAllByOrderId(id)
         } else {
 
             $("#jqGrid").jqGrid({

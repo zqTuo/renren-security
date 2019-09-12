@@ -6,13 +6,13 @@ $(function () {
 			{ label: '订单编号', name: 'orderId', index: 'order_id', width: 50, key: true },
 			{ label: '订单创建时间', name: 'createTime', index: 'create_time', width: 80 },
 			{ label: '广告主名称', name: 'advertisersId', index: 'advertisers_id', width: 80 },
-			{ label: '商家名称', name: 'sellerId', index: 'seller_id', width: 80 },
-            {
+			{ label: '商家名称', name: 'sellerId', index: 'seller_id', width: 80 }
+           /* {
                 label:'查询',  name: 'orderId', index: 'order_id', width: 80, fixed: true, sortable: false, resize: false,
 
-                formatter: function (value, grid, rows, state) { return "<a href=\"#\" style=\"color:dodgerblue\" onclick=\"Modify(" + value + ")\">订单详情</a>" }
+                formatter: function (value, grid, rows, state) { return "<a href=\"#\" style=\"color:dodgerblue\" @click=\"update\">订单详情</a>" }
 
-            },
+            },*/
 
 
         ],
@@ -50,7 +50,8 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		order: {}
+		order: {},
+        detailList:[]
 	},
 	methods: {
 		query: function () {
@@ -67,7 +68,7 @@ var vm = new Vue({
 				return ;
 			}
 			vm.showList = false;
-            vm.title = "修改";
+            vm.title = "查看";
             
             vm.getInfo(orderId)
 		},
@@ -126,6 +127,7 @@ var vm = new Vue({
 		getInfo: function(orderId){
 			$.get(baseURL + "sys/order/info/"+orderId, function(r){
                 vm.order = r.order;
+                vm.detailList = r.detailList;
             });
 		},
 		reload: function (event) {

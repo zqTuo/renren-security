@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
+ * Copyright (c) 2016-2019 炫酷游互娱 All rights reserved.
  *
- * https://www.renren.io
+ * http://www.xkygame.com
  *
  * 版权所有，侵权必究！
  */
@@ -44,9 +44,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("人人开源")
+            .title("炫酷游互娱")
             .description("renren-api文档")
-            .termsOfServiceUrl("https://www.renren.io")
+            .termsOfServiceUrl("http://www.xkygame.com")
             .version("4.0.0")
             .build();
     }

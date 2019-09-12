@@ -65,8 +65,8 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
         for (OrderDescEntity descEntity : orderDescEntity) {
             long id2 = idWorker.nextId();
-            descEntity.setId(id2);
-            descEntity.setOrderId(Long.valueOf(orderEntity.getOrderId()));
+            descEntity.setId(String.valueOf(id2));
+            descEntity.setOrderId(orderEntity.getOrderId());
 
 //            通过商家名字查询对应的商家id
             String sellerName = descEntity.getSellerName();
@@ -80,7 +80,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
 
 //            设置商家id
             Long sellerId = sellerEntity.getSellerId();
-            descEntity.setSellerId(sellerId);
+            descEntity.setSellerId(String.valueOf(sellerId));
             orderDescDao.insertOrderDescEntity(descEntity);
             ActivityEntity activityEntity = activityDao.selectById(descEntity.getActivityId());
 //            利用多线程生成二维码表
@@ -93,12 +93,12 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
                 codeEntity.setSellerId(String.valueOf(descEntity.getSellerId()));
                 codeEntity.setActivityId(String.valueOf(descEntity.getActivityId()));
-                codeEntity.setOrderId(descEntity.getOrderId());
-                codeEntity.setOrderdescId(descEntity.getId());
+                codeEntity.setOrderId(Long.valueOf(descEntity.getOrderId()));
+                codeEntity.setOrderdescId(Long.valueOf(descEntity.getId()));
                 codeEntity.setIsFocus(activityEntity.getIsFocus());
                 codeEntity.setIsQr(activityEntity.getIsQr());
                 codeEntity.setSellerName(descEntity.getSellerName());
-                codeEntity.setAdvertisersName("人人开源有限公司");
+                codeEntity.setAdvertisersName("炫酷游互娱有限公司");
                 codeEntity.setActivityName(activityEntity.getActivityName());
 
 

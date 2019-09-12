@@ -23,7 +23,7 @@ public class OrderDescEntity implements Serializable {
 	 * 订单详情id
 	 */
 	@TableId
-	private Long id;
+	private String id;
 	/**
 	 * 商家名字
 	 */
@@ -35,88 +35,14 @@ public class OrderDescEntity implements Serializable {
 	/**
 	 * 订单ID
 	 */
-	private Long orderId;
+	private String orderId;
 	/**
 	 * 商家ID
 	 */
-	private Long sellerId;
+	private String sellerId;
 
 //	活动id
-	private Long activityId;
+	private String activityId;
 
-    public OrderDescEntity() {
-    }
 
-    public OrderDescEntity(Long id, String sellerName, Long num, Long orderId, Long sellerId, Long activityId) {
-        this.id = id;
-        this.sellerName = sellerName;
-        this.num = num;
-        this.orderId = orderId;
-        this.sellerId = sellerId;
-        this.activityId = activityId;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSellerName() {
-        return sellerName;
-    }
-
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
-    }
-
-    public Long getNum() {
-        return num;
-    }
-
-    public void setNum(Long num) {
-        this.num = num;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public Long getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(Long sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDescEntity{" +
-                "id=" + id +
-                ", sellerName='" + sellerName + '\'' +
-                ", num=" + num +
-                ", orderId=" + orderId +
-                ", sellerId=" + sellerId +
-                ", activityId=" + activityId +
-                '}';
-    }
 }

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.renren.common.utils.poi.model.ExcelBean;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -28,22 +29,27 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 店铺名称
 	 */
+	@NotBlank(message="店铺名称不能为空")
 	private String nickName;
 	/**
 	 * 密码
 	 */
+	@NotBlank(message="密码不能为空")
 	private String password;
 	/**
 	 * EMAIL
 	 */
+	@NotBlank(message="EMAIL不能为空")
 	private String email;
 	/**
 	 * 公司手机
 	 */
+	@NotBlank(message="公司手机不能为空")
 	private String mobile;
 	/**
-	 * 公L司电话
+	 * 公司电话
 	 */
+	@NotBlank(message="公司电话不能为空")
 	private String telephone;
 	/**
 	 * 状态
@@ -52,6 +58,7 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 区域
 	 */
+	@NotBlank(message="区域不能为空")
 	private String region;
 	/**
 	 * 详细地址
@@ -60,6 +67,7 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 联系人姓名
 	 */
+	@NotBlank(message="联系人姓名不能为空")
 	private String linkmanName;
 	/**
 	 * 联系人QQ
@@ -76,6 +84,7 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 职位
 	 */
+	@NotBlank(message="职位不能为空")
 	private String linkmanJod;
 	/**
 	 * 是否连锁经营
@@ -92,18 +101,22 @@ public class SellerEntity implements Serializable {
 	/**
 	 * 营业执照号
 	 */
+	@NotBlank(message="营业执照号不能为空")
 	private String licenseNumber;
 	/**
 	 * 税务登记证号
 	 */
+	@NotBlank(message="税务登记证号不能为空")
 	private String taxNumber;
 	/**
 	 * 组织机构代码
 	 */
+	@NotBlank(message="组织机构代码不能为空")
 	private String orgNumber;
 	/**
 	 * 公司地址
 	 */
+	@NotBlank(message="公司地址不能为空")
 	private String address;
 	/**
 	 * 奶茶店周边

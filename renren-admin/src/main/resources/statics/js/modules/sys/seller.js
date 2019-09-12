@@ -5,7 +5,7 @@ $(function () {
         colModel: [
             { label: '店铺编号', name: 'sellerId', index: 'seller_id', width: 50, key: true },
             { label: '店铺名称', name: 'nickName', index: 'nick_name', width: 80 },
-           /* { label: '密码', name: 'password', index: 'password', width: 80 },*/
+            { label: '区域', name: 'region', index: 'region', width: 80 },
             { label: 'EMAIL', name: 'email', index: 'email', width: 80 },
             { label: '公司手机', name: 'mobile', index: 'mobile', width: 80 },
             { label: '公司电话', name: 'telephone', index: 'telephone', width: 80 },
@@ -16,7 +16,7 @@ $(function () {
             { label: '税务登记证号', name: 'taxNumber', index: 'tax_number', width: 80 },
             { label: '组织机构代码', name: 'orgNumber', index: 'org_number', width: 80 },
             { label: '公司地址', name: 'address', index: 'address', width: 80 },
-            { label: '简介', name: 'brief', index: 'brief', width: 80 },
+           /* { label: '简介', name: 'brief', index: 'brief', width: 80 },*/
             { label: '法定代表人', name: 'legalPerson', index: 'legal_person', width: 80 }
 
         ],
@@ -138,7 +138,7 @@ var vm = new Vue({
             }).trigger("reloadGrid");
         },
         exportExcel() {
-            window.location.href = '/renren-admin/admin/upload/exportExcel';
+            window.location.href = '/icode-admin/admin/upload/exportExcel';
         }
     }
 

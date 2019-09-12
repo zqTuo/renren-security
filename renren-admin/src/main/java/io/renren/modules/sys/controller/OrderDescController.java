@@ -1,9 +1,13 @@
 package io.renren.modules.sys.controller;
 
 import java.util.Arrays;
+
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.common.validator.ValidatorUtils;
+import io.renren.modules.sys.entity.OrderEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +57,18 @@ public class OrderDescController {
         OrderDescEntity orderDesc = orderDescService.getById(id);
 
         return R.ok().put("orderDesc", orderDesc);
+    }
+
+    /*
+     * 根据订单id查找订单详情数据
+     * */
+    @RequestMapping("/findAllByOrderId/{orderId}")
+    @RequiresPermissions("sys:Order:findAllByOrderId")
+    public R findAllByOrderId(@PathVariable("orderId") String orderId){
+
+       List<OrderDescEntity> OrderDescList = orderDescService.findAllByOrderId(orderId);
+
+        return R.ok().put("OrderDescList", OrderDescList);
     }
 
     /**
