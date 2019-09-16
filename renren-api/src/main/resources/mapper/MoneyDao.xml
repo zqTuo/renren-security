@@ -4,7 +4,7 @@
 <mapper namespace="io.renren.modules.sys.dao.MoneyDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="io.renren.modules.sys.entity.MoneyEntity" id="moneyMap">
+    <resultMap type="io.renren.entity.MoneyEntity" id="moneyMap">
         <result property="moneyId" column="money_id"/>
         <result property="sellerId" column="seller_id"/>
         <result property="sellerName" column="seller_name"/>
@@ -14,7 +14,7 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
-    <insert id="insertMoney" keyProperty="moneyId" parameterType="io.renren.modules.sys.entity.MoneyEntity" useGeneratedKeys="true">
+    <insert id="insertMoney" keyProperty="moneyId" parameterType="io.renren.entity.MoneyEntity" useGeneratedKeys="true">
     insert into tb_money(money_id,seller_id,seller_name,money_yajin,money_pay,pay_status,create_time )values( #{moneyId},#{sellerId},#{sellerName},#{moneyYajin},#{moneyPay},#{payStatus},#{createTime})
     </insert>
 

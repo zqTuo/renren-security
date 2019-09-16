@@ -12,20 +12,15 @@ import io.renren.common.utils.RandomStringGenerator;
 import io.renren.common.utils.Signature;
 import io.renren.common.utils.WXPayUtil;
 import io.renren.common.validator.ValidatorUtils;
-import io.renren.entity.ProductEntity;
-import io.renren.entity.ShopOrderEntity;
-import io.renren.entity.ShopOrderItemEntity;
-import io.renren.entity.WxuserEntity;
+import io.renren.entity.*;
 import io.renren.form.PayForm;
 import io.renren.form.WechatPay;
-import io.renren.service.ProductService;
-import io.renren.service.ShopOrderItemService;
-import io.renren.service.ShopOrderService;
-import io.renren.service.WxuserService;
+import io.renren.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -59,9 +54,11 @@ public class PayController {
     @Resource
     private ShopOrderService orderService;
     @Resource
+    private MoneyService moneyService;
+  /*  @Autowired
     private ShopOrderItemService orderItemService;
-    @Resource
-    private ProductService productService;
+    @Autowired
+    private ProductService productService;*/
     @Resource
     private WxuserService wxuserService;
     @Value("${project.url_pre}")
@@ -82,20 +79,20 @@ public class PayController {
 
     @Login
     @ApiOperation(value = "微信预支付接口")
-    @PostMapping("userPay")
-    public Result<WechatPay> userPay(@RequestBody PayForm form, @ApiIgnore @RequestAttribute("userId")long userId, HttpServletRequest request){
+    @PostMapping("/userPay")
+    public Result<WechatPay> userPay(@RequestBody PayForm form, @ApiIgnore @RequestAttribute("sellerId")Long sellerId, HttpServletRequest request){
         ValidatorUtils.validateEntity(form);
 
-        ShopOrderEntity orderEntity = orderService.getOne(new QueryWrapper<ShopOrderEntity>().eq("order_no",form.getOrderNo()));
-        if(orderEntity == null){
+        MoneyEntity moneyEntity = moneyService.getOne(new QueryWrapper<MoneyEntity>().eq("money_id", form.getOrderNo()));
+        if(moneyEntity == null){
             return new Result().error("订单不存在");
         }
 
-        if(orderEntity.getOrderState() == Constant.ORDER_PAY_SUCCESS){
+        if(moneyEntity.getPayStatus()==Constant.ORDER_PAY_SUCCESS){
             return new Result().error("订单已支付成功，请勿重复支付");
         }
 
-        List<ShopOrderItemEntity> orderItemEntityList = orderItemService.list(
+     /*   List<ShopOrderItemEntity> orderItemEntityList = orderItemService.list(
                 new QueryWrapper<ShopOrderItemEntity>().eq("order_no",form.getOrderNo()));
 
         for (ShopOrderItemEntity orderItem:orderItemEntityList){
@@ -104,10 +101,10 @@ public class PayController {
                 return new Result().error(productEntity.getProductName() + "已下架！");
             }
         }
-
+*/
         log.info("预支付订单：" + form.getOrderNo());
 
-        WxuserEntity user = wxuserService.getById(userId);
+        WxuserEntity user = wxuserService.getById(sellerId);
 
         //32位随机字符串
         String noncestr = RandomStringGenerator.getRandomStringByLength(32);
@@ -121,14 +118,14 @@ public class PayController {
         String notify_url = url_pre + "/api/pay/paySuccess";
 
         //支付金额 单位 分
-        int price =  orderEntity.getOrderPrice().multiply(new BigDecimal("100")).intValue();
+        int price =  moneyEntity.getMoneyYajin().multiply(new BigDecimal("300")).intValue();
 
-        String desc = "押金支付";
-        if(orderEntity.getOrderSourceType() == 1){
+        String desc = "商家支付押金";
+        /*if(orderEntity.getOrderSourceType() == 1){
             desc = "商家支付押金";
         }else if(orderEntity.getOrderSourceType() == 2){
             desc = "支付押金";
-        }
+        }*/
 
         //支付类型
         String type = Constant.WX_PAYTYPE_FRO_WX;
@@ -203,19 +200,20 @@ public class PayController {
             return "FAIL";
         }
 
-        ShopOrderEntity order = orderService.getOne(new QueryWrapper<ShopOrderEntity>()
-                .eq("order_no",out_trade_no));
+      /*  ShopOrderEntity order = orderService.getOne(new QueryWrapper<ShopOrderEntity>()
+                .eq("order_no",out_trade_no));*/
+        MoneyEntity moneyEntity = moneyService.getOne(new QueryWrapper<MoneyEntity>().eq("money_id", out_trade_no));
 
-        if (null == order) {
+        if (null == moneyEntity) {
             log.error("找不到该订单信息：" + out_trade_no);
             return "FAIL";
         }
-        if(order.getOrderState() == Constant.ORDER_PAY_SUCCESS){
+        if(moneyEntity.getPayStatus() == Constant.ORDER_PAY_SUCCESS){
             log.error("该订单信息：已支付成功！ 微信重复回调，暂不处理：" + out_trade_no);
             return "SUCCESS";
         }
 
-        orderService.payFinished(order);
+        moneyService.payFinished(moneyEntity);
 
         log.info("=============订单：" + out_trade_no + " 微信支付完处理成功！======================");
 

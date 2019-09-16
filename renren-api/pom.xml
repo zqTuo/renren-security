@@ -17,6 +17,7 @@
 			<version>4.0.0</version>
 		</dependency>
 
+
 		<!-- AES -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
@@ -43,18 +44,24 @@
 			<artifactId>jdom</artifactId>
 			<version>1.1</version>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-            <version>1.4.0</version>
-            <scope>compile</scope>
-        </dependency>
 		<dependency>
-			<groupId>io.renren</groupId>
-			<artifactId>icode-admin</artifactId>
-			<version>4.0.0</version>
-			<scope>compile</scope>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.10</version>
 		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/xstream/xstream -->
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
 
 	</dependencies>
 

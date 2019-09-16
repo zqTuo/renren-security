@@ -9,14 +9,16 @@ import io.renren.entity.MoneyEntity;
 import io.renren.entity.SellerEntity;
 import io.renren.service.MoneyService;
 import io.renren.service.SellerService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,41 +33,30 @@ import java.util.Map;
 @RequestMapping("sys/seller")
 public class SellerController {
 
-    @Autowired
+    @Resource
     private SellerService sellerService;
     @Autowired
     private MoneyService moneyService;
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("sys:seller:list")
-    public R list(@RequestParam Map<String, Object> params) {
-        PageUtils page = sellerService.queryPage(params);
-
-        return R.ok().put("page", page);
+    public R list() {
+//        PageUtils page = sellerService.queryPage(params);
+        List<SellerEntity>sellerList=sellerService.list();
+        return R.ok().put("page", sellerList);
     }
 
 
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{sellerId}")
-    @RequiresPermissions("sys:seller:info")
-    public R info(@PathVariable("sellerId") String sellerId) {
-        SellerEntity seller = sellerService.getById(sellerId);
 
-        return R.ok().put("seller", seller);
-    }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("sys:seller:save")
     public R save(@RequestBody SellerEntity seller) {
         Long s = idWorker.nextId();
         seller.setSellerId(String.valueOf(s));
@@ -81,43 +72,11 @@ public class SellerController {
         moneyEntity.setSellerName(seller.getNickName());
         moneyEntity.setCreateTime(new Date());
         moneyEntity.setPayStatus("1");
-        moneyEntity.setMoneyYajin("300");
+        moneyEntity.setMoneyYajin(BigDecimal.valueOf(300));
         moneyService.save(moneyEntity);
         return R.ok().put("id",id);
     }
 
-    /**
-     * 修改
-     */
-    @RequestMapping("/update")
-    @RequiresPermissions("sys:seller:update")
-    public R update(@RequestBody SellerEntity seller) {
-        ValidatorUtils.validateEntity(seller);
-        sellerService.updateById(seller);
 
-        return R.ok();
-    }
-
-    /**
-     * 删除
-     */
-    @RequestMapping("/delete")
-    @RequiresPermissions("sys:seller:delete")
-    public R delete(@RequestBody String[] sellerIds) {
-        sellerService.removeByIds(Arrays.asList(sellerIds));
-
-        return R.ok();
-    }
-
-    /**
-     * 导出Excel报表
-     *错误版本
-     * @return
-     */
-    @RequestMapping(value = "/exportExcel1")
-    @RequiresPermissions("sys:seller:exportExcel1")
-    public Result exportBusinessReport(HttpServletRequest request, HttpServletResponse response) {
-        return null;
-    }
 
 }

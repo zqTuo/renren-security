@@ -1,5 +1,12 @@
 package io.renren.service.impl;
-import io.renren.modules.sys.dto.SellerDto;
+
+
+
+import io.renren.dao.SellerDao;
+import io.renren.dto.SellerDto;
+import io.renren.entity.SellerEntity;
+import io.renren.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +18,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.PageUtils;
 import io.renren.common.Query;
 
-import io.renren.modules.sys.dao.SellerDao;
-import io.renren.modules.sys.entity.SellerEntity;
-import io.renren.modules.sys.service.SellerService;
 
 
 @Service("sellerService")
 public class SellerServiceImpl extends ServiceImpl<SellerDao, SellerEntity> implements SellerService {
+
 
 
     @Override
@@ -26,7 +31,6 @@ public class SellerServiceImpl extends ServiceImpl<SellerDao, SellerEntity> impl
                 new Query<SellerEntity>().getPage(params),
                 new QueryWrapper<SellerEntity>()
         );
-        PageUtils pageUtils = new PageUtils(page);
         return new PageUtils(page);
     }
 

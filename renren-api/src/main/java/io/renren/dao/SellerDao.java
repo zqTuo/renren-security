@@ -1,8 +1,9 @@
 package io.renren.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.renren.modules.sys.dto.SellerDto;
-import io.renren.modules.sys.entity.SellerEntity;
+
+import io.renren.dto.SellerDto;
+import io.renren.entity.SellerEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

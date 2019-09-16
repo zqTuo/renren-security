@@ -18,6 +18,8 @@ public interface MoneyService extends IService<MoneyEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
 
-    boolean save(MoneyEntity entity);
+    boolean insertMoney(MoneyEntity entity);
+
+    void payFinished(MoneyEntity moneyEntity);
 }
 

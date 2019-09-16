@@ -2,9 +2,11 @@ package io.renren.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,6 +18,7 @@ import java.util.Date;
  */
 @Data
 @TableName("tb_money")
+
 public class MoneyEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +38,7 @@ public class MoneyEntity implements Serializable {
 	/**
 	 * 押金
 	 */
-	private String moneyYajin;
+	private BigDecimal moneyYajin;
 	/**
 	 * 支付方式0 微信支付 1 支付宝支付
 	 */
