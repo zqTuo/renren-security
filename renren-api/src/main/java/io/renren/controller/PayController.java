@@ -115,10 +115,10 @@ public class PayController {
         //用户OPENID
         String openid = user.getUserOpenid();
         //微信支付成功回调地址
-        String notify_url = url_pre + "/api/pay/paySuccess";
+        String notify_url = url_pre + "/icode-api/api/pay/paySuccess";
 
         //支付金额 单位 分
-        int price =  moneyEntity.getMoneyYajin().intValue();
+        int price = moneyEntity.getMoneyYajin().multiply(new BigDecimal("100")).intValue();
 
         String desc = "商家录入押金";
         /*if(orderEntity.getOrderSourceType() == 1){

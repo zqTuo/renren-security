@@ -2,7 +2,10 @@ package io.renren.service.impl;
 
 import io.renren.common.PageUtils;
 import io.renren.common.Query;
+import io.renren.common.utils.LotteryUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -26,4 +29,14 @@ public class BonusServiceImpl extends ServiceImpl<BonusDao, BonusEntity> impleme
         return new PageUtils(page);
     }
 
+    @Override
+    public void BigGame(List<BonusEntity> bonusEntityList, List<Double> orignalRates) {
+
+        int lotteryIndex = LotteryUtil.lottery(orignalRates);
+        if (lotteryIndex<0){
+            System.out.println("抽取异常："+lotteryIndex);
+        }
+        BonusEntity bonusEntity = bonusEntityList.get(lotteryIndex);
+        System.out.println(bonusEntity);
+    }
 }

@@ -1,6 +1,8 @@
 package io.renren.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.common.PageUtils;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.renren.entity.BonusEntity;
 import io.renren.service.BonusService;
 
-
+import javax.swing.*;
 
 
 /**
@@ -86,5 +88,19 @@ public class BonusController {
 
         return R.ok();
     }
+    @RequestMapping("/game")
+    public R ganme(){
+//        获取所有的奖品
+        List<BonusEntity> BonusEntityList = bonusService.list();
 
+//        获取所有奖品的概率
+        List<Double> orignalRates = new ArrayList<>();
+        for (BonusEntity bonusEntity : BonusEntityList) {
+            orignalRates.add(Double.valueOf(bonusEntity.getBonusGailv()));
+        }
+        bonusService.BigGame(BonusEntityList,orignalRates);
+
+        return R.ok();
+
+    }
 }

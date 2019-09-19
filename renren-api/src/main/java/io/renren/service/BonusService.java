@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.PageUtils;
 import io.renren.entity.BonusEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface BonusService extends IService<BonusEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void BigGame(List<BonusEntity> bonusEntityList, List<Double> orignalRates);
 }
 

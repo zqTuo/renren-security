@@ -106,7 +106,7 @@ public class SellerController {
         moneyEntity.setSellerName(seller.getNickName());
         moneyEntity.setCreateTime(new Date());
         moneyEntity.setPayStatus("1");
-        moneyEntity.setMoneyYajin(BigDecimal.valueOf(300));
+        moneyEntity.setMoneyYajin(BigDecimal.valueOf(300.00));
         moneyService.save(moneyEntity);
         wxuserService.updateSeller(seller.getSellerId(),userId);
         log.info("商家:" + seller.getSellerId() + ",押金订单生成成功：" + moneyEntity.toString());

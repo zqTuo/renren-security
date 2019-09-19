@@ -60,5 +60,14 @@ public class BonusEntity implements Serializable {
 	 * 更改人的名字
 	 */
 	private String updatemanagerName;
+	/**
+	 * 图片地址
+	 */
+	private String picUrl;
+
+	/**
+	 * 活动地址
+	 */
+	private String activityUrl;
 
 }

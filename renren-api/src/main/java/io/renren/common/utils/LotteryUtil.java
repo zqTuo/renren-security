@@ -1,4 +1,4 @@
-package com.xky;
+package io.renren.common.utils;
 
 import io.renren.entity.BonusEntity;
 
@@ -103,7 +103,12 @@ public class LotteryUtil {
 
             BonusEntity bonusEntity = bonusEntityList.get(orignalIndex);
             System.out.println("抽取奖品：" + bonusEntity.toString());
+
+
         }
+
+
     }
+
 }
 
