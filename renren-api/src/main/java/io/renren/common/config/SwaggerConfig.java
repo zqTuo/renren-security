@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.config;
+package io.renren.common.config;
 
 
 import io.swagger.annotations.ApiOperation;

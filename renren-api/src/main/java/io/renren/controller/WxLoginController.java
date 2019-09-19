@@ -11,8 +11,9 @@ package io.renren.controller;
 
 import com.alibaba.fastjson.JSONObject;
 
+import io.renren.common.config.WechatConfig;
 import io.renren.common.utils.*;
-import io.renren.config.WechatConfig;
+
 import io.renren.entity.TokenEntity;
 import io.renren.entity.WxuserEntity;
 import io.renren.service.TokenService;
@@ -92,7 +93,7 @@ public class WxLoginController {
             }
             o_url = "?url=" + o_url;
         }
-        String url = URLEncoder.encode(url_pre + "/cake-api/wx/wxAuthRedirect" + o_url,"UTF-8");
+        String url = URLEncoder.encode(url_pre + "/icode-api/wx/wxAuthRedirect" + o_url,"UTF-8");
         cotent2Aes = URLEncoder.encode(cotent2Aes,"UTF-8");
         String tourl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + wechatConfig.getWeCatAppId() + "&redirect_uri=" + url
                 + "&response_type=code&scope=snsapi_userinfo&state=" + cotent2Aes + "&connect_redirect=1#wechat_redirect";
@@ -233,6 +234,4 @@ public class WxLoginController {
         log.info("请求结果：" + resultStr);
         return JSONObject.parseObject(resultStr);
     }
-
-
 }

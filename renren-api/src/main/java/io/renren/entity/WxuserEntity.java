@@ -38,10 +38,7 @@ public class WxuserEntity implements Serializable {
 	 * 用户头像
 	 */
 	private String userHead;
-	/**
-	 * 会员等级 0：普通用户 1：会员用户
-	 */
-	private Integer userMember;
+
 	/**
 	 * openid
 	 */
@@ -58,14 +55,6 @@ public class WxuserEntity implements Serializable {
 	 * 上次登录时间
 	 */
 	private Date userLastlogintime;
-	/**
-	 * 用户手机号
-	 */
-	private String userPhone;
-	/**
-	 * 专属客服编号
-	 */
-	private String kfAccount;
 	/**
 	 * 用户状态
 	 */
@@ -86,5 +75,20 @@ public class WxuserEntity implements Serializable {
 	 * 修改管理员
 	 */
 	private String updateBy;
+	/**
+	 * 会员等级 0：普通用户 1：会员用户
+	 */
+	private Integer userMember;
+	/**
+	 * 用户手机号
+	 */
+	private String userPhone;
+/*	*
+	 * 专属客服编号*/
 
+	private String kfAccount;
+	/**
+	 * 商家ID
+	 */
+	private String sellerId;
 }

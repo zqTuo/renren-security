@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2019 炫酷游互娱 All rights reserved.
+ *
  *
  * http://www.xkygame.com
  *
@@ -13,6 +13,10 @@ import io.renren.common.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -41,6 +45,30 @@ public class RRExceptionHandler {
 	public R handleDuplicateKeyException(DuplicateKeyException e){
 		logger.error(e.getMessage(), e);
 		return R.error("数据库中已存在该记录");
+	}
+
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	public R httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e){
+		logger.error(e.getMessage());
+		return R.error(e.getMessage());
+	}
+
+	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+	public R httpMediaTypeNotSupportedException(HttpRequestMethodNotSupportedException e){
+		logger.error(e.getMessage());
+		return R.error(e.getMessage() + "，请使用application/json提交您的请求");
+	}
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public R httpMessageNotReadableException(HttpRequestMethodNotSupportedException e){
+		logger.error(e.getMessage());
+		return R.error(e.getMessage() + "，缺少参数");
+	}
+
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	public R missingServletRequestParameterException(HttpRequestMethodNotSupportedException e){
+		logger.error(e.getMessage());
+		return R.error(e.getMessage() + "，参数异常");
 	}
 
 	@ExceptionHandler(Exception.class)

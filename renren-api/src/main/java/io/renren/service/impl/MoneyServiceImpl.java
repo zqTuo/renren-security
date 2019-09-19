@@ -9,6 +9,8 @@ import io.renren.common.PageUtils;
 
 import io.renren.common.utils.Constant;
 import io.renren.dao.MoneyDao;
+import io.renren.dao.SellerDao;
+import io.renren.dao.WxuserDao;
 import io.renren.entity.MoneyEntity;
 import io.renren.entity.OrderSalesEntity;
 import io.renren.entity.SellerEntity;
@@ -19,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
@@ -27,8 +30,11 @@ import java.util.Map;
 @Service("moneyService")
 public class MoneyServiceImpl extends ServiceImpl<MoneyDao, MoneyEntity> implements MoneyService {
     private static Logger log = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-    @Autowired
+    @Resource
     private MoneyDao moneyDao;
+    @Resource
+    private SellerDao sellerDao;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<MoneyEntity> page = this.page(
@@ -52,6 +58,11 @@ public class MoneyServiceImpl extends ServiceImpl<MoneyDao, MoneyEntity> impleme
         /*order.setPayTime(new Date());*/
         moneyEntity.setPayStatus(Constant.ORDER_PAY_SUCCESS);
         baseMapper.updateById(moneyEntity);
+
+//        更新商家状态
+        SellerEntity sellerEntity =sellerDao.selectById(moneyEntity.getSellerId());
+        sellerEntity.setStatus(Constant.ORDER_PAY_SUCCESS);
+        sellerDao.updateById(sellerEntity);
 
         /*if(moneyEntity.getMoneyYajin().compareTo(new BigDecimal("0")) > 0){
             //生成流水

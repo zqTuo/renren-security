@@ -53,8 +53,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         if(StringUtils.isBlank(token)){
             token = request.getParameter("token");
         }
-
-        //token为空
+// todo 待删除 已添加新的数据
+        /*//token为空
         if(StringUtils.isBlank(token)){
             throw new RRException("token不能为空");
         }
@@ -63,6 +63,17 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         TokenEntity tokenEntity = tokenService.queryByToken(token);
         if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
             throw new RRException("token失效，请重新登录");
+        }*/
+
+        //token为空
+        if(StringUtils.isBlank(token)){
+            throw new RRException("token不能为空",-4);
+        }
+
+//查询token信息
+        TokenEntity tokenEntity = tokenService.queryByToken(token);
+        if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
+            throw new RRException("token失效，请重新登录",-4);
         }
 
         //设置userId到request里，后续根据userId，获取用户信息

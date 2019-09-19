@@ -1,4 +1,4 @@
-package io.renren.config;
+package io.renren.common.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

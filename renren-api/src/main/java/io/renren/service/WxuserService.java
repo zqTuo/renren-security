@@ -15,5 +15,7 @@ public interface WxuserService extends IService<WxuserEntity> {
     WxuserEntity selectUserByOpenId(String openid);
 
     UserDto getUserInfo(long id);
+
+    void updateSeller(String sellerId, Long userId);
 }
 

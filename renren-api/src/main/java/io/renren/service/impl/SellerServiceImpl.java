@@ -45,4 +45,6 @@ public class SellerServiceImpl extends ServiceImpl<SellerDao, SellerEntity> impl
     public void insert(SellerEntity entity) {
         baseMapper.insertSellerEntity(entity);
     }
+
+
 }

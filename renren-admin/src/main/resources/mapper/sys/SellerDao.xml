@@ -36,7 +36,6 @@
         <result property="conversionRate" column="Conversion_rate"/>
         <result property="city" column="city"/>
     </resultMap>
-    <!--根据手机号查询会员-->
     <select id="select" resultType="io.renren.modules.sys.dto.SellerDto">
         SELECT * FROM tb_seller
     </select>

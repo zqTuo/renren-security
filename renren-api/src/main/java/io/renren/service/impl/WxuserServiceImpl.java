@@ -21,4 +21,11 @@ public class WxuserServiceImpl extends ServiceImpl<WxuserDao, WxuserEntity> impl
     public UserDto getUserInfo(long id) {
         return baseMapper.getUserInfo(id);
     }
+
+    @Override
+    public void updateSeller(String sellerId, Long userId) {
+        WxuserEntity wxuserEntity = baseMapper.selectById(userId);
+        wxuserEntity.setSellerId(sellerId);
+        baseMapper.updateById(wxuserEntity);
+    }
 }

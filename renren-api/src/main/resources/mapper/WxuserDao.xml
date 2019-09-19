@@ -4,24 +4,27 @@
 <mapper namespace="io.renren.dao.WxuserDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
+    <select id="getUserInfo" resultType="io.renren.dto.UserDto"></select>
     <resultMap type="io.renren.entity.WxuserEntity" id="wxuserMap">
         <result property="id" column="id"/>
         <result property="userName" column="user_name"/>
         <result property="userHead" column="user_head"/>
-        <result property="userMember" column="user_member"/>
         <result property="userOpenid" column="user_openid"/>
         <result property="userUnionid" column="user_unionid"/>
         <result property="userLastip" column="user_lastIp"/>
         <result property="userLastlogintime" column="user_lastLoginTime"/>
-        <result property="userPhone" column="user_phone"/>
-        <result property="kfAccount" column="kf_account"/>
-        <result property="userState" column="user_state"/>
+
+
         <result property="subscribe" column="subscribe"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
         <result property="updateBy" column="update_by"/>
+        <result property="userMember" column="user_member"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userState" column="user_state"/>
+           <result property="kfAccount" column="kf_account"/>
+        <result property="sellerId" column="seller_id"/>
     </resultMap>
-    <select id="getUserInfo" resultType="io.renren.dto.UserDto"></select>
 
 
 </mapper>

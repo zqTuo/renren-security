@@ -23,5 +23,7 @@ public interface SellerService extends IService<SellerEntity> {
 
 
     void insert(SellerEntity entity);
+
+
 }
 

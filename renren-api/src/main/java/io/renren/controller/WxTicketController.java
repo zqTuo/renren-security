@@ -3,8 +3,9 @@ package io.renren.controller;
 import io.renren.annotation.Login;
 
 import io.renren.common.R;
+import io.renren.common.config.WechatConfig;
 import io.renren.common.utils.ShareSignUtil;
-import io.renren.config.WechatConfig;
+
 import io.renren.entity.JsWechatConfig;
 import io.renren.service.WechatAuthService;
 import io.swagger.annotations.Api;

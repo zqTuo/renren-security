@@ -32,3 +32,19 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+# 微信公众号
+weCat:
+  appId: wxb591ed4db0694bca
+  appSecret: 9d3487c9493ab308bc48f32e09a435bf
+  mchId: 1491029172
+  key: AABBCCDDEEFFGGHHJJKKLLMMNNOOQQPP
+  certP12: D:/cert/apiclient_cert.p12
+  accessTokenByCodeUrl: https://api.weixin.qq.com/sns/oauth2/access_token
+  userInfoUrl: https://api.weixin.qq.com/sns/userinfo
+  accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token
+  ticketUrl: https://api.weixin.qq.com/cgi-bin/ticket/getticket
+  payApi: https://api.mch.weixin.qq.com/pay/unifiedorder
+  enterprisesPay_API: https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers
+  dnbx_token: weixinMsg
+  download_media_url: http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID
+  online_kf_list: https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist

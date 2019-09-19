@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.config;
+package io.renren.common.config;
 
 import io.renren.interceptor.AuthorizationInterceptor;
 import io.renren.resolver.LoginUserHandlerMethodArgumentResolver;

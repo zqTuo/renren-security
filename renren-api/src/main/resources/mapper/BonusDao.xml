@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.BonusDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.BonusEntity" id="bonusMap">
+        <result property="bonusId" column="bonus_id"/>
+        <result property="bonusName" column="bonus_name"/>
+        <result property="bonusNum" column="bonus_num"/>
+        <result property="bonusGailv" column="bonus_gailv"/>
+        <result property="currentNum" column="current_num"/>
+        <result property="actitityId" column="actitity_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createmanagerName" column="createManager_name"/>
+        <result property="updatemanagerName" column="updateManager_name"/>
+    </resultMap>
+
+
+</mapper>

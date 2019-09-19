@@ -79,8 +79,8 @@ public class PayController {
 
     @Login
     @ApiOperation(value = "微信预支付接口")
-    @PostMapping("/userPay")
-    public Result<WechatPay> userPay(@RequestBody PayForm form, @ApiIgnore @RequestAttribute("sellerId")Long sellerId, HttpServletRequest request){
+    @PostMapping("userPay")
+    public Result<WechatPay> userPay(@RequestBody PayForm form, @ApiIgnore @RequestAttribute("userId")Long userId, HttpServletRequest request){
         ValidatorUtils.validateEntity(form);
 
         MoneyEntity moneyEntity = moneyService.getOne(new QueryWrapper<MoneyEntity>().eq("money_id", form.getOrderNo()));
@@ -104,7 +104,7 @@ public class PayController {
 */
         log.info("预支付订单：" + form.getOrderNo());
 
-        WxuserEntity user = wxuserService.getById(sellerId);
+        WxuserEntity user = wxuserService.getById(userId);
 
         //32位随机字符串
         String noncestr = RandomStringGenerator.getRandomStringByLength(32);
@@ -118,9 +118,9 @@ public class PayController {
         String notify_url = url_pre + "/api/pay/paySuccess";
 
         //支付金额 单位 分
-        int price =  moneyEntity.getMoneyYajin().multiply(new BigDecimal("300")).intValue();
+        int price =  moneyEntity.getMoneyYajin().intValue();
 
-        String desc = "商家支付押金";
+        String desc = "商家录入押金";
         /*if(orderEntity.getOrderSourceType() == 1){
             desc = "商家支付押金";
         }else if(orderEntity.getOrderSourceType() == 2){

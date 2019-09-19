@@ -22,4 +22,7 @@ public interface SellerDao extends BaseMapper<SellerEntity> {
 
 
     int insertSellerEntity(SellerEntity entity);
+
+
+
 }
