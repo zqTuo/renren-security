@@ -3,16 +3,21 @@
 
 <mapper namespace="io.renren.modules.sys.dao.ActivityDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="io.renren.modules.sys.entity.ActivityEntity" id="activityMap">
-        <id property="activityId"  column="activity_id" />
+        <id property="activityId" column="activity_id"/>
         <result property="activityName" column="activity_name"/>
         <result property="isFocus" column="is_focus"/>
         <result property="isQr" column="is_qr"/>
         <result property="activityAddress" column="activity_address"/>
     </resultMap>
-    <insert id="insertActivity" keyProperty="activityId" parameterType="io.renren.modules.sys.entity.ActivityEntity" useGeneratedKeys="true">
-        insert into tb_activity(activity_id,activity_name,is_focus,is_qr,activity_address)values ( #{activityId}, #{activityName}, #{isFocus}, #{isQr},#{activityAddress})
+    <insert id="insertActivity" keyProperty="activityId" parameterType="io.renren.modules.sys.entity.ActivityEntity"
+            useGeneratedKeys="true">
+        insert into
+         tb_activity
+        (activity_id,activity_name,is_focus,is_qr,activity_address)
+        values
+         ( #{activityId}, #{activityName}, #{isFocus}, #{isQr},#{activityAddress})
 
     </insert>
 

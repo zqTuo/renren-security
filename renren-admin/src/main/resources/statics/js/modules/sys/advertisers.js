@@ -77,29 +77,37 @@ var vm = new Vue({
 		showList: true,
         showList02: true,
         showList03: true,
+        showList04: true,
 		title: null,
 		advertisers: {},
         sellerList:{},
         activityList:{},
-        order:{orderEntity:{},orderDescEntity:[]},
+        order:{orderEntity:{},orderDescEntity:[],bonus:{}},
         entity:{},
+        bonusEntity:{},
         advertisersList:{},
 
 	},
 	methods: {
+        //向orderDescEntity数组中添加一个对象
         addOrderDesc_Entity:function () {
-            //向数组中添加一个对象
             this.order.orderDescEntity.push(this.entity);
         },
 
+        //向orderDescEntity数组中删除一个对象
         removeOrderDesc_Entity:function (index) {
-            //向数组中添加一个对象
             this.order.orderDescEntity.splice(index, 1);
+        },
+        //往订单池里面添加一个对象
+        addOrderBonus :function () {
+            this.order.bonus = this.bonusEntity
+           this.reloadAddCode()
         },
 		query: function () {
 			vm.reload();
 		},
 		add: function(){
+
 			vm.showList = false;
 			vm.showList03 = false;
 
@@ -178,18 +186,38 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList03 = true;
 			vm.showList=true
+            vm.showList02=true
+            vm.showList04=true
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
 		},
+        //设置二维码
         QrCode:function () {
+            order:{}
             vm.showList02 = false;
             vm.showList03 = false;
             vm.title = "生成二维码";
             this.findAllSeller();
             this.findAllActivity();
             this.findAllAdvertisers();
+        },
+        //设置奖品
+        Bonus:function(){
+
+            vm.showList=true;
+            vm.showList02 = true;
+            vm.showList03 = false;
+            vm.showList04 = false;
+            vm.title = "设置奖品";
+        },
+        //返回到生成二维码页面
+        reloadAddCode: function (event) {
+            vm.showList03 = false;
+            vm.showList = true
+            vm.showList02 = false
+            vm.showList04 = true
         },
         addQrCode:function () {
             axios.post('/icode-admin/sys/advertisers/QrCode',this.order).then(function (r) {
@@ -201,6 +229,7 @@ var vm = new Vue({
                 }
             })
         },
+        //查询所有的商家
         findAllSeller:function () {
             axios.get('/icode-admin/sys/seller/list').then(function (response) {
 
@@ -212,6 +241,7 @@ var vm = new Vue({
                 console.log("1231312131321");
             });
         },
+        //查询所有的活动
         findAllActivity:function () {
             axios.get('/icode-admin/sys/activity/list').then(function (response) {
 
@@ -221,6 +251,7 @@ var vm = new Vue({
                 console.log("1231312131321");
             });
         },
+        //查询所有的广告主id
         findAllAdvertisers:function () {
             axios.get('/icode-admin/sys/advertisers/list').then(function (response) {
 

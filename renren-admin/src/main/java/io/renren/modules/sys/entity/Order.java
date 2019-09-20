@@ -1,41 +1,17 @@
 package io.renren.modules.sys.entity;
 
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
-
+@Data
 public class Order implements Serializable {
+
     private OrderEntity orderEntity;
+
     private List<OrderDescEntity> orderDescEntity;
+    @NotBlank(message="奖品不能为空")
+    private BonusEntity bonusEntity;
 
-    public Order() {
-    }
-
-    public Order(OrderEntity orderEntity, List<OrderDescEntity> orderDescEntity) {
-        this.orderEntity = orderEntity;
-        this.orderDescEntity = orderDescEntity;
-    }
-
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
-    }
-
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
-    }
-
-    public List<OrderDescEntity> getOrderDescEntity() {
-        return orderDescEntity;
-    }
-
-    public void setOrderDescEntity(List<OrderDescEntity> orderDescEntity) {
-        this.orderDescEntity = orderDescEntity;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderEntity=" + orderEntity +
-                ", orderDescEntity=" + orderDescEntity +
-                '}';
-    }
 }

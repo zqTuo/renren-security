@@ -5,8 +5,10 @@ import io.renren.common.Query;
 import io.renren.common.utils.LotteryUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -30,13 +32,23 @@ public class BonusServiceImpl extends ServiceImpl<BonusDao, BonusEntity> impleme
     }
 
     @Override
-    public void BigGame(List<BonusEntity> bonusEntityList, List<Double> orignalRates) {
+    public BonusEntity BigGame(List<BonusEntity> bonusEntityList) {
+
+//        循环获得每一个奖品的概率
+        List<Double> orignalRates = new ArrayList<>();
+        for (BonusEntity bonusEntity : bonusEntityList) {
+            orignalRates.add(Double.valueOf(bonusEntity.getBonusGailv()));
+        }
 
         int lotteryIndex = LotteryUtil.lottery(orignalRates);
-        if (lotteryIndex<0){
-            System.out.println("抽取异常："+lotteryIndex);
+        if (lotteryIndex < 0) {
+            throw new RuntimeException("抽取异常:" + lotteryIndex);
         }
+//        更新数量并减一
         BonusEntity bonusEntity = bonusEntityList.get(lotteryIndex);
-        System.out.println(bonusEntity);
+        bonusEntity.setBonusNum(bonusEntity.getBonusNum()-1);
+        baseMapper.updateById(bonusEntity);
+        return bonusEntity;
+
     }
 }

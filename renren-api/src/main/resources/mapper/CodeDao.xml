@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.CodeDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.CodeEntity" id="codeMap">
+            <result property="qrcodeId" column="qrCode_id"/>
+        <result property="advertisersId" column="advertisers_id"/>
+        <result property="sellerId" column="seller_id"/>
+        <result property="activityId" column="activity_id"/>
+        <result property="activityType" column="activity_type"/>
+        <result property="isFocus" column="is_focus"/>
+        <result property="isQr" column="is_qr"/>
+        <result property="codeUser" column="code_user"/>
+        <result property="orderId" column="order_id"/>
+        <result property="orderdescId" column="orderDesc_id"/>
+        <result property="sellerName" column="seller_name"/>
+        <result property="advertisersName" column="advertisers_name"/>
+        <result property="activityName" column="activity_name"/>
+    </resultMap>
+    <insert id="insertCodeEntity" keyProperty="codeId" parameterType="io.renren.entity.CodeEntity" useGeneratedKeys="true">
+        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id,seller_name,advertisers_name,activity_name)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId},#{sellerName},#{advertisersName},#{activityName})
+    </insert>
+
+</mapper>

@@ -53,17 +53,6 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         if(StringUtils.isBlank(token)){
             token = request.getParameter("token");
         }
-// todo 待删除 已添加新的数据
-        /*//token为空
-        if(StringUtils.isBlank(token)){
-            throw new RRException("token不能为空");
-        }
-
-        //查询token信息
-        TokenEntity tokenEntity = tokenService.queryByToken(token);
-        if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
-            throw new RRException("token失效，请重新登录");
-        }*/
 
         //token为空
         if(StringUtils.isBlank(token)){

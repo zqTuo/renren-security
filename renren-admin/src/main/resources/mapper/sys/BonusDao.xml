@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="io.renren.dao.BonusDao">
+<mapper namespace="io.renren.modules.sys.dao.BonusDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="io.renren.entity.BonusEntity" id="bonusMap">
+    <resultMap type="io.renren.modules.sys.entity.BonusEntity" id="bonusMap">
         <result property="bonusId" column="bonus_id"/>
         <result property="bonusName" column="bonus_name"/>
         <result property="bonusNum" column="bonus_num"/>
@@ -18,6 +18,13 @@
         <result property="picUrl" column="pic_url"/>
         <result property="activityUrl" column="activity_url"/>
     </resultMap>
+    <insert id="insertBonusEntity" keyProperty="bonusId" parameterType="io.renren.modules.sys.entity.BonusEntity" useGeneratedKeys="true">
+        insert into
+        tb_bonus
+        (bonus_id, bonus_name, bonus_num, bonus_gailv, current_num, order_id, create_time, update_time, createManager_name, updateManager_name, pic_url, activity_url)
+        values
+        (#{bonusId}, #{bonusName}, #{bonusNum}, #{bonusGailv}, #{currentNum}, #{orderId}, #{createTime}, #{updateTime}, #{createmanagerName}, #{updatemanagerName}, #{picUrl}, #{activityUrl})
+    </insert>
 
 
 </mapper>

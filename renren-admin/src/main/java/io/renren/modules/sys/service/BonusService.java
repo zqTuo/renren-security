@@ -1,8 +1,8 @@
-package io.renren.service;
+package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.PageUtils;
-import io.renren.entity.BonusEntity;
+import io.renren.modules.sys.entity.BonusEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,5 @@ public interface BonusService extends IService<BonusEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    BonusEntity BigGame(List<BonusEntity> bonusEntityList);
 }
 

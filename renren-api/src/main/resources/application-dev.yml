@@ -57,8 +57,8 @@ project:
 weCat:
   appId: wxb591ed4db0694bca
   appSecret: 8c4002c3e6a8ce14e898b0ea756ae119
-  mchId: "1491029172"
-  key: "AABBCCDDEEFFGGHHJJKKLLMMNNOOQQPP"
+  mchId: 1228665102
+  key: AABBCCDDEEFFGGHHJJKKLLMMNNOOQQPP
   certP12: D:/cert/apiclient_cert.p12
   accessTokenByCodeUrl: https://api.weixin.qq.com/sns/oauth2/access_token
   userInfoUrl: https://api.weixin.qq.com/sns/userinfo

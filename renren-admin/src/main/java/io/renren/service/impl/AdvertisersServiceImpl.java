@@ -3,6 +3,7 @@ package io.renren.service.impl;
 import io.renren.common.IdWorker;
 import io.renren.modules.sys.dao.*;
 import io.renren.modules.sys.entity.*;
+import io.renren.modules.sys.service.BonusService;
 import io.renren.modules.sys.thread.createCodeThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ import io.renren.common.PageUtils;
 import io.renren.common.Query;
 
 import io.renren.modules.sys.service.AdvertisersService;
+
+import javax.validation.constraints.NotBlank;
 
 
 @Service("advertisersService")
@@ -32,6 +35,8 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     private ActivityDao activityDao;
     @Autowired
     private SellerDao sellerDao;
+    @Autowired
+    private BonusDao bonusDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -49,7 +54,8 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     }
 
     @Override
-    public  void createQrCode(Order order) {
+    public void createQrCode(Order order) {
+
 
 
         OrderEntity orderEntity = order.getOrderEntity();
@@ -59,6 +65,15 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         orderEntity.setCreateTime(new Date());
         orderEntity.setAdvertisersId("0");
         orderDao.insertOrderEntity(orderEntity);
+
+        //        向奖品表提交数据
+        BonusEntity bonusEntity = order.getBonusEntity();
+        bonusEntity.setBonusId(idWorker.nextId());
+        bonusEntity.setCurrentNum(bonusEntity.getBonusNum());
+        bonusEntity.setCreateTime(new Date());
+        bonusEntity.setOrderId(orderEntity.getOrderId());
+        bonusDao.insertBonusEntity(bonusEntity);
+
 
 //       向订单详情表里面插入一条数据
         List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
@@ -71,7 +86,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
             String sellerName = descEntity.getSellerName();
 
             HashMap<String, Object> map = new HashMap<>();
-            map.put("nick_name",sellerName);
+            map.put("nick_name", sellerName);
             QueryWrapper<SellerEntity> wrapper = new QueryWrapper<>();
 
             wrapper.allEq(map);
@@ -99,7 +114,6 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setSellerName(descEntity.getSellerName());
                 codeEntity.setAdvertisersName("炫酷游互娱有限公司");
                 codeEntity.setActivityName(activityEntity.getActivityName());
-
 
 
                 codeThread.handleCode(codeEntity);

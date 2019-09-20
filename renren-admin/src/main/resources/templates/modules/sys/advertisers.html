@@ -231,7 +231,7 @@
             <th class="sorting">数量</th>
         </thead>
         <tbody>
-        {{order.orderDescEntity}}
+        {{order}}
         <tr v-for="(orderDesc,index) in order.orderDescEntity">
             <td> <button type="button" class="btn btn-default" title="删除" @click="removeOrderDesc_Entity(index)"><i class="fa fa-trash-o"></i> 删除</button></td>
             <td>
@@ -283,12 +283,71 @@
             <div class="col-sm-2 control-label"></div>
             <input type="button" class="btn btn-primary" data-loading-text="保存中..."
                    @click="addOrderDesc_Entity();entity={}" value="确定"/>
+
+            &nbsp;&nbsp;<input type="button" class="btn btn-primary"
+                               @click="Bonus()" value="设置奖品"/>
+
             &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label"></div>
             <input type="button" class="btn btn-primary"  data-loading-text="保存中..."
                    @click="addQrCode()" value="生成二维码"/>
+        </div>
+    </form>
+</div>
+<div v-show="!showList04" class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <form class="form-horizontal">
+        {{bonusEntity}}
+        <div class="form-group">
+            <div class="col-sm-2 control-label">奖品名字</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.bonusName" placeholder="奖品名字"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">奖品数量</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.bonusNum" placeholder="奖品数量"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">中奖的概率</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.bonusGailv" placeholder="中奖的概率"/>
+            </div>
+        </div>
+      <!--  <div class="form-group">
+            <div class="col-sm-2 control-label">剩余的当前数量</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.currentNum" placeholder="剩余的当前数量"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">活动id</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.actitityId" placeholder="活动id"/>
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">创建人的名字</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.createmanagerName" placeholder="创建人的名字"/>
+            </div>
+        </div>
+     <!--   <div class="form-group">
+            <div class="col-sm-2 control-label">更改人的名字</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="bonusEntity.updatemanagerName" placeholder="更改人的名字"/>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary"  data-loading-text="保存中..." @click="addOrderBonus()" value="确定"/>
+           <input type="button" class="btn btn-warning" @click="reloadAddCode()" value="返回"/>
         </div>
     </form>
 </div>

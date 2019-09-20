@@ -46,11 +46,18 @@ redis:
       max-idle: 10      # 连接池中的最大空闲连接
       min-idle: 5       # 连接池中的最小空闲连接
 
+# 项目配置
+project:
+  url_pre: http://pip.maojimall.com
+  pic_pre: http://pip.maojimall.com/images/
+  video_pre: http://pip.maojimall.com/mv/
+
+
 # 微信公众号
 weCat:
-  appId: wxb591ed4db0694bca
+  appId: wxf4d001ffdd52ce54
   appSecret: 9d3487c9493ab308bc48f32e09a435bf
-  mchId: 1491029172
+  mchId: 1228665102
   key: AABBCCDDEEFFGGHHJJKKLLMMNNOOQQPP
   certP12: D:/cert/apiclient_cert.p12
   accessTokenByCodeUrl: https://api.weixin.qq.com/sns/oauth2/access_token

@@ -30,7 +30,7 @@ public class LotteryUtil {
         List<Double> sortOrignalRates = new ArrayList<Double>(size);
         Double tempSumRate = 0d;
         for (double rate : orignalRates) {
-            tempSumRate+= rate;
+            tempSumRate += rate;
             sortOrignalRates.add(tempSumRate / sumRate);
         }
 
@@ -72,43 +72,5 @@ public class LotteryUtil {
 
         return sortOrignalRates.indexOf(nextDouble);
     }
-
-    public static void main(String[] args) {
-        List<BonusEntity> bonusEntityList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            BonusEntity bonusEntity = new BonusEntity();
-            bonusEntity.setBonusId(Long.valueOf((i+1)));
-            bonusEntity.setBonusName("奖品" + (i+1));
-            bonusEntity.setBonusGailv(String.valueOf(20 * i));
-            bonusEntityList.add(bonusEntity);
-        }
-
-        List<Double> orignalRates = new ArrayList<>();
-
-        for(BonusEntity bonusEntity:bonusEntityList){
-            orignalRates.add(Double.valueOf(bonusEntity.getBonusGailv()));
-        }
-
-
-
-
-        for (int i = 0; i < 5; i++) {
-            //从中抽取 获取奖品索引
-            int orignalIndex = LotteryUtil.lottery(orignalRates); //抽到的奖品索引
-
-            if(orignalIndex < 0){
-                System.out.println("抽取异常：" + orignalIndex);
-                break;
-            }
-
-            BonusEntity bonusEntity = bonusEntityList.get(orignalIndex);
-            System.out.println("抽取奖品：" + bonusEntity.toString());
-
-
-        }
-
-
-    }
-
 }
 
