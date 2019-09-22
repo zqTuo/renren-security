@@ -14,6 +14,13 @@
         <result property="actitityName" column="actitity_name"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
+    <insert id="addBonusLogEntity" keyProperty="blId" parameterType="io.renren.entity.BonusLogEntity" useGeneratedKeys="true">
+        insert into
+        tb_bonus_log
+        (blId,userId,qrCode,bonusId,bonusName,status,actitityName,createTime)
+        values
+        ( #{bl_id},#{user_id},#{qr_code},#{bonus_id},#{bonus_name},#{status},#{actitity_name},#{create_time})
+    </insert>
 
 
 </mapper>

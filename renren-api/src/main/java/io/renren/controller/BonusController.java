@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import io.renren.Result.Result;
 import io.renren.annotation.Login;
 import io.renren.common.PageUtils;
 import io.renren.common.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.entity.CodeEntity;
+import io.renren.service.BonusLogService;
 import io.renren.service.CodeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +42,8 @@ public class BonusController {
     private BonusService bonusService;
     @Autowired
     private CodeService codeService;
+    @Autowired
+    private BonusLogService bonusLogService;
 
     /**
      * 列表
@@ -95,35 +99,41 @@ public class BonusController {
 
     @Login
     @ApiOperation(value = "大转盘活动接口")
-    @GetMapping("game")
+    @PostMapping("game")
 //         待传参数  二维码id  客户id
-    public R ganme(@RequestParam("qrCodeId") Long qrCodeId, @ApiIgnore @RequestAttribute("userId") Long userId) {
+    public Result game(@RequestBody CodeEntity code, @ApiIgnore @RequestAttribute("userId") Long userId) {
 
         try {
 //        根据二维码id查询  该为二维码是否存在
-            CodeEntity codeEntity = codeService.getOne(new QueryWrapper<CodeEntity>().eq("qrCode_id", qrCodeId));
+            CodeEntity codeEntity = codeService.getOne(new QueryWrapper<CodeEntity>().eq("qrCode_id", code.getQrcodeId()));
             if (codeEntity == null) {
-                return new R().error("订单不存在");
+                return new Result().error("订单不存在");
             }
 //        判断该二维码是否已经被扫过  0: 未扫过的 1:已经扫过的了
             if (codeEntity.getIsQr().equals("1")) {
-                return new R().error("该二维码已经被扫过了");
+                return new Result().error("该二维码已经被扫过了");
             }
 
 
 //        获取改订单下所有的奖品
             List<BonusEntity> BonusEntityList = bonusService.list(new QueryWrapper<BonusEntity>().eq("order_id", codeEntity.getOrderId()));
 
-            BonusEntity bonusEntity = bonusService.BigGame(BonusEntityList);
+            BonusEntity bonusEntity = bonusService.BigGame(BonusEntityList,userId,codeEntity);
+
+            if (bonusEntity==null) {
+                return new Result().error("获取奖品失败 请稍候再试");
+            }
 
 //          把二维码设置已扫码状态
             codeEntity.setIsQr("1");
             codeEntity.setCodeUser(String.valueOf(userId));
             codeService.saveOrUpdate(codeEntity);
-            return R.ok().put("bonusEntity", bonusEntity);
+
+
+            return new Result().ok( bonusEntity);
         } catch (Exception e) {
             e.printStackTrace();
-            return R.error(e.getMessage());
+            return new Result().error(e.getMessage());
         }
     }
 }

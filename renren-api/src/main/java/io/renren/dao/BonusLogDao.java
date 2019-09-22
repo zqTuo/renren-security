@@ -13,5 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface BonusLogDao extends BaseMapper<BonusLogEntity> {
-	
+
+    void addBonusLogEntity(BonusLogEntity bonusLogEntity);
 }

@@ -82,9 +82,9 @@ var vm = new Vue({
 		advertisers: {},
         sellerList:{},
         activityList:{},
-        order:{orderEntity:{},orderDescEntity:[],bonus:{}},
+        order:{orderEntity:{},orderDescEntity:[],bonusEntity:{}},
         entity:{},
-        bonusEntity:{},
+        bonus:{},
         advertisersList:{},
 
 	},
@@ -100,7 +100,7 @@ var vm = new Vue({
         },
         //往订单池里面添加一个对象
         addOrderBonus :function () {
-            this.order.bonus = this.bonusEntity
+            this.order.bonusEntity = this.bonus
            this.reloadAddCode()
         },
 		query: function () {

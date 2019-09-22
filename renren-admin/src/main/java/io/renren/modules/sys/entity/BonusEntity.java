@@ -24,7 +24,7 @@ public class BonusEntity implements Serializable {
 	 * 
 	 */
 	@TableId
-	private Long bonusId;
+	private String bonusId;
 	/**
 	 * 奖品名字
 	 */

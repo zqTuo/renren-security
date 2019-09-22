@@ -11,7 +11,7 @@ public class Order implements Serializable {
     private OrderEntity orderEntity;
 
     private List<OrderDescEntity> orderDescEntity;
-    @NotBlank(message="奖品不能为空")
+
     private BonusEntity bonusEntity;
 
 }

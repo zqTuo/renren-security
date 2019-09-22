@@ -68,7 +68,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
 
         //        向奖品表提交数据
         BonusEntity bonusEntity = order.getBonusEntity();
-        bonusEntity.setBonusId(idWorker.nextId());
+        bonusEntity.setBonusId(String.valueOf(id));
         bonusEntity.setCurrentNum(bonusEntity.getBonusNum());
         bonusEntity.setCreateTime(new Date());
         bonusEntity.setOrderId(orderEntity.getOrderId());
