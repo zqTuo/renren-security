@@ -54,6 +54,7 @@ var vm = new Vue({
 		title: null,
 		order: {},
         bonus:{},
+        orderId:null,
         detailList:[]
 	},
 	methods: {
@@ -76,13 +77,14 @@ var vm = new Vue({
             vm.getInfo(orderId)
 		},
 		saveOrUpdate: function (event) {
+            vm.bonus.add(vm.orderId)
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
-                var url = vm.order.orderId == null ? "sys/order/save" : "sys/order/update";
+                var url = vm.bonus.bonusId == null ? "sys/bonus/save" : "sys/bonus/update";
                 $.ajax({
                     type: "POST",
                     url: baseURL + url,
                     contentType: "application/json",
-                    data: JSON.stringify(vm.order),
+                    data: JSON.stringify(vm.bonus),
                     success: function(r){
                         if(r.code === 0){
                              layer.msg("操作成功", {icon: 1});
@@ -140,7 +142,11 @@ var vm = new Vue({
             });
         },
         addBonus:function(){
-
+            var orderId = getSelectedRow();
+            if(orderId == null){
+                return ;
+            }
+            vm.orderId=orderId
             vm.showList02 = false;
             vm.showList01= true,
                 vm.title = "新增";
@@ -154,12 +160,14 @@ var vm = new Vue({
             vm.showList01= true,
             vm.showList02 = false;
             vm.title = "查看";
-
+            vm.orderId=orderId
             vm.findBonusById(orderId)
         },
 
 		reload: function (event) {
 			vm.showList01 = false;
+            vm.showList02 = true;
+
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
