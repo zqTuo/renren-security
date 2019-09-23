@@ -82,7 +82,7 @@ var vm = new Vue({
 		advertisers: {},
         sellerList:{},
         activityList:{},
-        order:{orderEntity:{},orderDescEntity:[],bonusEntity:{}},
+        order:{orderEntity:{},orderDescEntity:[],bonusEntity:[]},
         entity:{},
         bonus:{},
         advertisersList:{},
@@ -98,11 +98,11 @@ var vm = new Vue({
         removeOrderDesc_Entity:function (index) {
             this.order.orderDescEntity.splice(index, 1);
         },
-        //往订单池里面添加一个对象
+/*        //往订单池里面添加一个对象
         addOrderBonus :function () {
-            this.order.bonusEntity = this.bonus
+            this.order.bonusEntity.push(this.bonus)
            this.reloadAddCode()
-        },
+        },*/
 		query: function () {
 			vm.reload();
 		},
@@ -262,6 +262,6 @@ var vm = new Vue({
             });
         }
 
-    },
+    }
 
 });

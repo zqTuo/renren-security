@@ -136,4 +136,15 @@ public class BonusController {
             return new Result().error(e.getMessage());
         }
     }
+    @Login
+    @ApiOperation(value = "根据订单id查询奖品")
+    @GetMapping("findActivityByCode/{codeId}")
+    public Result findBonusByCodeId(@PathVariable String codeId){
+//        传过来一个二维码id  根据这个id去查找 相对应的订单的下的活动内容
+        CodeEntity codeEntity = codeService.getOne(new QueryWrapper<CodeEntity>().eq("qrCode_id", codeId));
+
+        List<BonusEntity> bonusEntities = bonusService.list(new QueryWrapper<BonusEntity>().eq("order_id", codeEntity.getOrderId()));
+
+        return new Result().ok(bonusEntities);
+    }
 }

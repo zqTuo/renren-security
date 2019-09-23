@@ -49,8 +49,11 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		showList: true,
+		showList01: false,
+		showList02: true,
 		title: null,
 		order: {},
+        bonus:{},
         detailList:[]
 	},
 	methods: {
@@ -130,8 +133,33 @@ var vm = new Vue({
                 vm.detailList = r.detailList;
             });
 		},
+        findBonusById: function(orderId){
+            $.get(baseURL + "sys/bonus/findBonusById/"+orderId, function(r){
+                vm.bonus = r.bonus;
+
+            });
+        },
+        addBonus:function(){
+
+            vm.showList02 = false;
+            vm.showList01= true,
+                vm.title = "新增";
+            vm.order = {};
+        },
+        updateBonus:function(event){
+            var orderId = getSelectedRow();
+            if(orderId == null){
+                return ;
+            }
+            vm.showList01= true,
+            vm.showList02 = false;
+            vm.title = "查看";
+
+            vm.findBonusById(orderId)
+        },
+
 		reload: function (event) {
-			vm.showList = true;
+			vm.showList01 = false;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page

@@ -15,7 +15,7 @@ var vm = new Vue({
         navTitle:"欢迎页"
 	},
     methods: {
-        donate: function () {
+      /*  donate: function () {
             layer.open({
                 type: 2,
                 title: false,
@@ -24,7 +24,7 @@ var vm = new Vue({
                 shadeClose: false,
                 content: ['http://cdn.renren.io/donate.jpg', 'no']
             });
-        }
+        }*/
     }
 });
 

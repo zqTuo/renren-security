@@ -71,6 +71,10 @@ public class CodeEntity implements Serializable {
 	* 活动名字
 	* */
 	private String activityName;
+	/*
+	 * 活动地址
+	 * */
+	private String activityUrl;
 
 
 }

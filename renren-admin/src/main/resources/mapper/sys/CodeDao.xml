@@ -18,9 +18,10 @@
         <result property="sellerName" column="seller_name"/>
         <result property="advertisersName" column="advertisers_name"/>
         <result property="activityName" column="activity_name"/>
+        <result property="activityUrl" column="activity_url"/>
     </resultMap>
     <insert id="insertCodeEntity" keyProperty="codeId" parameterType="io.renren.modules.sys.entity.CodeEntity" useGeneratedKeys="true">
-        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id,seller_name,advertisers_name,activity_name)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId},#{sellerName},#{advertisersName},#{activityName})
+        insert into tb_code ( qrCode_id, advertisers_id, seller_id, activity_id, activity_type, is_focus, is_qr, code_user, order_id, orderDesc_id,seller_name,advertisers_name,activity_name,activity_url)values ( #{qrcodeId}, #{advertisersId}, #{sellerId}, #{activityId}, #{activityType}, #{isFocus}, #{isQr}, #{codeUser}, #{orderId}, #{orderdescId},#{sellerName},#{advertisersName},#{activityName},#{activityUrl})
     </insert>
 
 </mapper>

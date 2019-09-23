@@ -114,6 +114,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setSellerName(descEntity.getSellerName());
                 codeEntity.setAdvertisersName("炫酷游互娱有限公司");
                 codeEntity.setActivityName(activityEntity.getActivityName());
+                codeEntity.setActivityUrl("http://pip.maojimall.com/v1/?r="+codeEntity.getQrcodeId());
 
 
                 codeThread.handleCode(codeEntity);

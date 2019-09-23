@@ -34,7 +34,7 @@ public class createCodeThread {
             String codeId = codeEntity.getQrcodeId();
             codeDao.insertCodeEntity(codeEntity);
             System.out.println("qrcodeId::"+codeId);
-            String text ="www.baidu.com?"+codeId;
+            String text =codeEntity.getActivityUrl();
 
             QRCodeUtil.encode(text, "C:\\Users\\XKY\\Pictures\\Screenshots\\qq.png", "D:\\aaa", true, codeId+"",0);
         } catch (Exception e) {
