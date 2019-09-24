@@ -12,6 +12,6 @@ public class Order implements Serializable {
 
     private List<OrderDescEntity> orderDescEntity;
 
-    private BonusEntity bonusEntity;
+
 
 }

@@ -66,15 +66,6 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         orderEntity.setAdvertisersId("0");
         orderDao.insertOrderEntity(orderEntity);
 
-        //        向奖品表提交数据
-        BonusEntity bonusEntity = order.getBonusEntity();
-        bonusEntity.setBonusId(String.valueOf(id));
-        bonusEntity.setCurrentNum(bonusEntity.getBonusNum());
-        bonusEntity.setCreateTime(new Date());
-        bonusEntity.setOrderId(orderEntity.getOrderId());
-        bonusDao.insertBonusEntity(bonusEntity);
-
-
 //       向订单详情表里面插入一条数据
         List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
         for (OrderDescEntity descEntity : orderDescEntity) {
@@ -110,7 +101,7 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
                 codeEntity.setOrderId(Long.valueOf(descEntity.getOrderId()));
                 codeEntity.setOrderdescId(Long.valueOf(descEntity.getId()));
                 codeEntity.setIsFocus(activityEntity.getIsFocus());
-                codeEntity.setIsQr(activityEntity.getIsQr());
+
                 codeEntity.setSellerName(descEntity.getSellerName());
                 codeEntity.setAdvertisersName("炫酷游互娱有限公司");
                 codeEntity.setActivityName(activityEntity.getActivityName());

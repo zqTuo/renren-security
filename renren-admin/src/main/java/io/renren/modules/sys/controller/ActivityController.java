@@ -61,6 +61,8 @@ public class ActivityController {
     @RequestMapping("/save")
     @RequiresPermissions("sys:activity:save")
     public R save(@RequestBody ActivityEntity activity){
+        //校验类型
+        ValidatorUtils.validateEntity(activity);
         IdWorker idworker=new IdWorker(0,1);
         String s = idworker.nextId() + "";
         activity.setActivityId(s);

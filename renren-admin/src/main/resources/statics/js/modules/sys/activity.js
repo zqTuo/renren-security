@@ -13,14 +13,14 @@ $(function () {
                         return "<span class='label label-danger radius'>否</span>";
                     }
                 } },
-			{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 , formatter:function (cellValue) {
+			/*{ label: '是否扫码', name: 'isQr', index: 'is_qr', width: 80 , formatter:function (cellValue) {
                     if(cellValue === 1){
                         return "<span class='label label-success radius'>是</span>";
                     }else{
                         return "<span class='label label-danger radius'>否</span>";
                     }
                 } },
-
+*/
         ],
 		viewrecords: true,
         height: 385,

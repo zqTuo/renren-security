@@ -1,6 +1,7 @@
 package io.renren.modules.sys.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -62,6 +63,8 @@ public class BonusController {
     @RequestMapping("/save")
     @RequiresPermissions("sys:bonus:save")
     public R save(@RequestBody BonusEntity bonus){
+        //校验类型
+        ValidatorUtils.validateEntity(bonus);
         bonusService.save(bonus);
 
         return R.ok();
@@ -92,11 +95,11 @@ public class BonusController {
 
 //    根据订单id查询奖品
     @RequestMapping("/findBonusById/{orderId}")
-    @RequiresPermissions("sys:bonus:info")
-    public R findBonusById(@PathVariable("bonusId") Long orderId){
-        BonusEntity bonus = bonusService.getOne(new QueryWrapper<BonusEntity>().eq("order_id",orderId));
+    @RequiresPermissions("sys:bonus:orderId")
+    public R findBonusById(@PathVariable("orderId") String orderId){
+        List<BonusEntity> entityList = bonusService.list(new QueryWrapper<BonusEntity>().eq("order_id", orderId));
 
-        return R.ok().put("bonus", bonus);
+        return R.ok().put("bonus", entityList);
     }
 
 }

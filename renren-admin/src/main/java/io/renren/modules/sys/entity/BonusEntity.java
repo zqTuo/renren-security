@@ -77,7 +77,7 @@ public class BonusEntity implements Serializable {
 	/**
 	 * 活动地址
 	 */
-	@NotBlank(message="活动地址不能为空")
+
 	private String activityUrl;
 
 }
