@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 @Data
 public class Order implements Serializable {
+    private Long num;
 
     private OrderEntity orderEntity;
 

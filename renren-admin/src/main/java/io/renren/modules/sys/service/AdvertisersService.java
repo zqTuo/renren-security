@@ -23,5 +23,7 @@ public interface AdvertisersService extends IService<AdvertisersEntity> {
 
 
     void createQrCode(Order orderEntity);
+
+    void createQrCodeByNum(Order order, Long num);
 }
 

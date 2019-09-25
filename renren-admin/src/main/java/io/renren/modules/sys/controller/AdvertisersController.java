@@ -103,8 +103,11 @@ public class AdvertisersController {
 //    批量生成二维码
     @RequestMapping("/QrCode")
     @RequiresPermissions("sys:advertisers:QrCode")
-    public R QrCode(@RequestBody Order order ) {
+    public R QrCode(@RequestBody Order order,@RequestParam Long num) {
 
+        if (num!= null && num>0) {
+            advertisersService.createQrCodeByNum(order,num);
+        }
         advertisersService.createQrCode(order);
         return R.ok();
     }

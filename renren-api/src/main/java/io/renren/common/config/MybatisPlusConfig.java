@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.config;
+package io.renren.common.config;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;

@@ -3,8 +3,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/icode_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: root
+      url: jdbc:mysql://localhost:6034/icode_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: lotterydb
       password: 2710482
       initial-size: 10
       max-active: 100
@@ -34,9 +34,9 @@ spring:
             multi-statement-allow: true
 
 redis:
-  database: 0
+  database: 1
   host: localhost
-  port: 6379
+  port: 9988
   password: 2710482     # 密码（默认为空）
   timeout: 6000ms  # 连接超时时长（毫秒）
   jedis:
@@ -48,9 +48,9 @@ redis:
 
 # 项目配置
 project:
-  url_pre: http://pip.maojimall.com
-  pic_pre: http://pip.maojimall.com/images/
-  video_pre: http://pip.maojimall.com/mv/
+  url_pre: http://icode.maojimall.com
+  pic_pre: http://icode.maojimall.com/images/
+  video_pre: http://icode.maojimall.com/mv/
 
 
 # 微信公众号

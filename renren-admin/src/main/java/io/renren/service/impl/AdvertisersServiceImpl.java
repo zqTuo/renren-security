@@ -35,8 +35,6 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
     private ActivityDao activityDao;
     @Autowired
     private SellerDao sellerDao;
-    @Autowired
-    private BonusDao bonusDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -116,4 +114,44 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         codeThread.createZip(orderEntity);
     }
 
+    @Override
+    public void createQrCodeByNum(Order order, Long num) {
+
+        OrderEntity orderEntity = order.getOrderEntity();
+        long id = idWorker.nextId();
+//        向订单表里面插入一条数据
+        orderEntity.setOrderId(String.valueOf(id));
+        orderEntity.setCreateTime(new Date());
+        orderEntity.setAdvertisersId(orderEntity.getAdvertisersId());
+        orderDao.insertOrderEntity(orderEntity);
+
+//        向订单详情表里面插入一条数据
+        List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
+        for (OrderDescEntity descEntity : orderDescEntity) {
+            long id2 = idWorker.nextId();
+            descEntity.setId(String.valueOf(id2));
+            descEntity.setOrderId(orderEntity.getOrderId());
+
+//            通过商家名字查询对应的商家id
+            String sellerName = descEntity.getSellerName();
+
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("nick_name", sellerName);
+            QueryWrapper<SellerEntity> wrapper = new QueryWrapper<>();
+
+            wrapper.allEq(map);
+            SellerEntity sellerEntity = sellerDao.selectOne(wrapper);
+
+//            设置商家id
+            String sellerId = sellerEntity.getSellerId();
+            descEntity.setSellerId(String.valueOf(sellerId));
+
+            for (int i = 0; i < num; i++) {
+                descEntity.setId(String.valueOf(idWorker.nextId()));
+                orderDescDao.insertOrderDescEntity(descEntity);
+
+            }
+        }
+
+    }
 }
