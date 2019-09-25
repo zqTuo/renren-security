@@ -1,7 +1,7 @@
 package io.renren.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.dto.SellerDto;
 import io.renren.entity.SellerEntity;
 

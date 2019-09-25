@@ -88,7 +88,7 @@ public class PayController {
             return new Result().error("订单不存在");
         }
 
-        if(moneyEntity.getPayStatus()==Constant.ORDER_PAY_SUCCESS){
+        if(Constant.ORDER_PAY_SUCCESS.equals(moneyEntity.getPayStatus())){
             return new Result().error("订单已支付成功，请勿重复支付");
         }
 

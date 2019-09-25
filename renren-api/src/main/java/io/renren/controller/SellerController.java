@@ -1,14 +1,11 @@
 package io.renren.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import io.renren.Result.Result;
 import io.renren.annotation.Login;
-import io.renren.common.IdWorker;
-import io.renren.common.PageUtils;
-import io.renren.common.R;
 import io.renren.common.utils.Constant;
+import io.renren.common.utils.IdWorker;
 import io.renren.common.validator.ValidatorUtils;
-import io.renren.dto.SellerDto;
 import io.renren.entity.MoneyEntity;
 import io.renren.entity.SellerEntity;
 import io.renren.entity.WxuserEntity;
@@ -24,8 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.*;
 

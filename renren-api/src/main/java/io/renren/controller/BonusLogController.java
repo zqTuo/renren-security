@@ -3,8 +3,8 @@ package io.renren.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.renren.common.PageUtils;
-import io.renren.common.R;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;
 
 import io.swagger.annotations.Api;

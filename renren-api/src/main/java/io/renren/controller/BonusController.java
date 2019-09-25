@@ -1,6 +1,5 @@
 package io.renren.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +7,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.renren.Result.Result;
 import io.renren.annotation.Login;
-import io.renren.common.PageUtils;
-import io.renren.common.R;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.entity.CodeEntity;
 import io.renren.service.BonusLogService;
@@ -22,9 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import io.renren.entity.BonusEntity;
 import io.renren.service.BonusService;
 import springfox.documentation.annotations.ApiIgnore;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.swing.*;
 
 
 /**

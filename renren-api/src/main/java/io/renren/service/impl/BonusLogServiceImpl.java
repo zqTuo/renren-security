@@ -1,6 +1,6 @@
 package io.renren.service.impl;
 
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.Query;
 import org.springframework.stereotype.Service;
 import java.util.Map;

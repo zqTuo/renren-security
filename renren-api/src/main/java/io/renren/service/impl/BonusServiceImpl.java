@@ -1,7 +1,7 @@
 package io.renren.service.impl;
 
-import io.renren.common.IdWorker;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.IdWorker;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.Query;
 import io.renren.common.utils.LotteryUtil;
 import io.renren.dao.BonusLogDao;
@@ -22,8 +22,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.dao.BonusDao;
 import io.renren.entity.BonusEntity;
 import io.renren.service.BonusService;
-
-import javax.xml.crypto.Data;
 
 
 @Service("bonusService")

@@ -8,7 +8,7 @@
 
 package io.renren;
 
-import io.renren.common.IdWorker;
+import io.renren.common.utils.IdWorker;
 import io.renren.modules.sys.thread.createCodeThread;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

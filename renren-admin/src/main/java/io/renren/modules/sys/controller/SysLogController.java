@@ -9,8 +9,8 @@
 package io.renren.modules.sys.controller;
 
 import io.renren.modules.sys.service.SysLogService;
-import io.renren.common.PageUtils;
-import io.renren.common.R;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

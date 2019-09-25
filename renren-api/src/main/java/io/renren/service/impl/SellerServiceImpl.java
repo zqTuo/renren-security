@@ -6,7 +6,6 @@ import io.renren.dao.SellerDao;
 import io.renren.dto.SellerDto;
 import io.renren.entity.SellerEntity;
 import io.renren.service.SellerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.Query;
 
 

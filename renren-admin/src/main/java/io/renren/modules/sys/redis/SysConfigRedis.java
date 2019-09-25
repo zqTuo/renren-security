@@ -10,7 +10,7 @@ package io.renren.modules.sys.redis;
 
 
 import io.renren.common.RedisKeys;
-import io.renren.common.RedisUtils;
+import io.renren.common.utils.RedisUtils;
 import io.renren.modules.sys.entity.SysConfigEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

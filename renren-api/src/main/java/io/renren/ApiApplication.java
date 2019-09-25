@@ -8,7 +8,9 @@
 
 package io.renren;
 
-import io.renren.common.IdWorker;
+
+
+import io.renren.common.utils.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -23,7 +25,7 @@ public class ApiApplication extends SpringBootServletInitializer {
 	}
 	@Bean
 	public IdWorker idWorker() {
-		return new IdWorker(1, 1);
+		return new IdWorker(1,1);
 	}
 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

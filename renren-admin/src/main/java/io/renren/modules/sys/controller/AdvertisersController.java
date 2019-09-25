@@ -3,7 +3,7 @@ package io.renren.modules.sys.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.renren.common.IdWorker;
+import io.renren.common.utils.IdWorker;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.Order;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.renren.modules.sys.entity.AdvertisersEntity;
 import io.renren.modules.sys.service.AdvertisersService;
-import io.renren.common.PageUtils;
-import io.renren.common.R;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 
 
 
@@ -103,11 +103,8 @@ public class AdvertisersController {
 //    批量生成二维码
     @RequestMapping("/QrCode")
     @RequiresPermissions("sys:advertisers:QrCode")
-    public R QrCode(@RequestBody Order order,@RequestParam Long num) {
+    public R QrCode(@RequestBody Order order) {
 
-        if (num!= null && num>0) {
-            advertisersService.createQrCodeByNum(order,num);
-        }
         advertisersService.createQrCode(order);
         return R.ok();
     }

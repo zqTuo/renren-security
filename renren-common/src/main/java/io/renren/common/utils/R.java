@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common;
+package io.renren.common.utils;
 
 import java.util.HashMap;
 import java.util.Map;

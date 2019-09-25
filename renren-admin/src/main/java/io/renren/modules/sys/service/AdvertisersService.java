@@ -1,7 +1,7 @@
 package io.renren.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.modules.sys.entity.AdvertisersEntity;
 import io.renren.modules.sys.entity.Order;
 
@@ -24,6 +24,6 @@ public interface AdvertisersService extends IService<AdvertisersEntity> {
 
     void createQrCode(Order orderEntity);
 
-    void createQrCodeByNum(Order order, Long num);
+
 }
 

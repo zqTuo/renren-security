@@ -1,4 +1,4 @@
-package io.renren.common;
+package io.renren.common.utils;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

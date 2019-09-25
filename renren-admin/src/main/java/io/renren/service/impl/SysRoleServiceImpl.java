@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.annotation.DataFilter;
 import io.renren.common.Constant;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.Query;
 import io.renren.modules.sys.dao.SysRoleDao;
 import io.renren.modules.sys.entity.SysDeptEntity;

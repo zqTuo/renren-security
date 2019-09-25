@@ -1,9 +1,9 @@
 package io.renren.modules.sys.thread;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.renren.common.IdWorker;
+import io.renren.common.utils.IdWorker;
 import io.renren.common.QRCodeUtil;
-import io.renren.common.ZipUtil;
+import io.renren.common.utils.ZipUtil;
 import io.renren.modules.sys.dao.CodeDao;
 import io.renren.modules.sys.entity.CodeEntity;
 import io.renren.modules.sys.entity.OrderEntity;

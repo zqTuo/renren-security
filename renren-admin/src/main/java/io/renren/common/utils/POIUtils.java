@@ -1,4 +1,4 @@
-package io.renren.common;
+package io.renren.common.utils;
 
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;

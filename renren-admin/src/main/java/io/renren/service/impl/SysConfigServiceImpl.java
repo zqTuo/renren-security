@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import io.renren.common.exception.RRException;
-import io.renren.common.PageUtils;
+import io.renren.common.utils.PageUtils;
 import io.renren.common.Query;
 import io.renren.modules.sys.dao.SysConfigDao;
 import io.renren.modules.sys.entity.SysConfigEntity;

@@ -5,10 +5,9 @@ import java.util.Date;
 import java.util.Map;
 
 
-import io.renren.common.IdWorker;
-import io.renren.common.PageUtils;
-import io.renren.common.R;
-import io.renren.common.Result;
+import io.renren.common.utils.IdWorker;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.modules.sys.entity.MoneyEntity;
 import io.renren.modules.sys.service.MoneyService;
@@ -112,15 +111,5 @@ public class SellerController {
         return R.ok();
     }
 
-    /**
-     * 导出Excel报表
-     *错误版本
-     * @return
-     */
-    @RequestMapping(value = "/exportExcel1")
-    @RequiresPermissions("sys:seller:exportExcel1")
-    public Result exportBusinessReport(HttpServletRequest request, HttpServletResponse response) {
-        return null;
-    }
 
 }
