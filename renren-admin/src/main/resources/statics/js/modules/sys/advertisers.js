@@ -82,7 +82,7 @@ var vm = new Vue({
 		advertisers: {},
         sellerList:{},
         activityList:{},
-        order:{orderEntity:{},orderDescEntity:[],bonusEntity:[]},
+        order:{orderEntity:{},orderDescEntity:[]},
         entity:{},
         bonus:{},
         advertisersList:{},
@@ -98,11 +98,6 @@ var vm = new Vue({
         removeOrderDesc_Entity:function (index) {
             this.order.orderDescEntity.splice(index, 1);
         },
-/*        //往订单池里面添加一个对象
-        addOrderBonus :function () {
-            this.order.bonusEntity.push(this.bonus)
-           this.reloadAddCode()
-        },*/
 		query: function () {
 			vm.reload();
 		},
@@ -195,23 +190,19 @@ var vm = new Vue({
 		},
         //设置二维码
         QrCode:function () {
-            order:{}
+            order={}
+            var advertisersId = getSelectedRow();
+            if(advertisersId == null){
+                return ;
+            }
+            vm.order.orderEntity.advertisersId=advertisersId
             vm.showList02 = false;
             vm.showList03 = false;
             vm.title = "生成二维码";
-            this.findAllSeller();
             this.findAllActivity();
-            this.findAllAdvertisers();
         },
-        //设置奖品
-        Bonus:function(){
 
-            vm.showList=true;
-            vm.showList02 = true;
-            vm.showList03 = false;
-            vm.showList04 = false;
-            vm.title = "设置奖品";
-        },
+
         //返回到生成二维码页面
         reloadAddCode: function (event) {
             vm.showList03 = false;
@@ -251,7 +242,7 @@ var vm = new Vue({
                 console.log("1231312131321");
             });
         },
-        //查询所有的广告主id
+       /* //查询所有的广告主id
         findAllAdvertisers:function () {
             axios.get('/icode-admin/sys/advertisers/list').then(function (response) {
 
@@ -260,8 +251,25 @@ var vm = new Vue({
             }).catch(function (error) {
                 console.log("1231312131321");
             });
-        }
+        },*/
+        //选中单选框
+        CheckItem:function(){
+            vm.order.isEnableSeller = !vm.order.isEnableSeller;
+            if (!vm.order.isEnableSeller) {
+                vm.showList03 = false;
+                vm.showList = true
+                vm.showList02 = true
+                vm.showList04 = false
+                this.findAllSeller()
 
+            }
+        },
+        addSeller:function () {
+            vm.showList03 = false;
+            vm.showList = true
+            vm.showList02 = false
+            vm.showList04 = true
+        }
     }
 
 });

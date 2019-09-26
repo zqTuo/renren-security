@@ -8,6 +8,7 @@
 
 package io.renren.common.utils;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -47,6 +48,7 @@ public class DateUtils {
         if(date != null){
             SimpleDateFormat df = new SimpleDateFormat(pattern);
             return df.format(date);
+
         }
         return null;
     }

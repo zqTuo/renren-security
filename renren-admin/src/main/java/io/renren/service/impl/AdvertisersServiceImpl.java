@@ -64,50 +64,50 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
         List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
 
         Long sellerNum = order.getNum();//获取商家数量
-        if (sellerNum < 0||sellerNum==null) {
+        if (sellerNum<=0 || sellerNum==null) {
 
             sellerNum=1l;
 
         }
-            for (int j = 0; j < sellerNum; j++) {
-                for (OrderDescEntity descEntity : orderDescEntity) {
-                    descEntity.setId(String.valueOf(idWorker.nextId()));
-                    descEntity.setOrderId(orderEntity.getOrderId());
+        for (int j = 0; j < sellerNum; j++) {
+            for (OrderDescEntity descEntity : orderDescEntity) {
+                descEntity.setId(String.valueOf(idWorker.nextId()));
+                descEntity.setOrderId(orderEntity.getOrderId());
 
 //            通过商家名字查询对应的商家id
-                    String sellerName = descEntity.getSellerName();
-                    SellerEntity sellerEntity = sellerDao.selectOne(new QueryWrapper<SellerEntity>().eq("nick_name", sellerName));
+                String sellerName = descEntity.getSellerName();
+                SellerEntity sellerEntity = sellerDao.selectOne(new QueryWrapper<SellerEntity>().eq("nick_name", sellerName));
 
 //            设置商家id
-                    String sellerId = sellerEntity.getSellerId();
-                    descEntity.setSellerId(String.valueOf(sellerId));
-                    orderDescDao.insertOrderDescEntity(descEntity);
-                    ActivityEntity activityEntity = activityDao.selectById(descEntity.getActivityId());
+                String sellerId = sellerEntity.getSellerId();
+                descEntity.setSellerId(String.valueOf(sellerId));
+                orderDescDao.insertOrderDescEntity(descEntity);
+                ActivityEntity activityEntity = activityDao.selectById(descEntity.getActivityId());
 //            利用多线程生成二维码表
 
-                    Long num = descEntity.getNum();
-                    for (int i = 0; i < num; i++) {
+                Long num = descEntity.getNum();
+                for (int i = 0; i < num; i++) {
 //                设置二维码表
-                        CodeEntity codeEntity = new CodeEntity();
-                        codeEntity.setQrcodeId(String.valueOf(idWorker.nextId()));
-                        codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
-                        codeEntity.setSellerId(String.valueOf(descEntity.getSellerId()));
-                        codeEntity.setActivityId(String.valueOf(descEntity.getActivityId()));
-                        codeEntity.setOrderId(Long.valueOf(descEntity.getOrderId()));
-                        codeEntity.setOrderdescId(Long.valueOf(descEntity.getId()));
-                        codeEntity.setIsFocus(activityEntity.getIsFocus());
+                    CodeEntity codeEntity = new CodeEntity();
+                    codeEntity.setQrcodeId(String.valueOf(idWorker.nextId()));
+                    codeEntity.setAdvertisersId(orderEntity.getAdvertisersId());
+                    codeEntity.setSellerId(String.valueOf(descEntity.getSellerId()));
+                    codeEntity.setActivityId(String.valueOf(descEntity.getActivityId()));
+                    codeEntity.setOrderId(Long.valueOf(descEntity.getOrderId()));
+                    codeEntity.setOrderdescId(Long.valueOf(descEntity.getId()));
+                    codeEntity.setIsFocus(activityEntity.getIsFocus());
 
-                        codeEntity.setSellerName(descEntity.getSellerName());
-                        codeEntity.setAdvertisersName("炫酷游互娱有限公司");
-                        codeEntity.setActivityName(activityEntity.getActivityName());
-                        codeEntity.setActivityUrl("http://pip.maojimall.com/v1/?r=" + codeEntity.getQrcodeId());
+                    codeEntity.setSellerName(descEntity.getSellerName());
+                    codeEntity.setAdvertisersName("炫酷游互娱有限公司");
+                    codeEntity.setActivityName(activityEntity.getActivityName());
+                    codeEntity.setActivityUrl("http://pip.maojimall.com/v1/?r=" + codeEntity.getQrcodeId());
 
 
-                        codeThread.handleCode(codeEntity);
-                    }
-
+                    codeThread.handleCode(codeEntity);
                 }
+
             }
+        }
 
         codeThread.createZip(orderEntity);
     }

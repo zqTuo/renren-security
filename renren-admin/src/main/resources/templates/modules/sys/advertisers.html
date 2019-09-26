@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>广告主</title>
+
     <#include "/header.html">
 </head>
 <body>
@@ -244,23 +245,17 @@
         </tbody>
     </table>
     <form class="form-horizontal">
+        {{entity}}
         <div class="form-group">
-            <div class="col-sm-2 control-label">广告主编号</div>
+            <div class="col-sm-2 control-label">是否关联商家</div>
             <div class="col-sm-10">
-                <select class="form-control" v-model="entity.advertisersId" >
-
-                    <option :value="entity.advertisersId" v-for="advertisers in advertisersList">{{advertisers.name}}</option>
-                </select>
+                <input type="checkbox" class="weui-check" v-on:click="CheckItem()" v-model="order.isEnableSeller" name="checkbox" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">商家名称</div>
+        <div class="form-group" v-if="!order.isEnableSeller">
+            <div class="col-sm-2 control-label">商家数量</div>
             <div class="col-sm-10">
-
-                <select class="form-control" v-model="entity.sellerName" >
-
-                    <option :value="seller.nickName" v-for="seller in sellerList">{{seller.nickName}}</option>
-                </select>
+                <input type="text" class="form-control" v-model="order.num" placeholder="商家数量"/>
             </div>
         </div>
         <div class="form-group">
@@ -273,9 +268,9 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">数量</div>
+            <div class="col-sm-2 control-label">二维码数量</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="entity.num" placeholder="数量"/>
+                <input type="text" class="form-control" v-model="entity.num" placeholder="二维码数量"/>
             </div>
         </div>
 
@@ -297,9 +292,56 @@
         </div>
     </form>
 </div>
+<div v-show="!showList04" class="panel panel-default">
 
+    <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+        <thead>
+        <tr>
+            <th class="" style="padding-right:0px">
+                <input id="selall" type="checkbox" class="icheckbox_square-blue">
+            </th>
+            <th class="sorting_asc">店铺名称</th>
+            <th class="sorting">区域</th>
+            <th class="sorting">EMAIL</th>
+            <th class="text-center">公司手机</th>
+            <th class="text-center">公司电话</th>
+            <th class="text-center">联系人姓名</th>
+            <th class="text-center">职位</th>
+            <th class="text-center">营业执照号</th>
+            <th class="text-center">税务登记证号</th>
+            <th class="text-center">组织机构代码</th>
+            <th class="text-center">公司地址</th>
+            <th class="text-center">法定代表人</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="sellerEntity in sellerList">
+            <td><input  type="checkbox" :true-value="sellerEntity.sellerId" v-model="entity.sellerId"></td>
+            <td>{{sellerEntity.nickName}}</td>
+            <td>{{sellerEntity.region}}</td>
+            <td>{{sellerEntity.email}}</td>
+            <td>{{sellerEntity.mobile}}</td>
+            <td>{{sellerEntity.telephone}}</td>
+            <td>{{sellerEntity.linkmanName}}</td>
+            <td>{{sellerEntity.linkmanJod}}</td>
+            <td>{{sellerEntity.licenseNumber}}</td>
+            <td>{{sellerEntity.taxNumber}}</td>
+            <td>{{sellerEntity.orgNumber}}</td>
+            <td>{{sellerEntity.address}}</td>
+            <td>{{sellerEntity.legalPerson}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="button" class="btn btn-primary"
+               @click="addSeller()" value="确定"/>
+        </tr>
+        <input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+    </div>
 </div>
 
+</div>
 <script src="${request.contextPath}/statics/js/modules/sys/advertisers.js?_${.now?long}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
