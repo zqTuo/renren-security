@@ -118,7 +118,7 @@ var vm = new Vue({
 			vm.showList03 = false;
 
             vm.title = "修改";
-            
+
             vm.getInfo(advertisersId)
 		},
 		saveOrUpdate: function (event) {
@@ -184,13 +184,12 @@ var vm = new Vue({
             vm.showList02=true
             vm.showList04=true
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
                 page:page
             }).trigger("reloadGrid");
 		},
         //设置二维码
         QrCode:function () {
-            order={}
             var advertisersId = getSelectedRow();
             if(advertisersId == null){
                 return ;
@@ -253,17 +252,22 @@ var vm = new Vue({
             });
         },*/
         //选中单选框
-        CheckItem:function(){
-            vm.order.isEnableSeller = !vm.order.isEnableSeller;
-            if (!vm.order.isEnableSeller) {
+        CheckItem:function(status){
+            console.log(status)
+            if (status) {
                 vm.showList03 = false;
                 vm.showList = true
                 vm.showList02 = true
                 vm.showList04 = false
                 this.findAllSeller()
-
             }
         },
+        /*isChecked:function (id) {
+            if(id!=null || id!=undefined){
+                    return true;
+            }
+            return false;
+        },*/
         addSeller:function () {
             vm.showList03 = false;
             vm.showList = true

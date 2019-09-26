@@ -63,13 +63,14 @@ public class AdvertisersServiceImpl extends ServiceImpl<AdvertisersDao, Advertis
 //       向订单详情表里面插入一条数据
         List<OrderDescEntity> orderDescEntity = order.getOrderDescEntity();
 
-        Long sellerNum = order.getNum();//获取商家数量
-        if (sellerNum<=0 || sellerNum==null) {
+        String sellerNum = String.valueOf(order.getNum());//获取商家数量
+        int Num = 0;
+        if ("0".equals(sellerNum) || null==sellerNum) {
 
-            sellerNum=1l;
+            Num=1;
 
         }
-        for (int j = 0; j < sellerNum; j++) {
+        for (int j = 0; j < Num; j++) {
             for (OrderDescEntity descEntity : orderDescEntity) {
                 descEntity.setId(String.valueOf(idWorker.nextId()));
                 descEntity.setOrderId(orderEntity.getOrderId());

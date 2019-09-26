@@ -43,9 +43,5 @@ public class SellerServiceImpl extends ServiceImpl<SellerDao, SellerEntity> impl
         baseMapper.insertSellerEntity(entity);
     }
 
-  /*  import io.renren.dao.SellerDao;
-import io.renren.dto.SellerDto;
-import io.renren.entity.SellerEntity;
-import io.renren.service.SellerService;
-import org.springframework.stereotype.Service;*/
+
 }
